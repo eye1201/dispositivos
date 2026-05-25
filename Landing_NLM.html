@@ -9,7 +9,6 @@
 		<!--Color del navegador-->
 		<meta name="theme-color" content="#574F6F">
 		<!-- HTML meta refresh URL redirection -->
-		<!--<meta http-equiv="refresh" content="10; url=/"/>-->
 		<!-- Script de carga dinámica -->
 		<script src="js/renderizado.js"></script>
 		<!-- redireccion mantenimiento-->
@@ -21,7 +20,7 @@
 					const fin = new Date(data.fechaFin);
 					
 					if (data.mantenimientoActivo && ahora < fin) {
-						window.location.href = "/mantenimiento.html";
+						window.location.href = "../mantenimiento.html";
 					}
 				});
 		</script>
