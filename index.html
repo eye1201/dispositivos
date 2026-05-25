@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<title>El comparador | from E.Y.E.</title>
+		<link rel="icon" type="image/png" href="img/eyewebsLogoFavicon.png"/>
+		<link rel="stylesheet" href="css/webproductos.css" type="text/css"/>
+		<!--Color del navegador-->
+		<meta name="theme-color" content="#ededed">
+		<!-- Script de carga dinámica[cite: 8, 14] -->
+		<script src="js/renderizado.js"></script>
+		<style>
+			#indice, #dispositivos {
+				max-width: 900px !important;
+				margin: 20px auto !important;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="content">
+			<!--encabezado-->
+			<nav role="navigation">
+				<div id="menuToggle">
+					<!--
+					A fake / hidden checkbox is used as click reciever,
+					so you can use the :checked selector on it.
+					-->
+					<input type="checkbox" />			
+					<!--
+					Some spans to act as a hamburger.
+					They are acting like a real hamburger,
+					not that McDonalds stuff.
+					-->
+					<span></span>
+					<span></span>
+					<span></span>
+					<!--
+					Too bad the menu has to be inside of the button
+					but hey, it's pure CSS magic.
+					-->
+					<ul id="menu">
+						<a href="."><li class="active">▻ Inicio</li></a>
+						<a href="telefonos-android.html"><li>📱 Android</li></a>
+						<a href="telefonos-iPhone.html"><li> &#xF8FF; iPhone</li></a>
+						<a href="ordenadores.html"><li>💻 Ordenadores</li></a>
+					</ul>
+				</div>
+				<div class="logoTitulo">
+					<span onclick="window.open('index.html', '_self');" style="cursor:pointer;">
+						<img type="png" id="imglogo" src="img/eyewebsLogoFavicon.png" alt="EYE webs Logo"/>
+					</span>
+					<h1 id="titulo"><b>El comparador</b></h1>
+				</div>
+			</nav>
+			<!--fin encabezado-->
+			<br/>
+			<!--contenido de pagina de pagina-->
+			<div class="contentb">
+				 <!-- Sección de Actualización -->
+				<div id="indice">
+					<div class="summary">
+						<!-- para que esté siempre abierto, añade la etiqueta open <details open > -->
+						<details >
+							<summary>
+								[Pulsa para desplegar] <br/>
+								<b style="text-decoration: underline; text-decoration-style: dotted;">Última actualización: 25/05/2026 02:52h</b>
+							</summary>
+							<div class="detalle">
+								<p>
+									<span>La web se va actualizando lo antes posible.</span><br/>
+									<span>¡Disculpe las molestias!</span>
+								</p>
+							</div>
+						</details>
+					</div>
+				</div>
+ 				<!-- Selector de Dispositivos -->
+				<div id="dispositivos">
+					<table class="productos">
+						<thead>
+							<tr>
+								<th colspan="3">Elige</th>
+							</tr>
+						</thead>
+						<!-- Eliminado tfoot: el texto ahora está integrado bajo la imagen -->
+						<tbody class="productos">
+							<tr>
+								<!-- Bloque Android -->
+								<th onclick="window.open('telefonos-android.html', '_self');">
+									<img class="logo-seleccion" src="img/Logo-Android.png" alt="Android">
+									<span class="texto-seleccion">Android</span>
+								</th>
+						
+								<!-- Bloque Apple -->
+								<th onclick="window.open('telefonos-iPhone.html', '_self');">
+									<img class="logo-seleccion" src="img/Logo-Apple.png" alt="Apple iPhone">
+									<span class="texto-seleccion">Apple iPhone</span>
+								</th>
+						
+								<!-- Bloque Ordenadores -->
+								<th onclick="window.open('ordenadores.html', '_self');">
+									<img class="logo-seleccion" src="img/Logo-ordenador.png" alt="Ordenadores">
+									<span class="texto-seleccion">Ordenadores</span>
+								</th>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<!--fin contenido de pagina de pagina-->
+			<!--pie de pagina-->
+			<footer>
+				<!-- Botón Imprimir integrado en el pie -->
+				<p hidden class="printPageButton">
+					<button onclick="window.print();"> Imprimir 🖨️ página 📝 </button>
+				</p>
+				<p>© 2023-2026 | diseñado por: E.Y.E.</p>
+				
+				<!-- El botón de subir suele ir al final para que cargue lo último -->
+				<a href='#' class="stt" title="Subir arriba"></a>
+			</footer>
+			<!--fin pie de pagina-->
+		</div>
+	</body>
+</html>

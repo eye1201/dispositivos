@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>El comparador - iPhone | from E.Y.E.</title>
+        <link rel="icon" type="image/png" href="img/eyewebsLogoFavicon.png"/>
+        <link rel="stylesheet" href="css/webproductos.css" type="text/css"/>
+        <!--Color del navegador-->
+        <meta name="theme-color" content="#ededed">
+        <!-- Script de carga dinámica -->
+		<script src="js/renderizado.js"></script>
+    </head>
+    <body>
+        <div class="content">
+            <!--encabezado-navegacion-->
+            <nav role="navigation">
+                <div id="menuToggle">
+                    <input type="checkbox" />
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <ul id="menu">
+                        <a href="index.html"><li>▻ Inicio</li></a>
+                        <a href="telefonos-android.html"><li>📱 Android</li></a>
+                        <a href="telefonos-iPhone.html"><li class="active"> iPhone</li></a>
+                        <a href="ordenadores.html"><li>💻 Ordenadores</li></a>
+                    </ul>
+                </div>
+                <div class="logoTitulo">
+                    <span onclick="location.reload(true);" style="cursor:pointer;" >
+                        <img type="png" id="imglogo" src="img/Logo_Apple-iPhone.png" alt="Apple iPhone Logo"/>
+                    </span>
+                    <h2 id="titulo">El comparador de iPhone <sup onclick="window.open('#*', '_self')">*</sup></h2>
+                </div>
+            </nav>
+            <!--fin encabezado-->
+            <br/>
+            <!--contenido de pagina de pagina-->
+            <div class="contentb">
+                <!-- Sección de Información / Glosario -->
+                <div id="indice">
+                    <div class="summary">
+                        <!-- para que esté siempre abierto, añade la etiqueta open <details open > -->
+                        <details >
+                            <summary>
+                                [Pulsa para desplegar] <br/>
+                                <b style="text-decoration: underline; text-decoration-style: dotted;">Última actualización: 25/05/2026 02:52h</b> 
+                            </summary>
+                            <div class="detalle">
+                                <p>
+                                    <span>La web se va actualizando lo antes posible.</span><br/>
+                                    <span>¡Disculpe las molestias!</span>
+                                </p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <div id="seccionProductos">
+                    <!-- TABLA dinámica de iPhone-->
+                    <div id="tablaProductos">
+                        <img type="png" style="display: block; margin-left: auto; margin-right: auto; width: 20%;" src="img/Logo_Apple-iPhone.png" alt="Apple iPhone Logo">
+                        <h4 id="AppleiPhone" style="text-align: center;"><span onclick="window.open('#AppleiPhone', '_self')">Apple  iPhone</span> <sup onclick="window.open('#*', '_self')">[ * ]</sup>&nbsp;&nbsp;<sup onclick="window.open('https://support.apple.com/es-es/docs/iphone', '_blank')">[ *** ]</sup></h4>
+                        <table class="productos">
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Tiendas</th>
+                                </tr>
+                            </thead>
+                            <!-- El contenedor vacío donde el script inyectará el HTML -->
+                            <tbody class="contenedor-dinamico" data-categoria="iPhone"></tbody>
+                        </table>
+                        <br/>
+                        <hr style="border: 1px dashed"/>
+                    </div>
+                    <div>
+                        <hr hidden style="border: 2px dashed"/>
+                        <br/>
+                        <div  id="AppleCare_webApple" class="productos" >
+                            <h4 style="text-align: center;" onclick="window.open('#AppleCare_webApple', '_self')">Apple Care para iPhone</h4>
+                            <p><a href="https://www.apple.com/es/support/products/iphone/" target="_blank" rel="noopener noreferrer" title="Apple Care">Pulsa aquí para informarte sobre Apple Care.</a></p>
+                        </div>
+                        <hr/>
+                        <div  id="AppleRefurbished_webApple" class="productos" >
+                            <h4 style="text-align: center;" onclick="window.open('#AppleRefurbished_webApple', '_self')">Apple iPhone - Reacondicionados</h4>
+                            <p >
+                                <span>¿Búscas un iPhone más barato? Los reacondicionados de Apple son tu mejor opción.</span><br/>
+                                <span>- Los reacondicionados de Apple son productos revisados con piezas nuevas y originales.</span><br/>
+                                <span>- Se vuelven a embalar en una caja nueva (caja blanca) con todos los accesorios y cables.</span><br/><br/>
+                                <span><a href="https://www.apple.com/es/shop/refurbished/iphone/1-tb-256-gb-512-gb" target="_blank" rel="noopener noreferrer" title="Apple Refurbished - iPhone">Pulsa aquí para ir a la página de iPhone reacondicionados de Apple</a></span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--fin contenido de pagina de pagina-->
+            <!--pie de pagina-->
+            <footer>
+                <span style="text-align: left;">
+                    <p id="*"><i><sup>*</sup>Los iPhone son teléfonos de gama alta y gama alta premium (modelo pro max).</i></p>
+                    <p id="**"><i><sup>**</sup>Los Android tienen distintas gamas, desde la gama baja hasta la gama alta premium.</i></p>
+                </span>	
+                <!-- Botón Imprimir integrado en el pie -->
+                <p class="printPageButton">
+                    <button onclick="window.print();"> Imprimir 🖨️ página 📝 </button>
+                </p>
+                <p>© 2023-2026 | diseñado por: E.Y.E.</p>
+                
+                <!-- El botón de subir suele ir al final para que cargue lo último -->
+                <a href='#' class="stt" title="Subir arriba"></a>
+            </footer>
+            <!--fin pie de pagina-->
+        </div>
+    </body>
+</html>

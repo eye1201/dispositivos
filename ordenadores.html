@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>El comparador - ordenadores | from E.Y.E.</title>
+        <link rel="icon" type="image/png" href="img/eyewebsLogoFavicon.png"/>
+        <!-- Asegúrate de que la ruta a tu CSS sea la correcta -->
+        <link rel="stylesheet" href="css/webproductos.css" type="text/css"/>
+        <meta name="theme-color" content="#ededed">
+        <!-- Script de carga dinámica -->
+        <script src="js/renderizado.js"></script>
+    </head>
+    <body>
+        <div class="content">
+            <!--encabezado-navegacion-->
+            <nav role="navigation">
+                <div id="menuToggle">
+                    <input type="checkbox" />
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <ul id="menu">
+                        <a href="index.html"><li>▻ Inicio</li></a>
+                        <a href="telefonos-android.html"><li>📱 Android</li></a>
+                        <a href="telefonos-iPhone.html"><li> iPhone</li></a>
+                        <a href="ordenadores.html"><li class="active">💻 Ordenadores</li></a>
+                    </ul>
+                </div>
+                <div class="logoTitulo">
+                    <span onclick="location.reload(true);" style="cursor:pointer;">
+                        <img type="png" id="imglogo" src="img/Logo_Windows-11.png" alt="Microsoft Windows 11 Logo"/>
+                        <img type="png" id="imglogo" src="img/Logo_Apple-macOS.png" alt="Apple macOS Logo"/>
+                    </span>
+                    <h1 id="titulo">El comparador de ordenadores</h1>
+                </div>
+            </nav>
+            <!--fin encabezado-->
+            <br/>
+            <!--contenido de pagina de pagina-->
+            <div class="contentb">
+                <!-- Sección de Información / Glosario -->
+                <div id="indice">
+                    <div class="summary">
+                        <!-- para que esté siempre abierto, añade la etiqueta open <details open > -->
+                        <details>
+                            <summary>
+                                [Pulsa para desplegar] <br/>
+                                <b style="text-decoration: underline; text-decoration-style: dotted;">Última actualización: 25/05/2026 02:52h</b>
+                            </summary>
+                            <div class="detalle">
+                                <p>
+                                    <span>La web se va actualizando lo antes posible.</span><br/>
+                                    <span>¡Disculpe las molestias!</span>
+                                    <hr style="border: 1px line"/>
+                                    <span><i>Intel generaciones 10,11,12,13,14; series 100, 200.</i></span><br/>
+                                    <span><i> &#10141; Intel i3 - gama baja; <br> &#10141; i5 - gama media; <br> &#10141; i7 - gama alta; <br> &#10141; i9 - gama premium</i></span><br/>
+                                    <span><i>Intel Core e Intel Core Ultra son de la 14ªGen y posteriores <a href="https://www.intel.la/content/www/xl/es/products/docs/processors/core-vs-ultra.html" target="_blank" rel="noopener noreferrer" title="Diferencias entre los procesadores Intel Core e Intel Core Ultra">+info aquí</a></i></span><br/>
+                                    <hr style="border: 1px dotted"/>
+                                    <span><i>AMD Ryzen series 3000, 4000, 5000, 6000, 7000, 8000, 9000, 200, AI 300, AI Max 300.</i></span><br/>
+                                    <span><i> &#10141; AMD Ryzen 3 - gama baja; <br> &#10141; Ryzen 5 - gama media; <br> &#10141; Ryzen 7 - gama alta; <br> &#10141; Ryzen 9 - gama premium</i></span><br/>
+                                    <span><i>AMD Ryzen para portátiles <a href="https://www.amd.com/es/products/processors/laptop/ryzen.html#specs" target="_blank" rel="noopener noreferrer" title="AMD Ryzen para portátiles de primer nivel">+info aquí</a></i></span><br/>
+                                    <hr style="border: 1px dotted"/>
+                                    <span><i>Apple Chip M1, M2, M3, M4, M5.</i></span><br/>
+                                    <span><i> &#10141; M1, M1 Pro, M1 Max, M1 Ulra; <br> &#10141; M2, M2 Pro, M2 Max, M2 Ulra; <br> &#10141; M3, M3 Pro, M3 Max, M3 Ultra; <br> &#10141; M4, M4 Pro, M4 Max; <br> &#10141; M5, M5 Pro, M5 Max</i></span><br/>
+                                    <hr style="border: 1px dashed"/>
+                                    <span><i>Los procesadores intel series 100 y sucerores y los Ryzen 200 y sucesores son equivalentes</i></span>
+                                    <hr style="border: 1px line"/>
+                                </p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <div id="seccionProductos">
+                    <!-- TABLA dinámica WINDOWS -->
+                    <h3 id="Windows" style="text-align: center;"><a href="#Windows" style="color: black; text-decoration: unset;">Ordenadores Windows</a></h3>
+                    <img type="png" style="  display: block; margin-left: auto; margin-right: auto; width: 33%;" src="img/Logo_Windows-11_small.png" alt="Microsoft Windows 11 Logo"><br/>
+                    <table class="productos">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Tiendas</th>
+                            </tr>
+                        </thead>
+                        <tbody class="contenedor-dinamico" data-categoria="Windows">
+                            <!-- El JS inyectará aquí los ordenadores Windows agrupados por marca-->
+                        </tbody>
+                    </table>
+                    <br/>
+                    <hr style="border: 2px dashed #ccc;"/>
+                    <br/>
+                    <!-- TABLA dinámica MAC -->
+                    <h3 id="mac" style="text-align: center;"><a href="#mac" style="color: black; text-decoration: unset;">Ordenadores Mac de Apple </a>&nbsp;&nbsp;<sup onclick="window.open('https://support.apple.com/es-es/102767', '_blank')">[ * ]</sup>&nbsp;&nbsp;<sup onclick="window.open('https://support.apple.com/es-es/docs/mac', '_blank')">[ ** ]</sup> </h3>
+                    <img type="png" style="  display: block; margin-left: auto; margin-right: auto; width: 33%;" src="img/Logo_Apple-macOS_small.png" alt="Apple macOS Logo"><br/>
+                    <table class="productos">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Tiendas</th>
+                            </tr>
+                        </thead>
+                        <tbody class="contenedor-dinamico" data-categoria="mac" >
+                            <!-- El JS inyectará aquí los Mac agrupados por modelo-->
+                        </tbody>
+                    </table>
+                </div>
+                <div  id="AppleRefurbished_webApple" class="productos" >
+                    <h4 style="text-align: center;"><a href="#AppleRefurbished_webApple" style="color: black; text-decoration: unset;">Apple Mac - Reacondicionados</a></h4>
+                    <p >
+                        <span>¿Búscas un Mac más barato? Los reacondicionados de Apple son tu mejor opción.</span><br/>
+                        <span>- Los reacondicionados de Apple son productos revisados con piezas nuevas y originales.</span><br/>
+                        <span>- Se vuelven a embalar en una caja nueva (caja blanca) con todos los accesorios y cables.</span><br/><br/>
+                        <span><a href="https://www.apple.com/es/shop/refurbished/mac/1-tb-256-gb-512-gb-16-gb-18-gb-24-gb-32-gb-36-gb-64-gb" target="_blank" rel="noopener noreferrer" title="Apple Refurbished - Mac">Pulsa aquí para ir a la página de Mac reacondicionados de Apple</a></span>
+                    </p>
+                </div>
+
+                <div  id="Portatiles14pulgadas" class="productos" >
+                    <h4 style="text-align: center;"><a href="#Portatiles14pulgadas" style="color: black; text-decoration: unset;">Portatiles de 14 pulgadas</a></h4>
+                    <p >
+                        <span>¿Búscas un portátil de 14 pulgadas? Puedes encontrar otros portátiles &nbsp; <br> que no se encuentran aquí en las siguientes tiendas:</span><br/>
+                        <span>- <a href="https://www.elcorteingles.es/electronica/ordenadores/portatiles/attr.screen_size::13.2-%3E15.3/?sorting=priceDesc" target="_blank" rel="noopener noreferrer" title="El Corte Inglés - Portátiles de 14 pulgadas">El Corte Inglés </a></span><br/>
+                        <span>- <a href="https://www.mediamarkt.es/es/category/port%C3%A1tiles-de-hasta-14-155.html?filter=marketplace:MediaMarkt&sort=currentprice+desc" target="_blank" rel="noopener noreferrer" title="Media Markt - Portátiles de 14 pulgadas"> Media Markt</a></span><br/>
+                    </p>
+                </div>
+            </div>
+            </div>
+            <!--fin contenido de pagina de pagina-->
+            <!--pie de pagina-->
+            <footer>
+                <!-- Botón Imprimir integrado en el pie -->
+                <p class="printPageButton">
+                    <button onclick="window.print();"> Imprimir 🖨️ página 📝 </button>
+                </p>
+                <p>© 2023-2026 | diseñado por: E.Y.E.</p>
+                
+                <!-- El botón de subir suele ir al final para que cargue lo último -->
+                <a href='#' class="stt" title="Subir arriba"></a>
+            </footer>
+            <!--fin pie de pagina-->
+        </div>
+    </body>
+</html>

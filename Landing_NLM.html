@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<title>El recomendador de NLM | designed by E.Y.E.webs</title>
+		<link rel="icon" type="image/png" href="img/NLM_LogoFavicon.png"/>
+		<link rel="stylesheet" href="css/webproductos.css" type="text/css"/>
+		<!--Color del navegador-->
+		<meta name="theme-color" content="#574F6F">
+		<!-- HTML meta refresh URL redirection -->
+		<!--<meta http-equiv="refresh" content="10; url=/"/>-->
+		<!-- Script de carga dinámica -->
+		<script src="js/renderizado.js"></script>
+		<style>
+			/* --- BOTÓN SCROLL TO TOP --- */
+			.stt {
+				/* ... propiedades de posición y tamaño ... */
+				
+				/* Usamos valores HSLA (Tono, Saturación, Luminosidad, Opacidad) */
+				/* Esto permite controlar mejor el brillo sin que el color parezca "sucio" */
+				background-color: hsla(240, 100%, 75%, 0.9); 
+				
+				/* ... resto de propiedades ... */
+				
+				/* IMPORTANTE: Transición específica para propiedades de color */
+				transition: background-color 0.4s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+			}
+			.stt:hover { 
+				/* El tono (240) se mantiene, bajamos la luminosidad para el hover */
+				background-color: hsla(255, 60%, 35%, 1); 
+				transform: translateY(-5px) scale(1.1); 
+				box-shadow: 0 0.5rem 1rem rgba(43, 0, 87, 0.4);
+			}
+			.stt:active {
+				transform: translateY(0) scale(0.95);
+				/* Un color intermedio para cuando se pulsa */
+				background-color: hsla(255, 60%, 25%, 1);
+			}	
+		</style>
+	</head>
+		<div class="content">
+			<!--encabezado-->
+			<header>
+				<!--encabezado-navegacion-->
+				<nav role="navigation">
+					<div id="menuToggle">
+						<input type="checkbox" />
+						<span></span>
+						<span></span>
+						<span></span>
+						<ul id="menu">
+							<a href="Landing_NLM.html"><li class="active">▻ Inicio</li></a>
+							<!--<a onclick="location.reload(true);"><li>▻ Inicio</li></a> -->
+							<a href="#Android"><li>📱 Android</li></a>
+							<a href="#AppleiPhone"><li> iPhone</li></a>
+
+						</ul>
+					</div>
+					<div class="logoTitulo">
+						<span onclick="window.open('Landing_NLM.html', '_self');" style="cursor:pointer;">
+							<img type="png" id="imglogo" src="img/NLM_LogoFavicon.png" alt="NLM Logo"/>
+						</span>
+						<h1 id="titulo">El recomendador de NLM</h1>
+					</div>
+				</nav>
+			</header>
+			<!--fin encabezado-->
+			<br/>
+			<!--contenido de pagina de pagina-->
+			<div class="contentb">
+				<!-- Sección de Información / Glosario -->
+				<div id="indice">
+					<div class="summary">
+						<!-- para que esté siempre abierto, añade la etiqueta open <details open > -->
+						<details >
+							<summary>
+								[Pulsa para desplegar] <br/>
+								<b style="text-decoration: underline; text-decoration-style: dotted;">Última actualización: 25/05/2026 02:52h</b> 
+							</summary>
+							<div class="detalle">
+								<p>
+									<span>La web se va actualizando lo antes posible.</span><br/>
+									<span>¡Disculpe las molestias!</span>
+								</p>
+							</div>
+						</details>
+					</div>
+				</div>
+				<br/>
+				<div id="seccionProductos">
+					<!-- TABLA dinamica de teléfonos -->
+					<div id="tablaProductos">
+						<!-- SECCIÓN Apple iPhone -->
+						<img type="png" style="display: block; margin-left: auto; margin-right: auto; width: 20%;" src="img/Logo_Apple-iPhone.png" alt="Apple iPhone Logo">
+						<h4 id="AppleiPhone" style="text-align: center;"><span onclick="window.open('#AppleiPhone', '_self')">Apple  iPhone</span> <sup onclick="window.open('#*', '_self')">[ * ]</sup>&nbsp;&nbsp;<sup onclick="window.open('https://support.apple.com/es-es/docs/iphone', '_blank')">[ *** ]</sup></h4>
+						<table class="productos">
+							<thead>
+								<tr>
+									<th>Producto</th>
+									<th>Tiendas</th>
+								</tr>
+							</thead>
+							<!-- El contenedor vacío donde el script inyectará el HTML -->
+							<tbody class="contenedor-dinamico" data-categoria="iPhone"></tbody>
+						</table>
+						<br/>
+						<hr style="border: 1px dashed"/>
+						<!-- SECCIÓN GAMA ALTA -->
+						<img type="png" style="display: block; margin-left: auto; margin-right: auto; width: 20%;" src="img/Logo-Android_2.png" alt="Android Logo">
+						<h4 id="Android" style="text-align: center;"><span onclick="window.open('#android', '_self')">Android</span> <sup onclick="window.open('#**', '_self')">**</sup></h4>
+						<h5 id="android_gama-alta" style="text-align: center;" onclick="window.open('#android_gama-alta', '_self')">Teléfonos gama alta</h5>
+						<table class="productos">
+							<thead>
+								<tr>
+									<th>Producto</th>
+									<th>Tiendas</th>
+								</tr>
+							</thead>
+							<tbody class="contenedor-dinamico" data-categoria="android" data-gama="alta">
+								<!-- El JS inyectará aquí marcas y productos de gama alta -->
+							</tbody>
+						</table>
+						<br/>
+						<hr style="border: 1px dashed"/>
+						<!-- SECCIÓN GAMA MEDIA -->
+						<h5 id="android_gama-media" style="text-align: center;" onclick="window.open('#android_gama-media', '_self')">Teléfonos gama media</h5>
+						<table class="productos">
+							<thead>
+								<tr>
+									<th>Producto</th>
+									<th>Tiendas</th>
+								</tr>
+							</thead>
+							<tbody class="contenedor-dinamico" data-categoria="android" data-gama="media">
+								<!-- El JS inyectará aquí marcas y productos de gama media -->
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<br/>
+				<span>
+					<p id="*"><i><sup>*</sup>Los iPhone son teléfonos de gama alta y gama alta premium (modelo pro max).</i></p>
+					<p id="**"><i><sup>**</sup>Los Android tienen distintas gamas, desde la gama baja hasta la gama alta premium.</i></p>
+				</span>
+			</div>
+			<!--fin contenido de pagina de pagina-->
+			<!--pie de pagina-->
+			<footer>
+				<!-- Botón Imprimir integrado en el pie -->
+				<p class="printPageButton">
+					<button onclick="window.print();"> Imprimir 🖨️ página 📝 </button>
+				</p>
+				<p>El recomendador de NLM © 2023-2026 | designed by: E.Y.E.</p>
+				
+				<!-- El botón de subir suele ir al final para que cargue lo último -->
+				<a href='#' class="stt" title="Subir arriba"></a>
+			</footer>
+			<!--fin pie de pagina-->
+		</div>
+	</body>
+</html>

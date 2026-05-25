@@ -1,0 +1,553 @@
+/* Diseño web: E.Y.E. 
+   Menu Hamburguesa basado en el diseño de Erik Terwan
+   Actualizado: 25/05/2026 02:52h
+*/
+
+* {
+    box-sizing: border-box; /* Incluye el padding y border en el ancho total */
+}
+
+html, body {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden; /* Corta cualquier desbordamiento accidental */
+    position: relative;
+    margin: 0;
+    padding: 0;
+    /* make it look decent enough */
+    background: #ededed;
+    /* cambia color texto*/
+    color: rgb(0, 0, 0);
+    font-family: "Avenir Next", "Avenir", sans-serif;
+    /* Suavizado de scroll para la navegación interna */
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; /* Hace que el scroll sea suave en iPhone */
+}
+
+/* --- ESTRUCTURA DE CONTENEDORES --- */
+
+div.content {
+    max-width: 95%;
+    margin: 0 auto;
+    position: relative;
+}
+
+div.contentb {
+    margin: 0 auto;
+    max-width: 90%;
+    display: block;
+}
+
+/* Unifica el comportamiento de todos los contenedores principales */
+.contentb, #seccionProductos, #indice {
+    max-width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- ENCABEZADO Y NAVEGACIÓN --- */
+
+nav[role="navigation"] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-top: 20px;
+    position: relative;
+}
+
+.logoTitulo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    /* Zona segura: Resta el espacio del botón hamburguesa para evitar choques */
+    max-width: calc(100% - 140px); 
+    margin: 0 auto;
+}
+
+#titulo {
+    font-size: 2rem; /* Uso de rem para mejor escalado responsivo */
+    text-align: center;
+    margin: 15px 0 20px 0;
+    line-height: 1.2;
+    word-wrap: break-word;
+}
+
+.logoTitulo img { 
+    width: 100px; /*Tamaño fijo pero seguro */
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transition: transform 0.3s;
+}
+
+.logoTitulo img:hover {
+    transform: scale(1.05);
+}
+
+@media screen and (min-width: 768px) {
+    .logoTitulo img {
+        width: 200px; 
+    }
+}
+
+/* --- MENÚ HAMBURGUESA (Erik Terwan) --- */
+
+#menuToggle {
+    display: block;
+    position: fixed;
+    top: 30px; /* Subido ligeramente para alinear mejor */
+    left: 30px; /* Ajustado al borde para dar más espacio al título */
+    z-index: 1000; /* Aumentado para evitar que quede detrás de imágenes */
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+#menuToggle a {
+    text-decoration: none;
+    color: #232323;
+    transition: color 0.3s ease;
+}
+
+#menuToggle a:hover {
+    color: rgb(172, 172, 172);
+}
+
+#menuToggle .active {
+    color: rgb(34, 158, 34);
+    font-weight: bold;
+}
+
+#menuToggle input {
+    display: block;
+    width: 40px;
+    height: 32px;
+    position: absolute;
+    top: -7px;
+    left: -5px;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 1002;
+    -webkit-touch-callout: none;
+}
+
+#menuToggle span {
+    display: block;
+    width: 33px;
+    height: 4px;
+    margin-bottom: 5px;
+    position: relative;
+    background: #232323;
+    border-radius: 3px;
+    z-index: 1;
+    transform-origin: 4px 0px;
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                opacity 0.55s ease;
+}
+
+#menuToggle span:first-child {
+    transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2) {
+    transform-origin: 0% 100%;
+}
+
+#menuToggle input:checked ~ span {
+    opacity: 1;
+    transform: rotate(45deg) translate(-2px, -1px);
+    background: #232323;
+}
+
+#menuToggle input:checked ~ span:nth-last-child(3) {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+#menuToggle input:checked ~ span:nth-last-child(2) {
+    transform: rotate(-45deg) translate(0, -1px);
+}
+
+#menu {
+    position: fixed;
+    width: 300px;
+    margin: 0;
+    padding: 125px 50px 50px 50px; /* Espaciado corregido */
+    left: -400px; /* Ajustado para esconderlo bien */
+    top: 0;
+    height: 100vh;
+    background: #ededed;
+    list-style-type: none;
+    -webkit-font-smoothing: antialiased;
+    transform-origin: 0% 0%;
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    overflow-y: auto; /* Permite desplazamiento interno si el menú es muy largo */
+}
+
+#menu li {
+    padding: 10px 0;
+    font-size: 22px;
+}
+
+#menuToggle input:checked ~ ul {
+    transform: translateX(400px);
+}
+
+/* --- TABLAS Y SECCIÓN DE PRODUCTOS --- */
+
+tr[id] {
+    scroll-margin-top: 100px; /* Ajusta según el tamaño de tu cabecera */
+}
+
+.productos {
+    background-color: #DCDCDC;
+    margin: 20px auto;
+    padding: 15px;
+    width: 95%; /* Ocupa casi todo el ancho */
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+#seccionProductos {
+    background-color: #DCDCDC;
+    margin: 20px auto;
+    padding: 15px;
+    width: 95%; /* Ocupa casi todo el ancho */
+    border-radius: 8px;
+    box-sizing: border-box; 
+    /* Eliminamos overflow-x para que no fuerce el scroll lateral */
+    /* display: block;         Asegura que se comporte como un bloque */
+    /* overflow-x: auto;       Activa el scroll horizontal si la tabla es grande */
+}
+
+table.productos {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #d6d2d2;
+    margin: 0 auto;
+    /* Eliminado min-width: 650px para permitir el autoajuste */
+    /* Define un ancho mínimo para que los datos no se amontonen
+    min-width: 650px; */
+}
+
+table.productos th, table.productos td {
+    border: 1px solid #999;
+    padding: 12px;
+    word-wrap: break-word; /* Fuerza a que las palabras largas se rompan y no desborden */
+}
+
+/* Estilo para las filas generadas dinámicamente */
+.contenedor-dinamico th, 
+.contenedor-dinamico td {
+    background-color: #d6d2d2;
+    vertical-align: top;
+}
+
+/* Fila separadora de MARCA (Ej: SAMSUNG, GOOGLE) */
+.fila-marca {
+    background-color: #444 !important;
+    color: #fff !important;
+    text-align: left;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.fila-marca th {
+    padding: 10px 20px !important;
+    border: none !important;
+}
+
+/* Títulos de GAMA (Alta / Media) */
+h5.titulo-gama {
+    background-color: #222;
+    color: #ffd700; /* Dorado para resaltar la sección */
+    padding: 10px;
+    text-align: center;
+    margin: 20px 0 0 0;
+    border-radius: 5px 5px 0 0;
+    text-transform: uppercase;
+}
+
+/* --- IMÁGENES DE PRODUCTO --- */
+
+#imgdispositivo {
+    width: 100%; /* Tamaño fijo controlado. No permite que la imagen sea más ancha que la columna */
+    max-width: 180px; /* Tamaño ideal: ni muy grande ni muy pequeño. No permite que la imagen sea más grande que su celda */
+    height: auto; /* Mantiene la proporción */
+    display: block;
+    margin: 0 auto 10px;
+    border-radius: 4px; /* detalle estético sutil que suaviza las esquinas de las fotografías de los dispositivos, haciendo que el diseño se sienta más moderno */
+    background-color: #f5f5f5; /* Fondo gris claro mientras carga */
+    min-height: 100px; /* Evita que la celda colapse si la imagen tarda */
+    
+    transition: transform 0.3s;
+
+    /* transform: translateY(-5px); /* Pequeña elevación */
+
+    /* IMAGEN GENÉRICA POR DEFECTO */
+    /* no usar, se pone en todas
+    background-color: #ccc; 
+    background-image: url('../img/nombreproducto.png'); /* Ruta a una silueta de móvil *
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 150px; /* Asegura que el cuadro se vea aunque no haya foto *
+    */
+}
+
+/* --- GLOSARIO E ÍNDICE (Details/Summary) --- */
+
+/* 1. Contenedor principal: El que manda el ancho y centra todo */
+#indice {
+    width: 95%; 
+    max-width: 95%; /* Sincronizado con table.productos */
+    margin: 20px auto; 
+    box-sizing: border-box;
+}
+
+/* 2. El encabezado (botón de pulsar) */
+#indice .summary {
+    background-color: #E6E6FA;
+    padding: 15px;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+    /* Por defecto, redondeado completo si está cerrado */
+    border-radius: 5px; 
+    transition: background 0.3s;
+}
+
+/* 3. El contenido desplegable */
+.detalle {
+    background-color: #c5c5d8;
+    padding: 15px;
+    border-radius: 0 0 5px 5px;
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
+    /* Ajuste para que el texto no toque los bordes */
+    line-height: 1.5;
+}
+
+/* 4. TRUCO PRO: Cambiar bordes solo cuando está abierto */
+details[open] summary {
+    border-radius: 5px 5px 0 0 !important;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+/* --- ENLACES --- */
+
+div.content a {
+    color: #0044cc;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+div.content a:hover {
+    color: #002266;
+    text-decoration: underline;
+}
+
+/* --- BOTÓN IMPRIMIR --- */
+
+.printPageButton {
+    text-align: right;
+    margin: 10px 0;
+}
+
+.printPageButton button {
+    padding: 8px 15px; /*  Le añade separacion en el boton y lo hace más grande sobretodo para móviles */
+    margin: 10px 20px; /* El segundo valor (20px) añade espacio a la derecha e izquierda */
+    /* margin-right: 10px; /* Esto empuja el botón hacia adentro desde la derecha */
+    cursor: pointer;
+    background: #ccc;
+    color: #333;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+/* --- BOTÓN SCROLL TO TOP --- */
+.stt {
+    position: fixed;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    /* Definimos el color de fondo base */
+    background-color: #ffffff; 
+    border: 1px solid #e0e0e0;
+    background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 384 512'%3E%3Cpath fill='%23333333' d='M352 352c-8.188 0-16.38-3.125-22.62-9.375L192 205.3l-137.4 137.4c-12.5 12.5-32.75 12.5-45.25 0s-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0l160 160c12.5 12.5 12.5 32.75 0 45.25C368.4 348.9 360.2 352 352 352z'%3E%3C/path%3E%3C/svg%3E");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50%;
+    /* Sombra más suave */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    opacity: 0.9;
+    z-index: 100;
+    cursor: pointer;
+    /* Transición con curva personalizada para mayor fluidez */
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                background-color 0.3s ease, 
+                box-shadow 0.3s ease;
+}
+
+.stt:hover { 
+    /* Cambiamos a un tono azulado/gris clarito al pasar el ratón */
+    background-color: #f0f0f0;
+    /* El botón sube ligeramente y se hace más grande */
+    transform: translateY(-8px) scale(1.1); 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    opacity: 1; /* Sube a opacidad total al pasar el ratón */
+}
+
+.stt:focus {
+    opacity: 0.9; /* Valor alto para navegación por teclado */
+}
+
+.stt:active {
+     /* Efecto de hundimiento al hacer click */
+    transform: translateY(0) scale(0.95);
+    background-color: #e0e0e0;
+    opacity: 0.8; /* Se oscurece ligeramente al pulsar para dar sensación de botón físico */
+}
+
+/* --- PIE DE PÁGINA --- */
+
+footer {
+    padding: 30px 0;
+    text-align: center;
+    font-size: 14px;
+    color: #000000;
+    border-top: 1px solid #ccc;
+    margin-top: 50px;
+}
+
+/* --- REDISEÑO PÁGINA DE INICIO (index.html) --- */
+
+#dispositivos {
+    max-width: 900px;
+    width: 95%;
+    margin: 40px auto;
+    display: block; /* Mantiene la tabla como contenedor de bloque principal */
+}
+
+/* Contenedor Flex: Gestiona la alineación horizontal y el salto a vertical */
+#dispositivos tbody {
+    display: flex;
+    flex-flow: row wrap; /* Atajo para row y wrap: permite el ajuste automático */
+    justify-content: space-evenly; /* Distribuye el espacio de forma equilibrada */
+    gap: 20px;
+    padding: 0;
+}
+
+/* Ocultamos elementos estructurales de tabla que interfieren con Flexbox */
+#dispositivos thead, 
+#dispositivos tfoot, 
+#dispositivos tbody tr {
+    display: contents; 
+}
+
+/* Tarjeta individual: Imagen arriba y texto abajo */
+#dispositivos tbody th {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px; /* Tamaño ajustado para mejorar la compatibilidad en móviles pequeños */
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 10px;
+}
+
+/* Logotipos con estilo de "botón" táctil */
+.logo-seleccion {
+    width: 130px; /* Tamaño optimizado */
+    height: auto;
+    padding: 15px;
+    background-color: #fff;
+    border: 2px solid #999;
+    border-radius: 20px; /* Esquinas más redondeadas para un look moderno */
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Feedback visual al interactuar */
+.logo-seleccion:hover {
+    transform: translateY(-8px); /* Elevación sutil */
+    border-color: #555;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+}
+
+/* Texto descriptivo bajo el logo */
+.texto-seleccion {
+    margin-top: 15px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #222;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* --- MEDIA QUERIES (Reglas adaptativas para móvil) --- */
+/* --- RESPONSIVIDAD: Transformar tabla en bloques verticales --- */
+@media screen and (max-width: 768px) {
+    #menuToggle {
+        top: 20px;
+        left: 20px;
+        transform: scale(0.85); /* Reducción proporcional del botón en móviles */
+    }
+    
+    .logoTitulo {
+        max-width: calc(100% - 100px); /* Ajuste de la zona segura para móviles */
+    }
+
+    #titulo {
+        font-size: 1.5rem; /* Tamaño compacto para evitar desbordamientos en pantallas pequeñas */
+    }
+
+    /* Convertimos cada elemento de la tabla en un bloque independiente */
+    table.productos, 
+    .productos thead, 
+    .productos tbody, 
+    .productos tr, 
+    .productos th, 
+    .productos td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Ocultamos los encabezados de la tabla para que no estorben en móvil */
+    .productos thead tr {
+        display: none;
+    }
+
+    .productos tr {
+        margin-bottom: 15px; /* Espacio entre cada producto */
+        border: 2px solid #999;
+    }
+
+    .productos th {
+        border-bottom: 1px dashed #d6d2d2;
+        padding: 15px;
+    }
+
+    .productos td {
+        padding: 15px;
+        background-color: #d6d2d2; /* Color diferente para distinguir precios de specs */
+    }
+}
+
+@media print {
+    .printPageButton, #menuToggle, .stt {
+        display: none !important;
+    }
+}

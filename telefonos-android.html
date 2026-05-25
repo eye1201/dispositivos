@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>El comparador - Android | from E.Y.E.</title>
+        <link rel="icon" type="image/png" href="img/eyewebsLogoFavicon.png"/>
+        <!-- Asegúrate de que la ruta a tu CSS sea la correcta -->
+        <link rel="stylesheet" href="css/webproductos.css" type="text/css"/>
+        <meta name="theme-color" content="#ededed">
+        <!-- Script de carga dinámica -->
+        <script src="js/renderizado.js"></script>
+    </head>
+    <body>
+        <div class="content">
+            <!--encabezado-navegacion-->
+            <nav role="navigation">
+                <div id="menuToggle">
+                    <input type="checkbox" />
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <ul id="menu">
+                        <a href="index.html"><li>▻ Inicio</li></a>
+                        <a href="telefonos-android.html"><li class="active">📱 Android</li></a>
+                        <a href="telefonos-iPhone.html"><li> iPhone</li></a>
+                        <a href="ordenadores.html"><li>💻 Ordenadores</li></a>
+                    </ul>
+                </div>
+                <div class="logoTitulo">
+                    <span onclick="location.reload(true);" style="cursor:pointer;">
+                        <img type="png" id="imglogo" src="img/Logo-Android_2.png" alt="Android Logo"/>
+                    </span>
+                    <h1 id="titulo">El comparador de Android <sup onclick="window.open('#*', '_self')">*</sup></h1>
+                </div>
+            </nav>
+            <!--fin encabezado-->
+            <br/>
+            <!--contenido de pagina de pagina-->
+            <div class="contentb">
+                <!-- Sección de Información / Glosario -->
+                <div id="indice">
+                    <div class="summary">
+                        <!-- para que esté siempre abierto, añade la etiqueta open <details open > -->
+                        <details >
+                            <summary>
+                                [Pulsa para desplegar] <br/>
+                                <b style="text-decoration: underline; text-decoration-style: dotted;">Última actualización: 25/05/2026 02:52h</b> 
+                            </summary>
+                            <div class="detalle">
+                                <p>
+                                    <span>La web se va actualizando lo antes posible.</span><br/>
+                                    <span>¡Disculpe las molestias!</span><!--<br/><br/>
+                                    <span><i>En la sección colores pulsa en el nombre del color para ver el color.</i></span><br/>
+                                    <span><i>En la sección precios pulsa en el nombre del color para ir a la tienda que lo vende.</i></span>-->
+                                </p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <div id="seccionProductos">
+                    <!-- TABLA dinamica ANDROID -->
+                    <div id="tablaProductos">
+                        <!-- SECCIÓN GAMA ALTA -->
+                        <h5 id="android_gama-alta" style="text-align: center;" onclick="window.open('#android_gama-alta', '_self')">Teléfonos gama alta</h5>
+                        <table class="productos">
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Tiendas</th>
+                                </tr>
+                            </thead>
+                            <tbody class="contenedor-dinamico" data-categoria="android" data-gama="alta">
+                                <!-- El JS inyectará aquí marcas y productos de gama alta -->
+                            </tbody>
+                        </table>
+                        <br/>
+                        <hr style="border: 1px dashed"/>
+                        <!-- SECCIÓN GAMA MEDIA -->
+                        <h5 id="android_gama-media" style="text-align: center;" onclick="window.open('#android_gama-media', '_self')">Teléfonos gama media</h5>
+                        <table class="productos">
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Tiendas</th>
+                                </tr>
+                            </thead>
+                            <tbody class="contenedor-dinamico" data-categoria="android" data-gama="media">
+                                <!-- El JS inyectará aquí marcas y productos de gama media -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <br/>
+
+            </div>
+            <!--fin contenido de pagina de pagina-->
+            <!--pie de pagina-->
+            <footer>
+                <span style="text-align: left;">
+                    <p id="*"><i><sup>*</sup>Los iPhone son teléfonos de gama alta y gama alta premium (modelo pro max).</i></p>
+                    <p id="**"><i><sup>**</sup>Los Android tienen distintas gamas, desde la gama baja hasta la gama alta premium.</i></p>
+                </span>	
+                <!-- Botón Imprimir integrado en el pie -->
+                <p class="printPageButton">
+                    <button onclick="window.print();"> Imprimir 🖨️ página 📝 </button>
+                </p>
+                <p>© 2023-2026 | diseñado por: E.Y.E.</p>
+                
+                <!-- El botón de subir suele ir al final para que cargue lo último -->
+                <a href='#' class="stt" title="Subir arriba"></a>
+            </footer>
+            <!--fin pie de pagina-->
+        </div>
+    </body>
+</html>
