@@ -8,6 +8,8 @@
         <link rel="stylesheet" href="css/webproductos.css" type="text/css"/>
         <!--Color del navegador-->
         <meta name="theme-color" content="#ededed">
+        <!--configuracion de la PWA-->
+		<link rel="manifest" href="/manifest.json" />
         <!-- Script de carga dinámica -->
 		<script src="js/renderizado.js"></script>
         <!-- redireccion mantenimiento-->
@@ -29,10 +31,23 @@
             <!--encabezado-navegacion-->
             <nav role="navigation">
                 <div id="menuToggle">
-                    <input type="checkbox" />
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <!--
+					A fake / hidden checkbox is used as click reciever,
+					so you can use the :checked selector on it.
+					-->
+					<input type="checkbox" />			
+					<!--
+					Some spans to act as a hamburger.
+					They are acting like a real hamburger,
+					not that McDonalds stuff.
+					-->
+					<span></span>
+					<span></span>
+					<span></span>
+					<!--
+					Too bad the menu has to be inside of the button
+					but hey, it's pure CSS magic.
+					-->
                     <ul id="menu">
                         <a href="index.html"><li>▻ Inicio</li></a>
                         <a href="telefonos-android.html"><li>📱 Android</li></a>
@@ -58,7 +73,7 @@
                         <details >
                             <summary>
                                 [Pulsa para desplegar] <br/>
-                                <b style="text-decoration: underline; text-decoration-style: dotted;">Última actualización: 25/05/2026 02:52h</b> 
+                                <b style="text-decoration: underline; text-decoration-style: dotted;">Última actualización: 25/05/2026 06:30h</b> 
                             </summary>
                             <div class="detalle">
                                 <p>
@@ -85,10 +100,10 @@
                             <tbody class="contenedor-dinamico" data-categoria="iPhone"></tbody>
                         </table>
                         <br/>
-                        <hr style="border: 1px dashed"/>
+                        
                     </div>
+                    <hr style="border: 1px dashed"/>
                     <div>
-                        <hr hidden style="border: 2px dashed"/>
                         <br/>
                         <div  id="AppleCare_webApple" class="productos" >
                             <h4 style="text-align: center;" onclick="window.open('#AppleCare_webApple', '_self')">Apple Care para iPhone</h4>
@@ -118,8 +133,7 @@
                 <p class="printPageButton">
                     <button onclick="window.print();"> Imprimir 🖨️ página 📝 </button>
                 </p>
-                <p>© 2023-2026 | diseñado por: E.Y.E.</p>
-                
+                <p>© 2021-2026 | diseñado por: E.Y.E.</p>
                 <!-- El botón de subir suele ir al final para que cargue lo último -->
                 <a href='#' class="stt" title="Subir arriba"></a>
             </footer>

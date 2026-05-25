@@ -57,16 +57,28 @@
 				<!--encabezado-navegacion-->
 				<nav role="navigation">
 					<div id="menuToggle">
-						<input type="checkbox" />
+						<!--
+						A fake / hidden checkbox is used as click reciever,
+						so you can use the :checked selector on it.
+						-->
+						<input type="checkbox" />			
+						<!--
+						Some spans to act as a hamburger.
+						They are acting like a real hamburger,
+						not that McDonalds stuff.
+						-->
 						<span></span>
 						<span></span>
 						<span></span>
+						<!--
+						Too bad the menu has to be inside of the button
+						but hey, it's pure CSS magic.
+						-->
 						<ul id="menu">
 							<a href="Landing_NLM.html"><li class="active">▻ Inicio</li></a>
 							<!--<a onclick="location.reload(true);"><li>▻ Inicio</li></a> -->
 							<a href="#Android"><li>📱 Android</li></a>
 							<a href="#AppleiPhone"><li> iPhone</li></a>
-
 						</ul>
 					</div>
 					<div class="logoTitulo">
@@ -88,7 +100,7 @@
 						<details >
 							<summary>
 								[Pulsa para desplegar] <br/>
-								<b style="text-decoration: underline; text-decoration-style: dotted;">Última actualización: 25/05/2026 02:52h</b> 
+								<b style="text-decoration: underline; text-decoration-style: dotted;">Última actualización: 25/05/2026 06:30h</b> 
 							</summary>
 							<div class="detalle">
 								<p>
