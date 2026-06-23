@@ -260,21 +260,21 @@
         <div class="content">
             <!--encabezado-navegacion-->
             <nav role="navigation">
-                <!-- suprimido temporalmente
+                <!-- suprimido temporalmente-->
                 <div id="menuToggle">
                     <input type="checkbox" />			
                     <span></span>
                     <span></span>
                     <span></span>
                     <ul id="menu">
-                        <a href="."><li>▻ Inicio</li></a>
-                        <a href="telefonos-android.html"><li>📱 Android</li></a>
-                        <a href="telefonos-iPhone.html"><li> &#xF8FF; iPhone</li></a>
-                        <a href="ordenadores.html"><li>💻 Ordenadores</li></a>
-                        <a href="tv-sonido.html" class="active"><li>📺 TV y 🔊 sonido</li></a>
+                        <li><a href=".">▻ Inicio</a></li>
+                        <li><a href="telefonos-android.html">📱 Android</a></li>
+                        <li><a href="telefonos-iPhone.html">&#xF8FF; iPhone</a></li>
+                        <li><a href="ordenadores.html">💻 Ordenadores</a></li>
+                        <li class="active"><a href="tv-sonido.html">📺 TV y 🔊 sonido</a></li>
                     </ul>
                 </div>
-                -->
+                
                 <div class="logoTitulo">
                     <span onclick="location.reload(true);" style="cursor:pointer;" >
                         <img type="png" id="imglogo" src="img/Samsung_Orig_Wordmark_BLUE_RGB.png" alt="Samsung blue RGB logo"/>
@@ -305,307 +305,6 @@
                     </table>
                 </div>
             </div>
-            <!-- script de catalogo de gama marrón -->
-            <!-- fin script de catalogo de gama marrón -->
-            <script>
-                /* Última actualización: 23-06-2026 22:55h */
-                /* script de catalogo de gama marrón */
-                const MODO_DEBUG = false;
-                // 1. DEFINICIÓN DE PLANTILLAS
-                const PLANTILLAS = {
-                    'TV': [
-                        { nombre: 'Referencias', campos: { 'anyo': 'Año', 'gama-pulgada': 'Gama | Pulgada', 'modelo': 'Modelo', 'color':'Color' , 'referencia': 'Referencia', 'EAN':"EAN", 'cluster': 'Clúster', 'PVP':'PVP (€)' , 'EnlaceTienda': 'Enlace' } },
-                        { nombre: 'Montaje en Pared', campos: { 'VESA': 'VESA (Ancho x Alto en mm)', 'Tornillos': 'Métrica de tornillos' } },
-                        { nombre: 'Medidas del Producto', campos: { 'dimensiones_ancho': 'Ancho (cm)', 'dimensiones_alto': 'Alto (cm)', 'dimensiones_alto_peana': 'Alto con peana (cm)', 'dimensiones_grosor': 'Grosor (cm)', 'dimensiones-peana': 'Dimensiones peana (cm)', 'peso-sin-peana': 'Peso sin peana (KG)', 'dimensiones-caja': 'Dimensiones caja (ancho x alto x profundidad en cm)', 'Medidas_one-connect': 'One Connect (Ancho x Alto x Grosor en cm)' } },
-                        { nombre: 'Calidad de Imagen', campos: { 'Tipo_Panel': 'Tipo de Panel', 'Detalles-Panel': 'Detalles de Panel', 'HDR': 'High Dynamic Range (HDR)', 'Tasa-Refresco': 'Tasa de refresco en Hertzios (Hz)', 'Antirreflejos': 'Antirreflejos' } },
-                        { nombre: 'Sonido', campos: { 'Potencia-canales': 'Potencia y Canales', 'QSymphony_OTS': 'Q-Symphony / OTS', 'DolbyAtmos': 'Dolby Atmos ®', 'AVA': 'Active Voice Amplifier (AVA)', 'AudioBluetooth': 'Audio Bluetooth' } },
-                        { nombre: 'Vision AI Companion (VAC)', campos: { 'Asistentes_FarFieldVoice': 'Asistentes de voz / Interacción por voz a larga distancia', 'Multi-View': 'Multi-View (pantalla dividida)', 'PiP': 'PiP (Imagen en imagen)', 'Clic-to-Search': 'Clic to Search', 'Live-Translate': 'Live Translate' , 'Copilot_Perplexity':'Copilot / Perplexity' , 'AI_Football-Mode':'Modo IA de Futbol' , 'Generative-Wallpaper': 'Generative Wallpaper', 'Pet-Baby_Care': 'Cuidado de familiares, mascotas' } },
-                        { nombre: 'Gaming', campos: { 'ALLM': 'Modo automatico de baja latencia (ALLM)', 'HGiG': 'Modo HDR para juegos (HGiG)', 'VRR': 'Tasa refresco variables (VRR)' , 'Nvidia_G-Sync':'Nvidia G-Sync' , 'AMD-FreeSync': 'AMD FreeSync', 'Gaming-Hub': 'Gaming Hub (Juego en la Nube)' , 'GameBar':'Juego Ultra Panorámico / Game Bar', 'ModoPanoramico_GameHub': 'Juego Panorámico / Game Hub', 'PhilipsHueSync':'Philips Hue Sync (Ambilight)' } },
-                        { nombre: 'Conectividad', campos: { 'SintonizadorTDT': 'Sintonizador TDT', 'SintonizadorSatelite': 'Sintonizador Satélite', 'PuertosHDMI_version': 'Puertos HDMI', 'USB-Grabador_PVR': 'USB Grabador (PVR)', 'SalidaOptica': 'Salida Óptica', 'Version_WiFi_Bluetooth': 'Wi-Fi / Bluetooth', 'Cast': 'Airplay 2 / Google Cast', } },
-                        { nombre: 'Otros', campos: { 'Mando': 'Tipo de mando', 'manuales' : 'Manuales' } }
-                    ],
-                    'SONIDO': [
-                        { nombre: 'Referencias', campos: {  'anyo': 'Año', 'gama': 'Gama', 'modelo': 'Modelo', 'color':'Color' , 'referencia': 'Referencia', 'EAN':"EAN" ,'cluster': 'Clúster', 'PVP':'PVP (€)' ,'EnlaceTienda': 'Enlace ECI' } },
-                        { nombre: 'Medidas', campos: { 'dimensiones_ancho-barra': 'Ancho Barra (cm)', 'dimensiones_alto-barra': 'Alto Barra (cm)', 'dimensiones_profundidad-barra': 'Profundidad Barra (cm)', 'dimensiones_ancho-subwoofer': 'Ancho Subwoofer (cm)', 'dimensiones_alto-subwoofer': 'Alto Subwoofer (cm)', 'dimensiones_profundidad-subwoofer': 'Profundidad Subwoofer (cm)' } },
-                        { nombre: 'Características', campos: { 'Potencia-canales': 'Potencia y Canales', 'cantidad-altavoces-distribucion': 'Altavoces', 'SurroundKit': 'Surround Kit' } },
-                        { nombre: 'Calidad de Sonido', campos: { 'QSymphony': 'Q-Symphony', 'AVAPro': 'AVA Pro', 'SpaceFitSound': 'Space Fit Sound', 'modos-sonido': 'Modos de sonido', 'formatosDolby': 'Formatos DOLBY', 'formatosDTS': 'Formatos DTS', 'eclipsa-audio':'Eclipsa Audio' } },
-                        { nombre: 'Conectividad', campos: { 'EntradasHDMI': 'Entradas HDMI', 'EntradaOptica_USB': 'Óptica / USB', 'versionBluetooth': 'Versión Bluetooth', 'WiFI_DolbyAtmos': 'WIFI / Dolby Atmos', 'app': 'Samsung Sound APP','Cast': 'Airplay 2 / Google Cast', 'Spotify': 'Spotify Connect', 'Tidal': 'Tidal Connect', 'AsistentesVoz': 'Asistentes de Voz' } },
-                        { nombre: 'Otros', campos: { 'SoportePared': 'Soporte de Pared' , 'manuales' : 'Manuales'} }
-                    ]
-                };
-            
-                // 2. FUNCIONES DE APOYO Y LIMPIEZA
-                function aplanarObjeto(obj, prefijo = '') {
-                    return Object.keys(obj).reduce((acc, k) => {
-                        const pre = prefijo.length ? prefijo + '_' : '';
-                        if (typeof obj[k] === 'object' && obj[k] !== null && !Array.isArray(obj[k])) {
-                            Object.assign(acc, aplanarObjeto(obj[k], pre + k));
-                        } else {
-                            acc[pre + k] = obj[k];
-                        }
-                        return acc;
-                    }, {});
-                }
-            
-                function encontrarValorSeguro(objAplanado, claveBuscada) {
-                    if (objAplanado[claveBuscada] !== undefined) return objAplanado[claveBuscada];
-                    for (const key in objAplanado) {
-                        if (key.endsWith('_' + claveBuscada) || key.endsWith('-' + claveBuscada) || key === claveBuscada.replace('_', '-')) {
-                            return objAplanado[key];
-                        }
-                    }
-                    return null;
-                }
-            
-                function formatearTexto(valor) {
-                    if (valor === null || valor === undefined || valor === "") return '-';
-                    let texto = String(valor).trim();
-                    if (texto === '') return '-';
-                    if (/^(si|sí|si-no)$/i.test(texto)) return 'Sí';
-                    if (/^no$/i.test(texto)) return 'No';
-                    texto = texto.replace(/ \/ NO$/i, '').replace(/ \/ NO /i, '');
-                    texto = texto.replace(/\s+\./g, '.').replace(/\.(?=[^\s])/g, '.');
-                    return texto;
-                }
-            
-                // 3. GENERADOR DE TABLAS INDEPENDIENTES
-                // --- NUEVO --- Añadimos el parámetro 'hayBusquedaActiva' a la función
-                function generarTablaDinamica(datosFiltrados, categoriaActiva, idHead, idBody, hayBusquedaActiva) {
-                    const thead = document.getElementById(idHead);
-                    const tbody = document.getElementById(idBody);
-                    
-                    if (!thead || !tbody) return; 
-                    
-                    thead.innerHTML = '';
-                    tbody.innerHTML = '';
-            
-                    const hayProductos = datosFiltrados && datosFiltrados.length > 0;
-                    const plantillaElegida = categoriaActiva === 'sonido' ? PLANTILLAS['SONIDO'] : PLANTILLAS['TV'];
-            
-                    if (!hayProductos) {
-                        const totalColumnas = plantillaElegida.reduce((acc, grupo) => acc + Object.keys(grupo.campos).length, 0);
-            
-                        // --- NUEVO --- Lógica condicional para el mensaje
-                        const mensajeError = hayBusquedaActiva 
-                            ? "🚫 No se encontraron productos que coincidan con la búsqueda." 
-                            : "🚫 No hay productos registrados en esta sección.";
-            
-                        tbody.innerHTML = `
-                        <tr>
-                            <td colspan="${totalColumnas}" style="text-align: center; padding: 40px; color: #666; font-style: italic;">
-                                ${mensajeError}
-                            </td>
-                        </tr>
-                        `;
-                        return;
-                    }
-            
-                    // Crear cabeceras
-                    const trGrupos = document.createElement('tr');
-                    const trColumnas = document.createElement('tr');
-            
-                    plantillaElegida.forEach(grupo => {
-                        const numCampos = Object.keys(grupo.campos).length;
-                        const thGrupo = document.createElement('th');
-                        thGrupo.colSpan = numCampos;
-                        thGrupo.textContent = grupo.nombre;
-                        thGrupo.style.backgroundColor = '#d6d2d2';
-                        thGrupo.style.textAlign = 'center';
-                        trGrupos.appendChild(thGrupo);
-            
-                        Object.values(grupo.campos).forEach(nombreColumna => {
-                            const thColumna = document.createElement('th');
-                            thColumna.textContent = nombreColumna;
-                            trColumnas.appendChild(thColumna);
-                        });
-                    });
-            
-                    thead.appendChild(trGrupos);
-                    thead.appendChild(trColumnas);
-            
-                    // Crear filas con colores alternos
-                    let contadorFila = 0;
-            
-                    datosFiltrados.forEach(producto => {
-                        const tr = document.createElement('tr');
-                        
-                        if (categoriaActiva === 'tv') {
-                            tr.className = contadorFila % 2 === 0 ? 'row-tv-even' : 'row-tv-odd';
-                        } else {
-                            tr.className = contadorFila % 2 === 0 ? 'row-snd-even' : 'row-snd-odd';
-                        }
-                        contadorFila++;
-            
-                        const productoAplanado = aplanarObjeto(producto);
-            
-                        plantillaElegida.forEach(grupo => {
-                            Object.keys(grupo.campos).forEach(clave => {
-                                const td = document.createElement('td');
-            
-                                const nombreColumna = grupo.campos[clave];
-                                td.setAttribute('data-label', nombreColumna);
-                                
-                                const columnasLargas = ['', 'Asistentes_FarFieldVoice', 'modos-sonido', 'formatosDolby' , 'EntradasHDMI', '', ''];
-                                td.className = columnasLargas.includes(clave) ? 'multiline' : 'single-line';
-                                
-                                let valor = encontrarValorSeguro(productoAplanado, clave);
-            
-                                if (clave === 'EnlaceTienda') {
-                                    let ref = encontrarValorSeguro(productoAplanado, 'referencia');
-                                    if (ref && ref !== '-') {
-                                        const refLimpia = String(ref).replace(/[\.\-\_\s]/g, '');
-            
-                                        const a = document.createElement('a');
-                                        a.href = `https://www.elcorteingles.es/qrsearch/?s=0010${refLimpia}`;
-                                        a.textContent = "Ver en ECI";
-                                        a.className = "enlace-tienda";
-                                        a.target = "_blank";
-                                        td.appendChild(a);
-                                    } else {
-                                        td.textContent = '-';
-                                    }
-                                } 
-                                else if (clave === 'gama' || clave === 'gama-pulgada') {
-                                    let enlaceFicha = encontrarValorSeguro(productoAplanado, 'enlace-ficha');
-                                    let textoGama = formatearTexto(valor);
-                                    
-                                    if (enlaceFicha && enlaceFicha !== '-' && enlaceFicha !== '') {
-                                        const a = document.createElement('a');
-                                        a.href = enlaceFicha;
-                                        a.textContent = textoGama;
-                                        a.target = "_blank"; 
-                                        a.style.color = "#0056b3";
-                                        a.style.textDecoration = "underline";
-                                        a.style.fontWeight = "bold";
-                                        td.appendChild(a);
-                                    } else {
-                                        td.textContent = textoGama;
-                                    }
-                                } 
-                                else if (clave === 'manuales') { 
-                                    let manuales = producto.manuales;
-                                    
-                                    if (MODO_DEBUG) {
-                                        console.log("Depurando manuales para:", producto.modelo, "Valor:", manuales);
-                                    }
-                                    
-                                    if (manuales && typeof manuales === 'object') {
-                                        const div = document.createElement('div');
-                                        div.style.display = "flex";
-                                        div.style.flexDirection = "column";
-                                        div.style.gap = "5px";
-            
-                                        Object.entries(manuales).forEach(([nombre, url]) => {
-                                            const a = document.createElement('a');
-                                            a.href = url; 
-                                            a.textContent = "📑" + nombre; 
-                                            a.target = "_blank"; 
-                                            a.style.color = "#0056b3";
-                                            a.style.textDecoration = "underline";
-                                            a.style.fontSize = "1.5rem";
-                                            div.appendChild(a);
-                                        });
-                                        td.appendChild(div);
-                                    } else if (typeof manuales === 'string' && manuales !== '-' && manuales !== '') {
-                                        const a = document.createElement('a');
-                                        a.href = manuales;
-                                        a.textContent = "📑" + nombre;
-                                        a.target = "_blank";
-                                        a.style.color = "#0056b3";
-                                        a.style.textDecoration = "underline";
-                                        a.style.fontSize = "1.5rem";
-                                        td.appendChild(a);
-                                    } else {
-                                        td.textContent = '-';
-                                    }
-                                }
-                                else {
-                                    td.textContent = formatearTexto(valor);
-                                }
-                                tr.appendChild(td);
-                            });
-                        });
-                        tbody.appendChild(tr);
-                    });
-                }
-            
-                // 4. SISTEMA DE FILTRADO Y BÚSQUEDA GLOBAL
-                function aplicarFiltros() {
-                    const inputBuscador = document.getElementById('buscador-texto');
-                    const textoBuscado = inputBuscador ? inputBuscador.value.toLowerCase().trim() : '';
-            
-                    const normalizar = (texto) => String(texto || '').toLowerCase().replace(/[\.\-\s]/g, '');
-                    const textoBuscadoLimpio = normalizar(textoBuscado);
-            
-                    // --- NUEVO --- Bandera booleana para saber si el usuario está buscando algo
-                    const hayBusquedaActiva = textoBuscadoLimpio !== '';
-            
-                    const datosReales = datosJSON.filter(p => p.modelo !== 'Modelo' && p.categoria !== 'Categoria');
-            
-                    const datosTV = [];
-                    const datosSonido = [];
-            
-                    datosReales.forEach(producto => {
-                        let coincideTexto = true;
-                        if (hayBusquedaActiva) {
-                            const modelo = normalizar(producto.modelo);
-                            const gama = normalizar(producto.gama);
-                            const referencia = normalizar(producto.referencia);
-                            
-                            coincideTexto = modelo.includes(textoBuscadoLimpio) || 
-                                            gama.includes(textoBuscadoLimpio) || 
-                                            referencia.includes(textoBuscadoLimpio);
-                        }
-            
-                        if (coincideTexto) {
-                            const catProd = (producto.categoria || '').toLowerCase();
-                            if (catProd.includes('tv') || catProd.includes('television') || catProd.includes('televisor')) {
-                                datosTV.push(producto);
-                            } else if (catProd.includes('sonido') || catProd.includes('audio')) {
-                                datosSonido.push(producto);
-                            }
-                        }
-                    });
-            
-                    // --- NUEVO --- Pasamos la bandera 'hayBusquedaActiva' a la función
-                    generarTablaDinamica(datosTV, 'tv', 'tabla-tv-head', 'tabla-tv-body', hayBusquedaActiva);
-                    generarTablaDinamica(datosSonido, 'sonido', 'tabla-snd-head', 'tabla-snd-body', hayBusquedaActiva);
-                }
-            
-                // 5. INICIALIZACIÓN
-                const buscadorTexto = document.getElementById('buscador-texto');
-                if (buscadorTexto) {
-                    buscadorTexto.addEventListener('input', aplicarFiltros);
-                }
-                
-                let datosJSON = [];
-                document.addEventListener('DOMContentLoaded', () => {
-                    fetch('datos/catalogo.json')
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error('Error al cargar el catálogo');
-                            }
-                            return response.json();
-                        })
-                        .then(datos => {
-                            datosJSON = datos;
-                            
-                            if (MODO_DEBUG) {
-                                console.log("Datos del almacen cargados correctamente:", datosJSON); 
-                            }
-                            aplicarFiltros();
-                        })
-                        .catch(error => {
-                            console.error("No se pudo cargar el catálogo:", error);
-                            
-                            const tbodyTV = document.getElementById('tabla-tv-body');
-                            const tbodySnd = document.getElementById('tabla-snd-body');
-                            
-                            if (tbodyTV) tbodyTV.innerHTML = '<tr><td colspan="10" style="text-align: center; padding: 50px; background-color: #fff0f0; border: 1px solid #ffcccc;"><b style="color: #d9534f;">⚠️ Error de conexión</b><p>No se pudo cargar el catálogo de televisores.</p><button onclick="location.reload()" style="margin-top: 15px; cursor: pointer; padding: 8px 16px;">Reintentar carga</button></td></tr>';
-                            if (tbodySnd) tbodySnd.innerHTML = '<tr><td colspan="10" style="text-align: center; padding: 50px; background-color: #fff0f0; border: 1px solid #ffcccc;"><b style="color: #d9534f;">⚠️ Error de conexión</b><p>No se pudo cargar el catálogo de sonido.</p><button onclick="location.reload()" style="margin-top: 15px; cursor: pointer; padding: 8px 16px;">Reintentar carga</button></td></tr>';
-                        });
-                });
-            </script>
             <!--fin contenido de pagina de pagina-->
             <!--pie de pagina-->
             <footer>
@@ -638,12 +337,313 @@
                 <p class="printPageButton">
                     <button onclick="window.print();"> Imprimir 🖨️ página 📝 </button>
                 </p>
-                <b style="text-decoration: underline; text-decoration-style: dotted;">Última actualización: 23-06-2026 23:05h</b>
+                <b style="text-decoration: underline; text-decoration-style: dotted;">Última actualización: 23-06-2026 01:50h</b>
                 <p>© 2026 | diseñado por: E.Y.E.</p>
                 <!-- El botón de subir suele ir al final para que cargue lo último -->
                 <a href='#' class="stt" title="Subir arriba"></a>
             </footer>
             <!--fin pie de pagina-->
         </div>
+        <!-- script de catalogo de gama marrón -->
+        <script>
+            /* Última actualización: 23-06-2026 22:55h */
+            /* script de catalogo de gama marrón */
+            const MODO_DEBUG = false;
+            // 1. DEFINICIÓN DE PLANTILLAS
+            const PLANTILLAS = {
+                'TV': [
+                    { nombre: 'Referencias', campos: { 'anyo': 'Año', 'gama-pulgada': 'Gama | Pulgada', 'modelo': 'Modelo', 'color':'Color', 'disenyo': 'Diseño' , 'referencia': 'Referencia', 'EAN':"EAN", 'cluster': 'Clúster', 'PVP':'PVP (€)' , 'EnlaceTienda': 'Enlace' } },
+                    { nombre: 'Montaje en Pared', campos: { 'VESA': 'VESA (Ancho x Alto en mm)', 'Tornillos': 'Métrica de tornillos' } },
+                    { nombre: 'Medidas del Producto', campos: { 'dimensiones_ancho': 'Ancho (cm)', 'dimensiones_alto': 'Alto (cm)', 'dimensiones_alto_peana': 'Alto con peana (cm)', 'dimensiones_grosor': 'Grosor (cm)', 'dimensiones-peana': 'Dimensiones peana (cm)', 'peso-sin-peana': 'Peso sin peana (KG)', 'dimensiones-caja': 'Dimensiones caja (ancho x alto x profundidad en cm)', 'Medidas_one-connect': 'One Connect (Ancho x Alto x Grosor en cm)' } },
+                    { nombre: 'Calidad de Imagen', campos: { 'Tipo_Panel': 'Tipo de Panel', 'Detalles-Panel': 'Detalles de Panel', 'HDR': 'High Dynamic Range (HDR)', 'Tasa-Refresco': 'Tasa de refresco en Hertzios (Hz)', 'Antirreflejos': 'Antirreflejos' } },
+                    { nombre: 'Sonido', campos: { 'Potencia-canales': 'Potencia y Canales', 'QSymphony_OTS': 'Q-Symphony / OTS', 'DolbyAtmos': 'Dolby Atmos ®', 'AVA': 'Active Voice Amplifier (AVA)', 'AudioBluetooth': 'Audio Bluetooth' } },
+                    { nombre: 'Vision AI Companion (VAC)', campos: { 'Asistentes_FarFieldVoice': 'Asistentes de voz / Interacción por voz a larga distancia', 'Multi-View': 'Multi-View (pantalla dividida)', 'PiP': 'PiP (Imagen en imagen)', 'Clic-to-Search': 'Clic to Search', 'Live-Translate': 'Live Translate' , 'Copilot_Perplexity':'Copilot / Perplexity' , 'AI_Football-Mode':'Modo IA de Futbol' , 'Generative-Wallpaper': 'Generative Wallpaper', 'Pet-Baby_Care': 'Cuidado de familiares, mascotas' } },
+                    { nombre: 'Gaming', campos: { 'ALLM': 'Modo automatico de baja latencia (ALLM)', 'HGiG': 'Modo HDR para juegos (HGiG)', 'VRR': 'Tasa refresco variables (VRR)' , 'Nvidia_G-Sync':'Nvidia G-Sync' , 'AMD-FreeSync': 'AMD FreeSync', 'Gaming-Hub': 'Gaming Hub (Juego en la Nube)' , 'GameBar':'Juego Ultra Panorámico / Game Bar', 'ModoPanoramico_GameHub': 'Juego Panorámico / Game Hub', 'PhilipsHueSync':'Philips Hue Sync (Ambilight)' } },
+                    { nombre: 'Conectividad', campos: { 'SintonizadorTDT': 'Sintonizador TDT', 'SintonizadorSatelite': 'Sintonizador Satélite', 'PuertosHDMI_version': 'Puertos HDMI', 'USB-Grabador_PVR': 'USB Grabador (PVR)', 'SalidaOptica': 'Salida Óptica', 'Version_WiFi_Bluetooth': 'Wi-Fi / Bluetooth', 'Cast': 'Airplay 2 / Google Cast', } },
+                    { nombre: 'Otros', campos: { 'Mando': 'Tipo de mando', 'manuales' : 'Manuales' } }
+                ],
+                'SONIDO': [
+                    { nombre: 'Referencias', campos: {  'anyo': 'Año', 'gama': 'Gama', 'modelo': 'Modelo', 'color':'Color', 'disenyo': 'Diseño' , 'referencia': 'Referencia', 'EAN':"EAN" ,'cluster': 'Clúster', 'PVP':'PVP (€)' ,'EnlaceTienda': 'Enlace ECI' } },
+                    { nombre: 'Medidas', campos: { 'dimensiones_ancho-barra': 'Ancho Barra (cm)', 'dimensiones_alto-barra': 'Alto Barra (cm)', 'dimensiones_profundidad-barra': 'Profundidad Barra (cm)', 'dimensiones_ancho-subwoofer': 'Ancho Subwoofer (cm)', 'dimensiones_alto-subwoofer': 'Alto Subwoofer (cm)', 'dimensiones_profundidad-subwoofer': 'Profundidad Subwoofer (cm)' } },
+                    { nombre: 'Características', campos: { 'Potencia-canales': 'Potencia y Canales', 'cantidad-altavoces-distribucion': 'Altavoces', 'SurroundKit': 'Surround Kit' } },
+                    { nombre: 'Calidad de Sonido', campos: { 'QSymphony': 'Q-Symphony', 'AVAPro': 'AVA Pro', 'SpaceFitSound': 'Space Fit Sound', 'modos-sonido': 'Modos de sonido', 'formatosDolby': 'Formatos DOLBY', 'formatosDTS': 'Formatos DTS', 'eclipsa-audio':'Eclipsa Audio' } },
+                    { nombre: 'Conectividad', campos: { 'EntradasHDMI': 'Entradas HDMI', 'EntradaOptica_USB': 'Óptica / USB', 'versionBluetooth': 'Versión Bluetooth', 'WiFI_DolbyAtmos': 'WIFI / Dolby Atmos', 'app': 'Samsung Sound APP','Cast': 'Airplay 2 / Google Cast', 'Spotify': 'Spotify Connect', 'Tidal': 'Tidal Connect', 'AsistentesVoz': 'Asistentes de Voz' } },
+                    { nombre: 'Otros', campos: { 'SoportePared': 'Soporte de Pared' , 'manuales' : 'Manuales'} }
+                ]
+            };
+        
+            // 2. FUNCIONES DE APOYO Y LIMPIEZA
+            function aplanarObjeto(obj, prefijo = '') {
+                return Object.keys(obj).reduce((acc, k) => {
+                    const pre = prefijo.length ? prefijo + '_' : '';
+                    if (typeof obj[k] === 'object' && obj[k] !== null && !Array.isArray(obj[k])) {
+                        Object.assign(acc, aplanarObjeto(obj[k], pre + k));
+                    } else {
+                        acc[pre + k] = obj[k];
+                    }
+                    return acc;
+                }, {});
+            }
+        
+            function encontrarValorSeguro(objAplanado, claveBuscada) {
+                if (objAplanado[claveBuscada] !== undefined) return objAplanado[claveBuscada];
+                for (const key in objAplanado) {
+                    if (key.endsWith('_' + claveBuscada) || key.endsWith('-' + claveBuscada) || key === claveBuscada.replace('_', '-')) {
+                        return objAplanado[key];
+                    }
+                }
+                return null;
+            }
+        
+            function formatearTexto(valor) {
+                if (valor === null || valor === undefined || valor === "") return '-';
+                let texto = String(valor).trim();
+                if (texto === '') return '-';
+                if (/^(si|sí|si-no)$/i.test(texto)) return 'Sí';
+                if (/^no$/i.test(texto)) return 'No';
+                texto = texto.replace(/ \/ NO$/i, '').replace(/ \/ NO /i, '');
+                texto = texto.replace(/\s+\./g, '.').replace(/\.(?=[^\s])/g, '.');
+                return texto;
+            }
+        
+            // 3. GENERADOR DE TABLAS INDEPENDIENTES
+            // --- NUEVO --- Añadimos el parámetro 'hayBusquedaActiva' a la función
+            function generarTablaDinamica(datosFiltrados, categoriaActiva, idHead, idBody, hayBusquedaActiva) {
+                const thead = document.getElementById(idHead);
+                const tbody = document.getElementById(idBody);
+                
+                if (!thead || !tbody) return; 
+                
+                thead.innerHTML = '';
+                tbody.innerHTML = '';
+        
+                const hayProductos = datosFiltrados && datosFiltrados.length > 0;
+                const plantillaElegida = categoriaActiva === 'sonido' ? PLANTILLAS['SONIDO'] : PLANTILLAS['TV'];
+        
+                if (!hayProductos) {
+                    const totalColumnas = plantillaElegida.reduce((acc, grupo) => acc + Object.keys(grupo.campos).length, 0);
+        
+                    // --- Lógica condicional para el mensaje
+                    const mensajeError = hayBusquedaActiva 
+                        ? "🚫 No se encontraron productos que coincidan con la búsqueda." 
+                        : "🚫 No hay productos registrados en esta sección.";
+        
+                    tbody.innerHTML = `
+                    <tr>
+                        <td colspan="${totalColumnas}" style="text-align: center; padding: 40px; color: #666;">
+                            ${mensajeError}
+                        </td>
+                    </tr>
+                    `;
+                    return;
+                }
+        
+                // Crear cabeceras
+                const trGrupos = document.createElement('tr');
+                const trColumnas = document.createElement('tr');
+        
+                plantillaElegida.forEach(grupo => {
+                    const numCampos = Object.keys(grupo.campos).length;
+                    const thGrupo = document.createElement('th');
+                    thGrupo.colSpan = numCampos;
+                    thGrupo.textContent = grupo.nombre;
+                    thGrupo.style.backgroundColor = '#d6d2d2';
+                    thGrupo.style.textAlign = 'center';
+                    trGrupos.appendChild(thGrupo);
+        
+                    Object.values(grupo.campos).forEach(nombreColumna => {
+                        const thColumna = document.createElement('th');
+                        thColumna.textContent = nombreColumna;
+                        trColumnas.appendChild(thColumna);
+                    });
+                });
+        
+                thead.appendChild(trGrupos);
+                thead.appendChild(trColumnas);
+        
+                // Crear filas con colores alternos
+                let contadorFila = 0;
+        
+                datosFiltrados.forEach(producto => {
+                    const tr = document.createElement('tr');
+                    
+                    if (categoriaActiva === 'tv') {
+                        tr.className = contadorFila % 2 === 0 ? 'row-tv-even' : 'row-tv-odd';
+                    } else {
+                        tr.className = contadorFila % 2 === 0 ? 'row-snd-even' : 'row-snd-odd';
+                    }
+                    contadorFila++;
+        
+                    const productoAplanado = aplanarObjeto(producto);
+        
+                    plantillaElegida.forEach(grupo => {
+                        Object.keys(grupo.campos).forEach(clave => {
+                            const td = document.createElement('td');
+        
+                            const nombreColumna = grupo.campos[clave];
+                            td.setAttribute('data-label', nombreColumna);
+                            
+                            const columnasLargas = ['', 'Asistentes_FarFieldVoice', 'modos-sonido', 'formatosDolby' , 'EntradasHDMI', '', ''];
+                            td.className = columnasLargas.includes(clave) ? 'multiline' : 'single-line';
+                            
+                            let valor = encontrarValorSeguro(productoAplanado, clave);
+        
+                            if (clave === 'EnlaceTienda') {
+                                let ref = encontrarValorSeguro(productoAplanado, 'referencia');
+                                if (ref && ref !== '-') {
+                                    const refLimpia = String(ref).replace(/[\.\-\_\s]/g, '');
+        
+                                    const a = document.createElement('a');
+                                    a.href = `https://www.elcorteingles.es/qrsearch/?s=0010${refLimpia}`;
+                                    a.textContent = "Ver en ECI";
+                                    a.className = "enlace-tienda";
+                                    a.target = "_blank";
+                                    td.appendChild(a);
+                                } else {
+                                    td.textContent = '-';
+                                }
+                            } 
+                            else if (clave === 'gama' || clave === 'gama-pulgada') {
+                                let enlaceFicha = encontrarValorSeguro(productoAplanado, 'enlace-ficha');
+                                let textoGama = formatearTexto(valor);
+                                
+                                if (enlaceFicha && enlaceFicha !== '-' && enlaceFicha !== '') {
+                                    const a = document.createElement('a');
+                                    a.href = enlaceFicha;
+                                    a.textContent = textoGama;
+                                    a.target = "_blank"; 
+                                    a.style.color = "#0056b3";
+                                    a.style.textDecoration = "underline";
+                                    a.style.fontWeight = "bold";
+                                    td.appendChild(a);
+                                } else {
+                                    td.textContent = textoGama;
+                                }
+                            } 
+                            else if (clave === 'manuales') { 
+                                let manuales = producto.manuales;
+                                
+                                if (MODO_DEBUG) {
+                                    console.log("Depurando manuales para:", producto.modelo, "Valor:", manuales);
+                                }
+                                
+                                if (manuales && typeof manuales === 'object') {
+                                    const div = document.createElement('div');
+                                    div.style.display = "flex";
+                                    div.style.flexDirection = "column";
+                                    div.style.gap = "5px";
+        
+                                    Object.entries(manuales).forEach(([nombre, url]) => {
+                                        const a = document.createElement('a');
+                                        a.href = url; 
+                                        a.textContent = "📑" + nombre; 
+                                        a.target = "_blank"; 
+                                        a.style.color = "#0056b3";
+                                        a.style.textDecoration = "underline";
+                                        a.style.fontSize = "1.5rem";
+                                        div.appendChild(a);
+                                    });
+                                    td.appendChild(div);
+                                } else if (typeof manuales === 'string' && manuales !== '-' && manuales !== '') {
+                                    const a = document.createElement('a');
+                                    a.href = manuales;
+                                    a.textContent = "📑" + nombre;
+                                    a.target = "_blank";
+                                    a.style.color = "#0056b3";
+                                    a.style.textDecoration = "underline";
+                                    a.style.fontSize = "1.5rem";
+                                    td.appendChild(a);
+                                } else {
+                                    td.textContent = '-';
+                                }
+                            }
+                            else {
+                                td.textContent = formatearTexto(valor);
+                            }
+                            tr.appendChild(td);
+                        });
+                    });
+                    tbody.appendChild(tr);
+                });
+            }
+        
+            // 4. SISTEMA DE FILTRADO Y BÚSQUEDA GLOBAL
+            function aplicarFiltros() {
+                const inputBuscador = document.getElementById('buscador-texto');
+                const textoBuscado = inputBuscador ? inputBuscador.value.toLowerCase().trim() : '';
+        
+                const normalizar = (texto) => String(texto || '').toLowerCase().replace(/[\.\-\s]/g, '');
+                const textoBuscadoLimpio = normalizar(textoBuscado);
+        
+                // --- NUEVO --- Bandera booleana para saber si el usuario está buscando algo
+                const hayBusquedaActiva = textoBuscadoLimpio !== '';
+        
+                const datosReales = datosJSON.filter(p => p.modelo !== 'Modelo' && p.categoria !== 'Categoria');
+        
+                const datosTV = [];
+                const datosSonido = [];
+        
+                datosReales.forEach(producto => {
+                    let coincideTexto = true;
+                    if (hayBusquedaActiva) {
+                        const modelo = normalizar(producto.modelo);
+                        const gama = normalizar(producto.gama);
+                        const referencia = normalizar(producto.referencia);
+                        
+                        coincideTexto = modelo.includes(textoBuscadoLimpio) || 
+                                        gama.includes(textoBuscadoLimpio) || 
+                                        referencia.includes(textoBuscadoLimpio);
+                    }
+        
+                    if (coincideTexto) {
+                        const catProd = (producto.categoria || '').toLowerCase();
+                        if (catProd.includes('tv') || catProd.includes('television') || catProd.includes('televisor')) {
+                            datosTV.push(producto);
+                        } else if (catProd.includes('sonido') || catProd.includes('audio')) {
+                            datosSonido.push(producto);
+                        }
+                    }
+                });
+        
+                // --- NUEVO --- Pasamos la bandera 'hayBusquedaActiva' a la función
+                generarTablaDinamica(datosTV, 'tv', 'tabla-tv-head', 'tabla-tv-body', hayBusquedaActiva);
+                generarTablaDinamica(datosSonido, 'sonido', 'tabla-snd-head', 'tabla-snd-body', hayBusquedaActiva);
+            }
+        
+            // 5. INICIALIZACIÓN
+            const buscadorTexto = document.getElementById('buscador-texto');
+            if (buscadorTexto) {
+                buscadorTexto.addEventListener('input', aplicarFiltros);
+            }
+            
+            let datosJSON = [];
+            document.addEventListener('DOMContentLoaded', () => {
+                fetch('datos/catalogo.json')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Error al cargar el catálogo');
+                        }
+                        return response.json();
+                    })
+                    .then(datos => {
+                        datosJSON = datos;
+                        
+                        if (MODO_DEBUG) {
+                            console.log("Datos del almacen cargados correctamente:", datosJSON); 
+                        }
+                        aplicarFiltros();
+                    })
+                    .catch(error => {
+                        console.error("No se pudo cargar el catálogo:", error);
+                        
+                        const tbodyTV = document.getElementById('tabla-tv-body');
+                        const tbodySnd = document.getElementById('tabla-snd-body');
+                        
+                        if (tbodyTV) tbodyTV.innerHTML = '<tr><td colspan="10" style="text-align: center; padding: 50px; background-color: #fff0f0; border: 1px solid #ffcccc;"><b style="color: #d9534f;">⚠️ Error de conexión</b><p>No se pudo cargar el catálogo de televisores.</p><button onclick="location.reload()" style="margin-top: 15px; cursor: pointer; padding: 8px 16px;">Reintentar carga</button></td></tr>';
+                        if (tbodySnd) tbodySnd.innerHTML = '<tr><td colspan="10" style="text-align: center; padding: 50px; background-color: #fff0f0; border: 1px solid #ffcccc;"><b style="color: #d9534f;">⚠️ Error de conexión</b><p>No se pudo cargar el catálogo de sonido.</p><button onclick="location.reload()" style="margin-top: 15px; cursor: pointer; padding: 8px 16px;">Reintentar carga</button></td></tr>';
+                    });
+            });
+        </script>
+        <!-- fin script de catalogo de gama marrón -->
     </body>
 </html>
