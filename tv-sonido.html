@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Catálogo de televisores y sonido | from E.Y.E.</title>
+    <link rel="icon" type="image/png" href="img/eyewebsLogoFavicon.png"/>
+    <link rel="apple-touch-icon" href="img/eyewebsLogoFavicon.png">
+    <!-- estilo general-->
+    <link rel="stylesheet" href="css/webproductos.css" type="text/css"/>
+    <!-- estilo especifico-->
+    <style>
+        :root {
+            --border-color: #e0e0e0;
+            --header-bg: #f8f9fa;
+            --header-group-bg: #d6d2d2;
+            --row-hover: #f1f3f5;
+            --sticky-col-bg: #ffffff;
+            /* Colores corporativos */
+            --tv-odd: #f4f9ff;
+            --tv-even: #e6f0fa;
+            --tv-hover: #d0e4f7;
+            --snd-odd: #f4fcf5;
+            --snd-even: #e6f5e9;
+            --snd-hover: #cce8d1;
+        }
+        #imglogo {
+            width: 250px; /*Tamaño fijo pero seguro */
+            display: block; 
+            margin-left: auto; 
+            margin-right: auto;
+        }
+
+        /* Columna con salto de línea */
+        .multiline {
+            white-space: pre-line !important; 
+            word-break: normal !important;    
+            max-width: 100px; 
+        }
+
+        /* Columna normal (mantiene el comportamiento de línea única) */
+        .single-line {
+            white-space: nowrap !important;
+        }
+
+        /* 2. El contenedor de la tabla */
+        .table-container {
+            width: 100%; 
+            overflow-x: auto;
+            isolation: isolate; 
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            -webkit-overflow-scrolling: touch; 
+            position: relative;
+            border: 1px solid black;
+        }
+
+        /* 3. Ajuste de la tabla */
+        table {
+            border-collapse: collapse;
+            width: 100%; 
+            min-width: 100px; 
+        }
+
+        th, td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            white-space: nowrap;      
+            overflow: visible;         
+            text-overflow: ellipsis;  
+        }
+
+        th:last-child, td:last-child {
+            border-right: 1px solid var(--border-color);
+        }
+
+        /* --- Cabecera Grupos --- */
+        thead tr:first-child th {
+            background-color: var(--header-group-bg);
+            font-weight: bold;
+            color: black;
+            position: sticky;
+            top: 0;
+            /* SUBIMOS EL Z-INDEX PARA QUE NO DESAPAREZCA AL HACER SCROLL */
+            z-index: 20 !important; 
+            border: none; 
+            box-shadow: inset 1px 0 0 0 black, inset 0 -1px 0 0 black;
+            text-align: center;
+        }
+
+        /* --- Cabecera Columnas --- */
+        thead tr:nth-child(2) th {
+            background-color: var(--header-bg) !important;
+            color: black;
+            position: sticky;
+            top: 43px; 
+            /* SUBIMOS EL Z-INDEX */
+            z-index: 19 !important; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        /* --- Columna congelada "Modelo" (2ª columna) --- */
+        tbody td:nth-child(2), 
+        thead tr:nth-child(2) th:nth-child(2) {
+            position: sticky;
+            left: 0;
+            z-index: 5;
+            font-weight: bold;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+        }
+
+        tbody td:nth-child(2) { background-color: var(--sticky-col-bg); }
+        /* Z-index superior para la intersección de la cabecera y la columna fija */
+        thead tr:nth-child(2) th:nth-child(2) { background-color: var(--header-bg); z-index: 21 !important; }
+
+        /* --- Colores alternos TV --- */
+        tr.row-tv-odd td { background-color: var(--tv-odd); }
+        tr.row-tv-even td { background-color: var(--tv-even); }
+        tr.row-tv-odd:hover td, tr.row-tv-even:hover td { background-color: var(--tv-hover); }
+        tr.row-tv-odd td:nth-child(2) { background-color: var(--tv-odd); }
+        tr.row-tv-even td:nth-child(2) { background-color: var(--tv-even); }
+        tr.row-tv-odd:hover td:nth-child(2), tr.row-tv-even:hover td:nth-child(2) { background-color: var(--tv-hover); }
+
+        /* --- Colores alternos Sonido --- */
+        tr.row-snd-odd td { background-color: var(--snd-odd); }
+        tr.row-snd-even td { background-color: var(--snd-even); }
+        tr.row-snd-odd:hover td, tr.row-snd-even:hover td { background-color: var(--snd-hover); }
+        tr.row-snd-odd td:nth-child(2) { background-color: var(--snd-odd); }
+        tr.row-snd-even td:nth-child(2) { background-color: var(--snd-even); }
+        tr.row-snd-odd:hover td:nth-child(2), tr.row-snd-even:hover td:nth-child(2) { background-color: var(--snd-hover); }
+
+        /* --- Botón Enlace --- */
+        a.enlace-tienda {
+            color: #0056b3;
+            text-decoration: none;
+            padding: 4px 8px;
+            border: 1px solid #0056b3;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        a.enlace-tienda:hover {
+            background-color: #6baaed;
+            color: #fff;
+        }
+
+        /* --- Buscador y Detalles --- */
+        .filtros-container {
+            margin-bottom: 20px;
+            display: flex;           /* Activa flexbox */
+            justify-content: center; /* Centra horizontalmente */
+            align-items: center;     /* Alinea verticalmente */
+            gap: 15px;               /* Espacio entre el input y el botón */
+            width: 100%;             /* Asegura que ocupe el ancho necesario */
+        }
+
+        /* Opcional: si quieres que el input no sea gigante al centrarse */
+        #buscador-texto {
+            /* max-width: 400px; /* Limita el ancho del buscador */
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+        }
+        #indice .summary { background-color: #e0e0e0; }
+        .detalle { background-color: #f8f9fa; }
+
+        /* =========================================================
+        ADAPTACIÓN A MÓVILES (FORMATO TARJETA)
+        Esto se activa solo cuando la pantalla es menor a 768px
+        ========================================================= */
+        @media screen and (max-width: 768px) {
+            .table-container {
+                overflow-x: visible;
+                border: none;
+                box-shadow: none;
+            }
+
+            table {
+                min-width: 100%; 
+            }
+
+            thead {
+                display: none; 
+            }
+
+            tr {
+                display: block;
+                margin-bottom: 20px;
+                border: 1px solid #ccc;
+                border-radius: 8px;
+                padding: 10px;
+                background-color: white !important; 
+            }
+
+            /* 🔴 CORRECCIÓN CRÍTICA PARA EL ANCHO EN MÓVIL 🔴 */
+            /* Forzamos a que todas las celdas ignoren el max-width del escritorio */
+            td, .multiline, .single-line {
+                max-width: 100% !important; 
+                width: 100% !important;
+                white-space: pre-line !important; /* Todo el texto debe fluir natural en móvil */
+                overflow: visible !important;
+                text-overflow: clip !important;
+                box-sizing: border-box; /* Evita que el padding empuje el texto fuera de la pantalla */
+            }
+
+            td {
+                display: block;
+                text-align: left !important; 
+                border: none;
+                border-bottom: 1px solid #eee;
+                position: static !important; 
+                background: transparent !important;
+                box-shadow: none !important;
+                padding: 12px 4px !important; 
+            }
+
+            td:last-child {
+                border-bottom: none;
+            }
+
+            /* Diseño del título encima del dato */
+            td::before {
+                content: attr(data-label); 
+                display: block; 
+                float: none; 
+                font-weight: 900; /* Más negrita para que destaque */
+                /* color: #0056b3; /* Le damos el color corporativo para separarlo del texto negro */
+                color: black;
+                text-transform: capitalize;
+                margin-bottom: 4px; 
+                font-size: 1.2rem; 
+            }
+        }
+    </style>
+    <!--Color del navegador-->
+    <meta name="theme-color" content="#ededed">
+    <!-- Script de carga dinámica -->
+    <!-- <script src="noURL"></script> -->
+    <!-- redireccion mantenimiento _excepción de web-->
+    <!--
+    <script>
+        fetch('/config.json')
+            .then(response => response.json())
+            .then(data => {
+                const ahora = new Date();
+                const fin = new Date(data.fechaFin);
+                
+                if (data.mantenimientoActivo && ahora < fin) {
+                    window.location.href = "/mantenimiento.html";
+                }
+            });
+    </script>
+    -->
+</head>
+    <body>
+        <div class="content">
+            <!--encabezado-navegacion-->
+            <nav role="navigation">
+                <!-- suprimido temporalmente
+                <div id="menuToggle">
+                    <input type="checkbox" />			
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <ul id="menu">
+                        <a href="."><li>▻ Inicio</li></a>
+                        <a href="telefonos-android.html"><li>📱 Android</li></a>
+                        <a href="telefonos-iPhone.html"><li> &#xF8FF; iPhone</li></a>
+                        <a href="ordenadores.html"><li>💻 Ordenadores</li></a>
+                        <a href="tv-sonido.html" class="active"><li>📺 TV y 🔊 sonido</li></a>
+                    </ul>
+                </div>
+                -->
+                <div class="logoTitulo">
+                    <span onclick="location.reload(true);" style="cursor:pointer;" >
+                        <img type="png" id="imglogo" src="img/Samsung_Orig_Wordmark_BLUE_RGB.png" alt="Samsung blue RGB logo"/>
+                    </span>
+                    <h1 style="text-align: center;">Catálogo de televisores y sonido <sup onclick="window.open('#*', '_self')">*</sup></h1>
+                </div>
+            </nav>
+            <!--fin encabezado-->
+            <br/>
+            <!--contenido de pagina de pagina-->
+            <div class="contentb">
+                <p>Especificaciones técnicas detalladas. Desliza hacia la derecha para ver más.</p>
+                <div class="filtros-container">
+                    <input type="text" id="buscador-texto" placeholder="🔍 Buscar modelo (ej. 65S95H), gama (ej. S95H) o referencia (ej. 114)...">
+                </div>
+                <h2 style="margin-top: 40px; color: #0056b3;"><span onclick="window.open('#Televisores', '_self')">📺 Televisores</span></h2>
+                <div class="table-container">
+                    <table class="productos" id="tabla-tv">
+                        <thead id="tabla-tv-head"></thead>
+                        <tbody id="tabla-tv-body"></tbody>
+                    </table>
+                </div>
+                <h2 style="margin-top: 50px; color: #28a745;"><span onclick="window.open('#Sonido', '_self')">🔊 Sonido</span></h2>
+                <div class="table-container">
+                    <table class="productos" id="tabla-snd">
+                        <thead id="tabla-snd-head"></thead>
+                        <tbody id="tabla-snd-body"></tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- script de catalogo de gama marrón -->
+            <!-- fin script de catalogo de gama marrón -->
+            <script>
+                /* Última actualización: 23-06-2026 22:55h */
+                /* script de catalogo de gama marrón */
+                const MODO_DEBUG = false;
+                // 1. DEFINICIÓN DE PLANTILLAS
+                const PLANTILLAS = {
+                    'TV': [
+                        { nombre: 'Referencias', campos: { 'anyo': 'Año', 'gama-pulgada': 'Gama | Pulgada', 'modelo': 'Modelo', 'color':'Color' , 'referencia': 'Referencia', 'EAN':"EAN", 'cluster': 'Clúster', 'PVP':'PVP (€)' , 'EnlaceTienda': 'Enlace' } },
+                        { nombre: 'Montaje en Pared', campos: { 'VESA': 'VESA (Ancho x Alto en mm)', 'Tornillos': 'Métrica de tornillos' } },
+                        { nombre: 'Medidas del Producto', campos: { 'dimensiones_ancho': 'Ancho (cm)', 'dimensiones_alto': 'Alto (cm)', 'dimensiones_alto_peana': 'Alto con peana (cm)', 'dimensiones_grosor': 'Grosor (cm)', 'dimensiones-peana': 'Dimensiones peana (cm)', 'peso-sin-peana': 'Peso sin peana (KG)', 'dimensiones-caja': 'Dimensiones caja (ancho x alto x profundidad en cm)', 'Medidas_one-connect': 'One Connect (Ancho x Alto x Grosor en cm)' } },
+                        { nombre: 'Calidad de Imagen', campos: { 'Tipo_Panel': 'Tipo de Panel', 'Detalles-Panel': 'Detalles de Panel', 'HDR': 'High Dynamic Range (HDR)', 'Tasa-Refresco': 'Tasa de refresco en Hertzios (Hz)', 'Antirreflejos': 'Antirreflejos' } },
+                        { nombre: 'Sonido', campos: { 'Potencia-canales': 'Potencia y Canales', 'QSymphony_OTS': 'Q-Symphony / OTS', 'DolbyAtmos': 'Dolby Atmos ®', 'AVA': 'Active Voice Amplifier (AVA)', 'AudioBluetooth': 'Audio Bluetooth' } },
+                        { nombre: 'Vision AI Companion (VAC)', campos: { 'Asistentes_FarFieldVoice': 'Asistentes de voz / Interacción por voz a larga distancia', 'Multi-View': 'Multi-View (pantalla dividida)', 'PiP': 'PiP (Imagen en imagen)', 'Clic-to-Search': 'Clic to Search', 'Live-Translate': 'Live Translate' , 'Copilot_Perplexity':'Copilot / Perplexity' , 'AI_Football-Mode':'Modo IA de Futbol' , 'Generative-Wallpaper': 'Generative Wallpaper', 'Pet-Baby_Care': 'Cuidado de familiares, mascotas' } },
+                        { nombre: 'Gaming', campos: { 'ALLM': 'Modo automatico de baja latencia (ALLM)', 'HGiG': 'Modo HDR para juegos (HGiG)', 'VRR': 'Tasa refresco variables (VRR)' , 'Nvidia_G-Sync':'Nvidia G-Sync' , 'AMD-FreeSync': 'AMD FreeSync', 'Gaming-Hub': 'Gaming Hub (Juego en la Nube)' , 'GameBar':'Juego Ultra Panorámico / Game Bar', 'ModoPanoramico_GameHub': 'Juego Panorámico / Game Hub', 'PhilipsHueSync':'Philips Hue Sync (Ambilight)' } },
+                        { nombre: 'Conectividad', campos: { 'SintonizadorTDT': 'Sintonizador TDT', 'SintonizadorSatelite': 'Sintonizador Satélite', 'PuertosHDMI_version': 'Puertos HDMI', 'USB-Grabador_PVR': 'USB Grabador (PVR)', 'SalidaOptica': 'Salida Óptica', 'Version_WiFi_Bluetooth': 'Wi-Fi / Bluetooth', 'Cast': 'Airplay 2 / Google Cast', } },
+                        { nombre: 'Otros', campos: { 'Mando': 'Tipo de mando', 'manuales' : 'Manuales' } }
+                    ],
+                    'SONIDO': [
+                        { nombre: 'Referencias', campos: {  'anyo': 'Año', 'gama': 'Gama', 'modelo': 'Modelo', 'color':'Color' , 'referencia': 'Referencia', 'EAN':"EAN" ,'cluster': 'Clúster', 'PVP':'PVP (€)' ,'EnlaceTienda': 'Enlace ECI' } },
+                        { nombre: 'Medidas', campos: { 'dimensiones_ancho-barra': 'Ancho Barra (cm)', 'dimensiones_alto-barra': 'Alto Barra (cm)', 'dimensiones_profundidad-barra': 'Profundidad Barra (cm)', 'dimensiones_ancho-subwoofer': 'Ancho Subwoofer (cm)', 'dimensiones_alto-subwoofer': 'Alto Subwoofer (cm)', 'dimensiones_profundidad-subwoofer': 'Profundidad Subwoofer (cm)' } },
+                        { nombre: 'Características', campos: { 'Potencia-canales': 'Potencia y Canales', 'cantidad-altavoces-distribucion': 'Altavoces', 'SurroundKit': 'Surround Kit' } },
+                        { nombre: 'Calidad de Sonido', campos: { 'QSymphony': 'Q-Symphony', 'AVAPro': 'AVA Pro', 'SpaceFitSound': 'Space Fit Sound', 'modos-sonido': 'Modos de sonido', 'formatosDolby': 'Formatos DOLBY', 'formatosDTS': 'Formatos DTS', 'eclipsa-audio':'Eclipsa Audio' } },
+                        { nombre: 'Conectividad', campos: { 'EntradasHDMI': 'Entradas HDMI', 'EntradaOptica_USB': 'Óptica / USB', 'versionBluetooth': 'Versión Bluetooth', 'WiFI_DolbyAtmos': 'WIFI / Dolby Atmos', 'app': 'Samsung Sound APP','Cast': 'Airplay 2 / Google Cast', 'Spotify': 'Spotify Connect', 'Tidal': 'Tidal Connect', 'AsistentesVoz': 'Asistentes de Voz' } },
+                        { nombre: 'Otros', campos: { 'SoportePared': 'Soporte de Pared' , 'manuales' : 'Manuales'} }
+                    ]
+                };
+            
+                // 2. FUNCIONES DE APOYO Y LIMPIEZA
+                function aplanarObjeto(obj, prefijo = '') {
+                    return Object.keys(obj).reduce((acc, k) => {
+                        const pre = prefijo.length ? prefijo + '_' : '';
+                        if (typeof obj[k] === 'object' && obj[k] !== null && !Array.isArray(obj[k])) {
+                            Object.assign(acc, aplanarObjeto(obj[k], pre + k));
+                        } else {
+                            acc[pre + k] = obj[k];
+                        }
+                        return acc;
+                    }, {});
+                }
+            
+                function encontrarValorSeguro(objAplanado, claveBuscada) {
+                    if (objAplanado[claveBuscada] !== undefined) return objAplanado[claveBuscada];
+                    for (const key in objAplanado) {
+                        if (key.endsWith('_' + claveBuscada) || key.endsWith('-' + claveBuscada) || key === claveBuscada.replace('_', '-')) {
+                            return objAplanado[key];
+                        }
+                    }
+                    return null;
+                }
+            
+                function formatearTexto(valor) {
+                    if (valor === null || valor === undefined || valor === "") return '-';
+                    let texto = String(valor).trim();
+                    if (texto === '') return '-';
+                    if (/^(si|sí|si-no)$/i.test(texto)) return 'Sí';
+                    if (/^no$/i.test(texto)) return 'No';
+                    texto = texto.replace(/ \/ NO$/i, '').replace(/ \/ NO /i, '');
+                    texto = texto.replace(/\s+\./g, '.').replace(/\.(?=[^\s])/g, '.');
+                    return texto;
+                }
+            
+                // 3. GENERADOR DE TABLAS INDEPENDIENTES
+                // --- NUEVO --- Añadimos el parámetro 'hayBusquedaActiva' a la función
+                function generarTablaDinamica(datosFiltrados, categoriaActiva, idHead, idBody, hayBusquedaActiva) {
+                    const thead = document.getElementById(idHead);
+                    const tbody = document.getElementById(idBody);
+                    
+                    if (!thead || !tbody) return; 
+                    
+                    thead.innerHTML = '';
+                    tbody.innerHTML = '';
+            
+                    const hayProductos = datosFiltrados && datosFiltrados.length > 0;
+                    const plantillaElegida = categoriaActiva === 'sonido' ? PLANTILLAS['SONIDO'] : PLANTILLAS['TV'];
+            
+                    if (!hayProductos) {
+                        const totalColumnas = plantillaElegida.reduce((acc, grupo) => acc + Object.keys(grupo.campos).length, 0);
+            
+                        // --- NUEVO --- Lógica condicional para el mensaje
+                        const mensajeError = hayBusquedaActiva 
+                            ? "🚫 No se encontraron productos que coincidan con la búsqueda." 
+                            : "🚫 No hay productos registrados en esta sección.";
+            
+                        tbody.innerHTML = `
+                        <tr>
+                            <td colspan="${totalColumnas}" style="text-align: center; padding: 40px; color: #666; font-style: italic;">
+                                ${mensajeError}
+                            </td>
+                        </tr>
+                        `;
+                        return;
+                    }
+            
+                    // Crear cabeceras
+                    const trGrupos = document.createElement('tr');
+                    const trColumnas = document.createElement('tr');
+            
+                    plantillaElegida.forEach(grupo => {
+                        const numCampos = Object.keys(grupo.campos).length;
+                        const thGrupo = document.createElement('th');
+                        thGrupo.colSpan = numCampos;
+                        thGrupo.textContent = grupo.nombre;
+                        thGrupo.style.backgroundColor = '#d6d2d2';
+                        thGrupo.style.textAlign = 'center';
+                        trGrupos.appendChild(thGrupo);
+            
+                        Object.values(grupo.campos).forEach(nombreColumna => {
+                            const thColumna = document.createElement('th');
+                            thColumna.textContent = nombreColumna;
+                            trColumnas.appendChild(thColumna);
+                        });
+                    });
+            
+                    thead.appendChild(trGrupos);
+                    thead.appendChild(trColumnas);
+            
+                    // Crear filas con colores alternos
+                    let contadorFila = 0;
+            
+                    datosFiltrados.forEach(producto => {
+                        const tr = document.createElement('tr');
+                        
+                        if (categoriaActiva === 'tv') {
+                            tr.className = contadorFila % 2 === 0 ? 'row-tv-even' : 'row-tv-odd';
+                        } else {
+                            tr.className = contadorFila % 2 === 0 ? 'row-snd-even' : 'row-snd-odd';
+                        }
+                        contadorFila++;
+            
+                        const productoAplanado = aplanarObjeto(producto);
+            
+                        plantillaElegida.forEach(grupo => {
+                            Object.keys(grupo.campos).forEach(clave => {
+                                const td = document.createElement('td');
+            
+                                const nombreColumna = grupo.campos[clave];
+                                td.setAttribute('data-label', nombreColumna);
+                                
+                                const columnasLargas = ['', 'Asistentes_FarFieldVoice', 'modos-sonido', 'formatosDolby' , 'EntradasHDMI', '', ''];
+                                td.className = columnasLargas.includes(clave) ? 'multiline' : 'single-line';
+                                
+                                let valor = encontrarValorSeguro(productoAplanado, clave);
+            
+                                if (clave === 'EnlaceTienda') {
+                                    let ref = encontrarValorSeguro(productoAplanado, 'referencia');
+                                    if (ref && ref !== '-') {
+                                        const refLimpia = String(ref).replace(/[\.\-\_\s]/g, '');
+            
+                                        const a = document.createElement('a');
+                                        a.href = `https://www.elcorteingles.es/qrsearch/?s=0010${refLimpia}`;
+                                        a.textContent = "Ver en ECI";
+                                        a.className = "enlace-tienda";
+                                        a.target = "_blank";
+                                        td.appendChild(a);
+                                    } else {
+                                        td.textContent = '-';
+                                    }
+                                } 
+                                else if (clave === 'gama' || clave === 'gama-pulgada') {
+                                    let enlaceFicha = encontrarValorSeguro(productoAplanado, 'enlace-ficha');
+                                    let textoGama = formatearTexto(valor);
+                                    
+                                    if (enlaceFicha && enlaceFicha !== '-' && enlaceFicha !== '') {
+                                        const a = document.createElement('a');
+                                        a.href = enlaceFicha;
+                                        a.textContent = textoGama;
+                                        a.target = "_blank"; 
+                                        a.style.color = "#0056b3";
+                                        a.style.textDecoration = "underline";
+                                        a.style.fontWeight = "bold";
+                                        td.appendChild(a);
+                                    } else {
+                                        td.textContent = textoGama;
+                                    }
+                                } 
+                                else if (clave === 'manuales') { 
+                                    let manuales = producto.manuales;
+                                    
+                                    if (MODO_DEBUG) {
+                                        console.log("Depurando manuales para:", producto.modelo, "Valor:", manuales);
+                                    }
+                                    
+                                    if (manuales && typeof manuales === 'object') {
+                                        const div = document.createElement('div');
+                                        div.style.display = "flex";
+                                        div.style.flexDirection = "column";
+                                        div.style.gap = "5px";
+            
+                                        Object.entries(manuales).forEach(([nombre, url]) => {
+                                            const a = document.createElement('a');
+                                            a.href = url; 
+                                            a.textContent = "📑" + nombre; 
+                                            a.target = "_blank"; 
+                                            a.style.color = "#0056b3";
+                                            a.style.textDecoration = "underline";
+                                            a.style.fontSize = "1.5rem";
+                                            div.appendChild(a);
+                                        });
+                                        td.appendChild(div);
+                                    } else if (typeof manuales === 'string' && manuales !== '-' && manuales !== '') {
+                                        const a = document.createElement('a');
+                                        a.href = manuales;
+                                        a.textContent = "📑" + nombre;
+                                        a.target = "_blank";
+                                        a.style.color = "#0056b3";
+                                        a.style.textDecoration = "underline";
+                                        a.style.fontSize = "1.5rem";
+                                        td.appendChild(a);
+                                    } else {
+                                        td.textContent = '-';
+                                    }
+                                }
+                                else {
+                                    td.textContent = formatearTexto(valor);
+                                }
+                                tr.appendChild(td);
+                            });
+                        });
+                        tbody.appendChild(tr);
+                    });
+                }
+            
+                // 4. SISTEMA DE FILTRADO Y BÚSQUEDA GLOBAL
+                function aplicarFiltros() {
+                    const inputBuscador = document.getElementById('buscador-texto');
+                    const textoBuscado = inputBuscador ? inputBuscador.value.toLowerCase().trim() : '';
+            
+                    const normalizar = (texto) => String(texto || '').toLowerCase().replace(/[\.\-\s]/g, '');
+                    const textoBuscadoLimpio = normalizar(textoBuscado);
+            
+                    // --- NUEVO --- Bandera booleana para saber si el usuario está buscando algo
+                    const hayBusquedaActiva = textoBuscadoLimpio !== '';
+            
+                    const datosReales = datosJSON.filter(p => p.modelo !== 'Modelo' && p.categoria !== 'Categoria');
+            
+                    const datosTV = [];
+                    const datosSonido = [];
+            
+                    datosReales.forEach(producto => {
+                        let coincideTexto = true;
+                        if (hayBusquedaActiva) {
+                            const modelo = normalizar(producto.modelo);
+                            const gama = normalizar(producto.gama);
+                            const referencia = normalizar(producto.referencia);
+                            
+                            coincideTexto = modelo.includes(textoBuscadoLimpio) || 
+                                            gama.includes(textoBuscadoLimpio) || 
+                                            referencia.includes(textoBuscadoLimpio);
+                        }
+            
+                        if (coincideTexto) {
+                            const catProd = (producto.categoria || '').toLowerCase();
+                            if (catProd.includes('tv') || catProd.includes('television') || catProd.includes('televisor')) {
+                                datosTV.push(producto);
+                            } else if (catProd.includes('sonido') || catProd.includes('audio')) {
+                                datosSonido.push(producto);
+                            }
+                        }
+                    });
+            
+                    // --- NUEVO --- Pasamos la bandera 'hayBusquedaActiva' a la función
+                    generarTablaDinamica(datosTV, 'tv', 'tabla-tv-head', 'tabla-tv-body', hayBusquedaActiva);
+                    generarTablaDinamica(datosSonido, 'sonido', 'tabla-snd-head', 'tabla-snd-body', hayBusquedaActiva);
+                }
+            
+                // 5. INICIALIZACIÓN
+                const buscadorTexto = document.getElementById('buscador-texto');
+                if (buscadorTexto) {
+                    buscadorTexto.addEventListener('input', aplicarFiltros);
+                }
+                
+                let datosJSON = [];
+                document.addEventListener('DOMContentLoaded', () => {
+                    fetch('datos/catalogo.json')
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Error al cargar el catálogo');
+                            }
+                            return response.json();
+                        })
+                        .then(datos => {
+                            datosJSON = datos;
+                            
+                            if (MODO_DEBUG) {
+                                console.log("Datos del almacen cargados correctamente:", datosJSON); 
+                            }
+                            aplicarFiltros();
+                        })
+                        .catch(error => {
+                            console.error("No se pudo cargar el catálogo:", error);
+                            
+                            const tbodyTV = document.getElementById('tabla-tv-body');
+                            const tbodySnd = document.getElementById('tabla-snd-body');
+                            
+                            if (tbodyTV) tbodyTV.innerHTML = '<tr><td colspan="10" style="text-align: center; padding: 50px; background-color: #fff0f0; border: 1px solid #ffcccc;"><b style="color: #d9534f;">⚠️ Error de conexión</b><p>No se pudo cargar el catálogo de televisores.</p><button onclick="location.reload()" style="margin-top: 15px; cursor: pointer; padding: 8px 16px;">Reintentar carga</button></td></tr>';
+                            if (tbodySnd) tbodySnd.innerHTML = '<tr><td colspan="10" style="text-align: center; padding: 50px; background-color: #fff0f0; border: 1px solid #ffcccc;"><b style="color: #d9534f;">⚠️ Error de conexión</b><p>No se pudo cargar el catálogo de sonido.</p><button onclick="location.reload()" style="margin-top: 15px; cursor: pointer; padding: 8px 16px;">Reintentar carga</button></td></tr>';
+                        });
+                });
+            </script>
+            <!--fin contenido de pagina de pagina-->
+            <!--pie de pagina-->
+            <footer>
+                <span style="text-align: left;">
+                    <!-- iria aquí cualquier asterisco * --> 
+                    <!-- Sección de Información / Glosario -->
+                    <div id="indice">
+                        <div class="summary">
+                            <!-- para que esté siempre abierto, añade la etiqueta open <details open > -->
+                            <details open >
+                                <summary>
+                                        <i id="*">
+                                            <b><sup>*</sup>Descargo de responsabilidad:</b>
+                                        </i>
+                                    <br/>
+                                </summary>
+                                <div class="detalle">
+                                    <p>
+                                        <span>
+                                            Los detalles aquí presentes son un resumen. Las fichas técnicas oficiales tienen información más precisa.<br> 
+                                            Aunque trato de evitarlo, <u>pueden existir errores</u>. Verifica y/o corrobora los datos si tienes dudas.
+                                        </span>
+                                    </p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+                </span>	
+                <!-- Botón Imprimir integrado en el pie -->
+                <p class="printPageButton">
+                    <button onclick="window.print();"> Imprimir 🖨️ página 📝 </button>
+                </p>
+                <b style="text-decoration: underline; text-decoration-style: dotted;">Última actualización: 23-06-2026 23:05h</b>
+                <p>© 2026 | diseñado por: E.Y.E.</p>
+                <!-- El botón de subir suele ir al final para que cargue lo último -->
+                <a href='#' class="stt" title="Subir arriba"></a>
+            </footer>
+            <!--fin pie de pagina-->
+        </div>
+    </body>
+</html>
