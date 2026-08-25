@@ -1976,6 +1976,28 @@
         }
     },
     {
+        "anyo": "2025",
+        "categoria":"TV",
+        "gama-pulgada": "S95F | 77''",
+        "enlace-ficha": "URL-FICHA",
+        "modelo":"TQ77S95FATXXC",
+        "color":"Negro",
+        "disenyo":"diseño",
+        "referencia":"148.424.13800",
+        "EAN":"",
+        "cluster": "11",
+        "PVP" : "3.399",
+        "MontajePared": { "VESA":"400x300", "Tornillos":"M8" },
+        "dimensiones_ancho":"144",
+        "DolbyAtmos":"Sí",
+        "Asistentes_FarFieldVoice":" Asistentes integrados Bixby y Alexa.\n  Interacción por voz a larga distancia.",
+        "Cast": "Sí / Sí",
+        "manuales": {
+            "Guía de montaje": "urlGuiaPDF",
+            "Manual de usuario": "urlManualPDF"
+        }
+    },
+    {
         "anyo": "2026",
         "categoria": "sonido",
         "gama": "HW-Q990H",
