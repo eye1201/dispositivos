@@ -7,6 +7,7 @@
 		<link rel="icon" type="image/png" href="img/eyewebsLogoFavicon.png"/>
 		<link rel="apple-touch-icon" href="img/eyewebsLogoFavicon.png">
 		<link rel="stylesheet" href="css/webproductos.css" type="text/css"/>
+		<meta name="robots" content="noindex, nofollow" />
 		<!--Color del navegador-->
 		<meta name="theme-color" content="#ededed">
 		<!--configuracion de la PWA-->
@@ -75,31 +76,28 @@
 			<!--contenido de pagina de pagina-->
 			<div class="contentb">
 				 <!-- Sección de Actualización -->
-				<div id="indice">
-					<div class="summary">
-						<!-- para que esté siempre abierto, añade la etiqueta open <details open > -->
-						<details >
-							<summary>
-								[Pulsa para desplegar] <br/>
-								<b style="text-decoration: underline; text-decoration-style: dotted;">Última actualización: 25-08-2026 22:36h</b>
-							</summary>
-							<div class="detalle">
-								<p>
-									<span>La web se va actualizando lo antes posible.</span><br/>
-									<span>¡Disculpe las molestias!</span>
-								</p>
-							</div>
-						</details>
-					</div>
-				</div>
+				<!--
+                <div id="indice">
+                    <div class="summary">
+                        <!- para que esté siempre abierto, añade la etiqueta open <details open > ->
+                        <details >
+                            <summary>
+                                [Pulsa para desplegar] <br/>
+                                <b style="text-decoration: underline; text-decoration-style: dotted;">Última actualización: 17-09-2026 00:15h</b> 
+                            </summary>
+                            <div class="detalle">
+                                <p>
+                                    <span>La web se va actualizando lo antes posible.</span><br/>
+                                    <span>¡Disculpe las molestias!</span>
+                                </p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                -->
  				<!-- Selector de Dispositivos -->
 				<div id="dispositivos">
 					<table class="productos">
-						<thead>
-							<tr>
-								<th colspan="3">Elige</th>
-							</tr>
-						</thead>
 						<!-- Eliminado tfoot: el texto ahora está integrado bajo la imagen -->
 						<tbody class="productos">
 							<tr>
@@ -133,15 +131,22 @@
 			<!--fin contenido de pagina de pagina-->
 			<!--pie de pagina-->
 			<footer>
-				<!-- Botón Imprimir integrado en el pie -->
-				<p hidden class="printPageButton">
-					<button onclick="window.print();"> Imprimir 🖨️ página 📝 </button>
+                <!-- Botón Imprimir integrado en el pie -->
+                <p hidden class="printPageButton">
+                    <button onclick="window.print();"> Imprimir 🖨️ página 📝 </button>
+                </p>
+                <p>
+					<span><b style="text-decoration: underline; text-decoration-style: dotted;">Última actualización: 17-09-2026 00:15h</b></span><br/>
+					<span>
+						<i>La web se va actualizando lo antes posible.</i><br/>
+						<i>¡Disculpe las molestias!</i>
+					</span>
 				</p>
-				<p>© 2021-2026 | diseñado por: E.Y.E.</p>
-				<!-- El botón de subir suele ir al final para que cargue lo último -->
-				<a href='#' class="stt" title="Subir arriba"></a>
+                <p>© 2021-2026 | diseñado por: E.Y.E.</p>
+                <!-- El botón de subir suele ir al final para que cargue lo último -->
+                <a href='#' class="stt" title="Subir arriba"></a>
 			</footer>
-			<!--fin pie de pagina-->
+            <!--fin pie de pagina-->
 		</div>
 	</body>
 </html>

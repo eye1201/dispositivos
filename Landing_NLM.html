@@ -7,9 +7,11 @@
 		<link rel="icon" type="image/png" href="img/NLM_LogoFavicon.png"/>
 		<link rel="apple-touch-icon" href="img/NLM_LogoFavicon.png">
 		<link rel="stylesheet" href="css/webproductos.css" type="text/css"/>
+		<meta name="robots" content="noindex, nofollow" />
 		<!--Color del navegador-->
 		<meta name="theme-color" content="#574F6F">
 		<!-- HTML meta refresh URL redirection -->
+		<meta http-equiv="refresh" content="0; url=Landing.html"/>
 		<!-- Script de carga dinámica -->
 		<script src="js/renderizado.js"></script>
 		<!-- redireccion mantenimiento-->
@@ -52,6 +54,7 @@
 			}	
 		</style>
 	</head>
+	<body>
 		<div class="content">
 			<!--encabezado-->
 			<header>
@@ -101,7 +104,7 @@
 						<details >
 							<summary>
 								[Pulsa para desplegar] <br/>
-								<b style="text-decoration: underline; text-decoration-style: dotted;">Última actualización: 25-08-2026 22:36h</b> 
+								<b style="text-decoration: underline; text-decoration-style: dotted;">Última actualización: 17-09-2026 00:15h</b> 
 							</summary>
 							<div class="detalle">
 								<p>
@@ -164,22 +167,40 @@
 					</div>
 				</div>
 				<br/>
-				<span>
-					<p id="*"><i><sup>*</sup>Los iPhone son teléfonos de gama alta y gama alta premium (modelo pro max).</i></p>
-					<p id="**"><i><sup>**</sup>Los Android tienen distintas gamas, desde la gama baja hasta la gama alta premium.</i></p>
-				</span>
 			</div>
 			<!--fin contenido de pagina de pagina-->
 			<!--pie de pagina-->
 			<footer>
-				<!-- Botón Imprimir integrado en el pie -->
-				<p class="printPageButton">
-					<button onclick="window.print();"> Imprimir 🖨️ página 📝 </button>
+                <div id="indice">
+                    <div class="summary">
+                        <!-- para que esté siempre abierto, añade la etiqueta open <details open > -->
+                        <details open >
+                            <summary>
+                                <span><b id="Glosario">📝 Glosario:</b></span> <br/>
+                            </summary>
+                            <div class="detalle">
+                                <p>
+                                    <span id="*"><i><sup>*</sup>Los iPhone son teléfonos de gama alta y gama alta premium (modelo pro max).</i></span><br/>
+                                    <span id="**"><i><sup>**</sup>Los Android tienen distintas gamas, desde la gama baja hasta la gama alta premium.</i></span>
+                                </p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <!-- Botón Imprimir integrado en el pie -->
+                <p class="printPageButton">
+                    <button onclick="window.print();"> Imprimir 🖨️ página 📝 </button>
+                </p>
+                <p>
+					<span><b style="text-decoration: underline; text-decoration-style: dotted;">Última actualización: 17-09-2026 00:15h</b></span><br/>
+					<span>
+						<i>La web se va actualizando lo antes posible.</i><br/>
+						<i>¡Disculpe las molestias!</i>
+					</span>
 				</p>
 				<p>El recomendador de NLM © 2023-2026 | designed by: E.Y.E.</p>
-				
-				<!-- El botón de subir suele ir al final para que cargue lo último -->
-				<a href='#' class="stt" title="Subir arriba"></a>
+                <!-- El botón de subir suele ir al final para que cargue lo último -->
+                <a href='#' class="stt" title="Subir arriba"></a>
 			</footer>
 			<!--fin pie de pagina-->
 		</div>

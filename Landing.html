@@ -1,329 +1,488 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Catálogo de televisores y sonido | from E.Y.E.</title>
-    <link rel="icon" type="image/png" href="img/eyewebsLogoFavicon.png"/>
-    <link rel="apple-touch-icon" href="img/eyewebsLogoFavicon.png">
-    <meta name="robots" content="noindex, nofollow" />
-    <!-- estilo general-->
-    <link rel="stylesheet" href="css/webproductos.css" type="text/css"/>
-    <!-- estilo especifico-->
-    <style>
-    /* =========================================================
+	<head>
+		<meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Landing| from E.Y.E.</title>
+        <link rel="icon" type="image/png" href="img/eyewebsLogoFavicon.png"/>
+        <link rel="apple-touch-icon" href="img/eyewebsLogoFavicon.png">
+        <link rel="stylesheet" href="css/webproductos.css" type="text/css"/>
+        <meta name="robots" content="noindex, nofollow" />
+        <!--Color del navegador-->
+        <meta name="theme-color" content="#ededed">
+        <!--configuracion de la PWA-->
+		<link rel="manifest" href="/manifest.json" />
+        <!-- Script de carga dinámica -->
+        <script src="js/renderizado.js"></script>
+        <!-- redireccion mantenimiento-->
+		<script>
+			fetch('/config.json')
+				.then(response => response.json())
+				.then(data => {
+					const ahora = new Date();
+					const fin = new Date(data.fechaFin);
+					
+					if (data.mantenimientoActivo && ahora < fin) {
+						window.location.href = "/mantenimiento.html";
+					}
+				});
+		</script>
+        <style>
+			#indice, #dispositivos {
+				max-width: 900px !important;
+				margin: 20px auto !important;
+			}
+
+            /* =========================================================
            VARIABLES GLOBALES Y COLORES CORPORATIVOS
            ========================================================= */
-           :root {
-            /* Colores de estructura general */
-            --border-color: #e0e0e0;
-            --header-bg: #f8f9fa;
-            --header-group-bg: #d6d2d2;
-            --row-hover: #f1f3f5;
-            --sticky-col-bg: #ffffff;
-            
-            /* Colores corporativos para Televisión (Tonos Azules) */
-            --tv-odd: #f4f9ff;
-            --tv-even: #e6f0fa;
-            --tv-hover: #d0e4f7;
-            
-            /* Colores corporativos para Sonido (Tonos Verdes) */
-            --snd-odd: #f4fcf5;
-            --snd-even: #e6f5e9;
-            --snd-hover: #cce8d1;
-        }
-
-        /* --- Logo principal --- */
-        #imglogo {
-            width: 250px; /* Tamaño fijo pero seguro para evitar desbordes */
-            display: block; 
-            margin-left: auto; 
-            margin-right: auto; /* Centrado automático */
-        }
-
-        /* =========================================================
-           1. CLASES DE APOYO PARA TEXTO EN CELDAS
-           ========================================================= */
-        
-        /* Columna con salto de línea (Ideal para textos largos como Asistentes o Modos) */
-        .multiline {
-            white-space: pre-line !important; /* Permite saltos de línea naturales */
-            word-break: normal !important;    
-            max-width: 100px; /* Evita que la columna crezca infinitamente a lo ancho */
-        }
-
-        /* Columna normal (Mantiene el comportamiento de línea única sin romper) */
-        .single-line {
-            white-space: nowrap !important;
-        }
-
-        /* =========================================================
-           2. CONTENEDOR PRINCIPAL DE LA TABLA
-           ========================================================= */
-        .table-container {
-            width: 100%; 
-            overflow-x: auto; /* Activa el scroll horizontal si la tabla es muy ancha */
-            isolation: isolate; /* Crea un nuevo contexto de apilamiento para que los z-index funcionen bien */
-            border-radius: 8px; /* Bordes redondeados del contenedor */
-            margin-bottom: 30px;
-            -webkit-overflow-scrolling: touch; /* Scroll suave en dispositivos iOS (iPhone/iPad) */
-            position: relative;
-            border: 1px solid black;
-        }
-
-        /* =========================================================
-           3. ESTILOS BASE DE LA TABLA
-           ========================================================= */
-        table {
-            border-collapse: collapse; /* Une los bordes de las celdas para que no haya huecos blancos */
-            width: 100%; 
-        }
-
-        th, td {
-            padding: 12px 16px; /* Espaciado interior de las celdas (Vertical, Horizontal) */
-            border-bottom: 1px solid var(--border-color);
-            border-right: 1px solid var(--border-color);
-            white-space: nowrap;      
-            overflow: visible;         
-            text-overflow: ellipsis;  
-        }
-
-        th:last-child, td:last-child {
-            border-right: none; /* Quitamos el borde derecho de la última columna para no duplicar la línea del contenedor */
-        }
-
-        /* =========================================================
-           4. CABECERAS FIJAS (STICKY HEADERS)
-           ========================================================= */
-           
-        /* --- Fila 1: Cabecera de Grupos (Ej: "Calidad de Imagen") --- */
-        thead tr:first-child th {
-            background-color: var(--header-group-bg);
-            font-weight: bold;
-            color: black;
-            position: sticky; /* Se queda pegada al hacer scroll vertical hacia abajo */
-            top: 0; /* Pegada exactamente al techo */
-            z-index: 20 !important; /* Nivel de profundidad alto para que pase por encima de las filas de productos */
-            border: none; 
-            box-shadow: inset 1px 0 0 0 black, inset 0 -1px 0 0 black;
-            text-align: center;
-        }
-
-        /* --- Fila 2: Cabecera de Columnas (Ej: "Tipo de Panel", "HDR") --- */
-        thead tr:nth-child(2) th {
-            background-color: var(--header-bg) !important;
-            color: black;
-            position: sticky;
-            top: 43px; /* ATENCIÓN: Esta altura asume que la 1º fila mide 43px. Si el texto crece, esta medida debe ajustarse */
-            z-index: 19 !important; /* Un punto menos que la fila de arriba para que se deslice por debajo de ella si hiciera falta */
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        /* =========================================================
-           5. COLUMNA FIJA LATERAL (SCROLL HORIZONTAL)
-           ========================================================= */
-           
-        /* --- Columna congelada "Gama" (Actualmente es la Columna 2) --- */
-        /* Nota: Cambia todos los 'nth-child(2)' por 'nth-child(3)' si prefieres congelar el "Modelo" */
-        tbody td:nth-child(2), 
-        thead tr:nth-child(2) th:nth-child(2) {
-            position: sticky; /* Se queda pegada al hacer scroll hacia la derecha */
-            left: 0; /* Pegada a la pared izquierda */
-            z-index: 5;
-            font-weight: bold;
-            box-shadow: 2px 0 5px rgba(0,0,0,0.05); /* Sombra para indicar que está flotando sobre el resto de la tabla */
-        }
-
-        /* Fondos específicos para la columna fija */
-        tbody td:nth-child(2) { background-color: var(--sticky-col-bg); }
-        /* La intersección (Esquina): Necesita el z-index más alto de todos (21) para no ser pisada ni por el scroll vertical ni por el horizontal */
-        thead tr:nth-child(2) th:nth-child(2) { background-color: var(--header-bg); z-index: 21 !important; }
-
-        /* =========================================================
-           6. COLORES ALTERNOS PARA FILAS (ZEBRA STRIPING)
-           ========================================================= */
-           
-        /* --- Colores alternos TV --- */
-        tr.row-tv-odd td { background-color: var(--tv-odd); }
-        tr.row-tv-even td { background-color: var(--tv-even); }
-        tr.row-tv-odd:hover td, tr.row-tv-even:hover td { background-color: var(--tv-hover); }
-        
-        /* Forzamos el color en la columna pegajosa para que no se vea blanca al hacer hover o alternar */
-        tr.row-tv-odd td:nth-child(2) { background-color: var(--tv-odd); }
-        tr.row-tv-even td:nth-child(2) { background-color: var(--tv-even); }
-        tr.row-tv-odd:hover td:nth-child(2), tr.row-tv-even:hover td:nth-child(2) { background-color: var(--tv-hover); }
-
-        /* --- Colores alternos Sonido --- */
-        tr.row-snd-odd td { background-color: var(--snd-odd); }
-        tr.row-snd-even td { background-color: var(--snd-even); }
-        tr.row-snd-odd:hover td, tr.row-snd-even:hover td { background-color: var(--snd-hover); }
-        
-        tr.row-snd-odd td:nth-child(2) { background-color: var(--snd-odd); }
-        tr.row-snd-even td:nth-child(2) { background-color: var(--snd-even); }
-        tr.row-snd-odd:hover td:nth-child(2), tr.row-snd-even:hover td:nth-child(2) { background-color: var(--snd-hover); }
-
-        /* =========================================================
-           7. ELEMENTOS INTERACTIVOS (BOTONES Y BUSCADOR)
-           ========================================================= */
-           
-        /* --- Botón "Ver en ECI" --- */
-        a.enlace-tienda {
-            color: #0056b3;
-            text-decoration: none;
-            padding: 4px 8px;
-            border: 1px solid #0056b3;
-            border-radius: 4px;
-            transition: all 0.3s ease; /* Animación suave de cambio de color al pasar el ratón */
-            display: inline-block;
-        }
-
-        a.enlace-tienda:hover {
-            background-color: #6baaed;
-            color: #fff;
-        }
-
-        /* --- Buscador y Contenedor de Filtros --- */
-        .filtros-container {
-            margin-bottom: 20px;
-            display: flex;           /* Activa flexbox para alinear elementos fácilmente */
-            justify-content: center; /* Centra el buscador horizontalmente */
-            align-items: center;     /* Alinea verticalmente */
-            gap: 15px;               /* Espacio de separación entre el input y otros elementos */
-            width: 100%;             
-        }
-
-        #buscador-texto {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-        }
-        
-        #indice .summary { background-color: #e0e0e0; }
-        .detalle { background-color: #f8f9fa; }
-
-        /* =========================================================
-           8. ADAPTACIÓN A MÓVILES (FORMATO TARJETA)
-           Esto se activa automáticamente cuando la pantalla es menor a 768px (Teléfonos y Tablets pequeñas)
-           ========================================================= */
-        @media screen and (max-width: 768px) {
-            
-            /* Quitamos restricciones de la tabla general */
-            .table-container {
-                overflow-x: visible;
-                border: none;
-                box-shadow: none;
-            }
-
-            table {
-                min-width: 100%; 
-            }
-
-            /* Ocultamos las cabeceras tradicionales porque no caben en una pantalla estrecha */
-            thead {
-                display: none; 
-            }
-
-            /* Transformamos cada Fila (tr) en una Tarjeta independiente tipo bloque */
-            tr {
-                display: block;
-                margin-bottom: 20px;
-                border: 1px solid #ccc;
-                border-radius: 8px;
-                padding: 10px;
-                background-color: white !important; /* Forzamos fondo blanco para limpiar los colores alternos (zebra striping) en móvil */
-            }
-
-            /* 🔴 CORRECCIÓN CRÍTICA PARA EL ANCHO EN MÓVIL 🔴 */
-            /* Forzamos a que todas las celdas ignoren el max-width del escritorio para evitar textos cortados */
-            td, .multiline, .single-line {
-                max-width: 100% !important; 
-                width: 100% !important;
-                white-space: pre-line !important; /* Todo el texto debe fluir natural hacia abajo adaptándose a la pantalla */
-                overflow: visible !important;
-                text-overflow: clip !important;
-                box-sizing: border-box; /* Evita que el relleno interior (padding) empuje el texto fuera de la tarjeta */
-            }
-
-            /* Estilizamos cada Celda (td) como si fuera un bloque de información dentro de la tarjeta */
-            td {
-                display: block;
-                text-align: left !important; 
-                border: none;
-                border-bottom: 1px solid #eee; /* Línea separadora tenue entre datos del mismo producto */
-                position: static !important; /* Desactivamos el comportamiento "pegajoso" de las columnas de escritorio */
-                background: transparent !important;
-                box-shadow: none !important;
-                padding: 12px 4px !important; 
-            }
-
-            /* Quitamos la línea separadora al último dato de la tarjeta para que el final quede limpio */
-            td:last-child {
-                border-bottom: none;
-            }
-
-            /* 🌟 LA MAGIA DEL MÓVIL: Inyectamos el título de la columna ANTES del dato 🌟 */
-            td::before {
-                content: attr(data-label); /* Coge el texto del atributo 'data-label' que generamos en el JavaScript */
-                display: block; 
-                float: none; 
-                font-weight: 900; /* Negrita muy pesada para diferenciar claramente el título del valor real */
-                color: black; 
-                text-transform: capitalize;
-                margin-bottom: 4px; /* Separación vertical entre el título y el valor */
-                font-size: 1.2rem; 
-            }
-        }
-    </style>
-    <!--Color del navegador-->
-    <meta name="theme-color" content="#ededed">
-    <!-- Script de carga dinámica -->
-    <!-- <script src="noURL"></script> -->
-    <!-- redireccion mantenimiento _excepción de web-->
-    <!--
-    <script>
-        fetch('/config.json')
-            .then(response => response.json())
-            .then(data => {
-                const ahora = new Date();
-                const fin = new Date(data.fechaFin);
+            :root {
+                /* Colores de estructura general */
+                --border-color: #e0e0e0;
+                --header-bg: #f8f9fa;
+                --header-group-bg: #d6d2d2;
+                --row-hover: #f1f3f5;
+                --sticky-col-bg: #ffffff;
                 
-                if (data.mantenimientoActivo && ahora < fin) {
-                    window.location.href = "/mantenimiento.html";
+                /* Colores corporativos para Televisión (Tonos Azules) */
+                --tv-odd: #f4f9ff;
+                --tv-even: #e6f0fa;
+                --tv-hover: #d0e4f7;
+                
+                /* Colores corporativos para Sonido (Tonos Verdes) */
+                --snd-odd: #f4fcf5;
+                --snd-even: #e6f5e9;
+                --snd-hover: #cce8d1;
+            }
+
+            /* --- Logo principal --- */
+            #imglogo {
+                width: 250px; /* Tamaño fijo pero seguro para evitar desbordes */
+                display: block; 
+                margin-left: auto; 
+                margin-right: auto; /* Centrado automático */
+            }
+
+            /* =========================================================
+            1. CLASES DE APOYO PARA TEXTO EN CELDAS
+            ========================================================= */
+            
+            /* Columna con salto de línea (Ideal para textos largos como Asistentes o Modos) */
+            .multiline {
+                white-space: pre-line !important; /* Permite saltos de línea naturales */
+                word-break: normal !important;    
+                max-width: 100px; /* Evita que la columna crezca infinitamente a lo ancho */
+            }
+
+            /* Columna normal (Mantiene el comportamiento de línea única sin romper) */
+            .single-line {
+                white-space: nowrap !important;
+            }
+
+            /* =========================================================
+            2. CONTENEDOR PRINCIPAL DE LA TABLA
+            ========================================================= */
+            .table-container {
+                width: 100%; 
+                overflow-x: auto; /* Activa el scroll horizontal si la tabla es muy ancha */
+                isolation: isolate; /* Crea un nuevo contexto de apilamiento para que los z-index funcionen bien */
+                border-radius: 8px; /* Bordes redondeados del contenedor */
+                margin-bottom: 30px;
+                -webkit-overflow-scrolling: touch; /* Scroll suave en dispositivos iOS (iPhone/iPad) */
+                position: relative;
+                border: 1px solid black;
+            }
+
+            /* =========================================================
+            3. ESTILOS BASE DE LA TABLA
+            ========================================================= */
+            table {
+                border-collapse: collapse; /* Une los bordes de las celdas para que no haya huecos blancos */
+                width: 100%; 
+            }
+
+            th, td {
+                padding: 12px 16px; /* Espaciado interior de las celdas (Vertical, Horizontal) */
+                border-bottom: 1px solid var(--border-color);
+                border-right: 1px solid var(--border-color);
+                white-space: nowrap;      
+                overflow: visible;         
+                text-overflow: ellipsis;  
+            }
+
+            th:last-child, td:last-child {
+                border-right: none; /* Quitamos el borde derecho de la última columna para no duplicar la línea del contenedor */
+            }
+
+            /* =========================================================
+            4. CABECERAS FIJAS (STICKY HEADERS)
+            ========================================================= */
+            
+            /* --- Fila 1: Cabecera de Grupos (Ej: "Calidad de Imagen") --- */
+            thead tr:first-child th {
+                background-color: var(--header-group-bg);
+                font-weight: bold;
+                color: black;
+                position: sticky; /* Se queda pegada al hacer scroll vertical hacia abajo */
+                top: 0; /* Pegada exactamente al techo */
+                z-index: 20 !important; /* Nivel de profundidad alto para que pase por encima de las filas de productos */
+                border: none; 
+                box-shadow: inset 1px 0 0 0 black, inset 0 -1px 0 0 black;
+                text-align: center;
+            }
+
+            /* --- Fila 2: Cabecera de Columnas (Ej: "Tipo de Panel", "HDR") --- */
+            thead tr:nth-child(2) th {
+                background-color: var(--header-bg) !important;
+                color: black;
+                position: sticky;
+                top: 43px; /* ATENCIÓN: Esta altura asume que la 1º fila mide 43px. Si el texto crece, esta medida debe ajustarse */
+                z-index: 19 !important; /* Un punto menos que la fila de arriba para que se deslice por debajo de ella si hiciera falta */
+                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            }
+
+            /* =========================================================
+            5. COLUMNA FIJA LATERAL (SCROLL HORIZONTAL)
+            ========================================================= */
+            
+            /* --- Columna congelada "Gama" (Actualmente es la Columna 2) --- */
+            /* Nota: Cambia todos los 'nth-child(2)' por 'nth-child(3)' si prefieres congelar el "Modelo" */
+            tbody td:nth-child(2), 
+            thead tr:nth-child(2) th:nth-child(2) {
+                position: sticky; /* Se queda pegada al hacer scroll hacia la derecha */
+                left: 0; /* Pegada a la pared izquierda */
+                z-index: 5;
+                font-weight: bold;
+                box-shadow: 2px 0 5px rgba(0,0,0,0.05); /* Sombra para indicar que está flotando sobre el resto de la tabla */
+            }
+
+            /* Fondos específicos para la columna fija */
+            tbody td:nth-child(2) { background-color: var(--sticky-col-bg); }
+            /* La intersección (Esquina): Necesita el z-index más alto de todos (21) para no ser pisada ni por el scroll vertical ni por el horizontal */
+            thead tr:nth-child(2) th:nth-child(2) { background-color: var(--header-bg); z-index: 21 !important; }
+
+            /* =========================================================
+            6. COLORES ALTERNOS PARA FILAS (ZEBRA STRIPING)
+            ========================================================= */
+            
+            /* --- Colores alternos TV --- */
+            tr.row-tv-odd td { background-color: var(--tv-odd); }
+            tr.row-tv-even td { background-color: var(--tv-even); }
+            tr.row-tv-odd:hover td, tr.row-tv-even:hover td { background-color: var(--tv-hover); }
+            
+            /* Forzamos el color en la columna pegajosa para que no se vea blanca al hacer hover o alternar */
+            tr.row-tv-odd td:nth-child(2) { background-color: var(--tv-odd); }
+            tr.row-tv-even td:nth-child(2) { background-color: var(--tv-even); }
+            tr.row-tv-odd:hover td:nth-child(2), tr.row-tv-even:hover td:nth-child(2) { background-color: var(--tv-hover); }
+
+            /* --- Colores alternos Sonido --- */
+            tr.row-snd-odd td { background-color: var(--snd-odd); }
+            tr.row-snd-even td { background-color: var(--snd-even); }
+            tr.row-snd-odd:hover td, tr.row-snd-even:hover td { background-color: var(--snd-hover); }
+            
+            tr.row-snd-odd td:nth-child(2) { background-color: var(--snd-odd); }
+            tr.row-snd-even td:nth-child(2) { background-color: var(--snd-even); }
+            tr.row-snd-odd:hover td:nth-child(2), tr.row-snd-even:hover td:nth-child(2) { background-color: var(--snd-hover); }
+
+            /* =========================================================
+            7. ELEMENTOS INTERACTIVOS (BOTONES Y BUSCADOR)
+            ========================================================= */
+            
+            /* --- Botón "Ver en ECI" --- */
+            a.enlace-tienda {
+                color: #0056b3;
+                text-decoration: none;
+                padding: 4px 8px;
+                border: 1px solid #0056b3;
+                border-radius: 4px;
+                transition: all 0.3s ease; /* Animación suave de cambio de color al pasar el ratón */
+                display: inline-block;
+            }
+
+            a.enlace-tienda:hover {
+                background-color: #6baaed;
+                color: #fff;
+            }
+
+            /* --- Buscador y Contenedor de Filtros --- */
+            .filtros-container {
+                margin-bottom: 20px;
+                display: flex;           /* Activa flexbox para alinear elementos fácilmente */
+                justify-content: center; /* Centra el buscador horizontalmente */
+                align-items: center;     /* Alinea verticalmente */
+                gap: 15px;               /* Espacio de separación entre el input y otros elementos */
+                width: 100%;             
+            }
+
+            #buscador-texto {
+                width: 100%;
+                padding: 12px;
+                border: 1px solid var(--border-color);
+                border-radius: 6px;
+            }
+            
+            #indice .summary { background-color: #e0e0e0; }
+            .detalle { background-color: #f8f9fa; }
+
+            /* =========================================================
+            8. ADAPTACIÓN A MÓVILES (FORMATO TARJETA)
+            Esto se activa automáticamente cuando la pantalla es menor a 768px (Teléfonos y Tablets pequeñas)
+            ========================================================= */
+            @media screen and (max-width: 768px) {
+                
+                /* Quitamos restricciones de la tabla general */
+                .table-container {
+                    overflow-x: visible;
+                    border: none;
+                    box-shadow: none;
                 }
-            });
-    </script>
-    -->
-</head>
-    <body>
-        <div class="content">
-            <!--encabezado-navegacion-->
-            <nav role="navigation">
-                <div id="menuToggle">
-                    <input type="checkbox" />			
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <ul id="menu">
-                        <li class="active"><a href="tv-sonido.html">▻ Inicio</a></li>
-                        <li><a href="#Televisores">📺 Televisores</a></li>
-                        <li><a href="#Sonido">🔊 Sonido</a></li>
-                        <li><a href="#Glosario">📝 Glosario</a></li>
-                    </ul>
+
+                table {
+                    min-width: 100%; 
+                }
+
+                /* Ocultamos las cabeceras tradicionales porque no caben en una pantalla estrecha */
+                thead {
+                    display: none; 
+                }
+
+                /* Transformamos cada Fila (tr) en una Tarjeta independiente tipo bloque */
+                tr {
+                    display: block;
+                    margin-bottom: 20px;
+                    border: 1px solid #ccc;
+                    border-radius: 8px;
+                    padding: 10px;
+                    background-color: white !important; /* Forzamos fondo blanco para limpiar los colores alternos (zebra striping) en móvil */
+                }
+
+                /* 🔴 CORRECCIÓN CRÍTICA PARA EL ANCHO EN MÓVIL 🔴 */
+                /* Forzamos a que todas las celdas ignoren el max-width del escritorio para evitar textos cortados */
+                td, .multiline, .single-line {
+                    max-width: 100% !important; 
+                    width: 100% !important;
+                    white-space: pre-line !important; /* Todo el texto debe fluir natural hacia abajo adaptándose a la pantalla */
+                    overflow: visible !important;
+                    text-overflow: clip !important;
+                    box-sizing: border-box; /* Evita que el relleno interior (padding) empuje el texto fuera de la tarjeta */
+                }
+
+                /* Estilizamos cada Celda (td) como si fuera un bloque de información dentro de la tarjeta */
+                td {
+                    display: block;
+                    text-align: left !important; 
+                    border: none;
+                    border-bottom: 1px solid #eee; /* Línea separadora tenue entre datos del mismo producto */
+                    position: static !important; /* Desactivamos el comportamiento "pegajoso" de las columnas de escritorio */
+                    background: transparent !important;
+                    box-shadow: none !important;
+                    padding: 12px 4px !important; 
+                }
+
+                /* Quitamos la línea separadora al último dato de la tarjeta para que el final quede limpio */
+                td:last-child {
+                    border-bottom: none;
+                }
+
+                /* 🌟 LA MAGIA DEL MÓVIL: Inyectamos el título de la columna ANTES del dato 🌟 */
+                td::before {
+                    content: attr(data-label); /* Coge el texto del atributo 'data-label' que generamos en el JavaScript */
+                    display: block; 
+                    float: none; 
+                    font-weight: 900; /* Negrita muy pesada para diferenciar claramente el título del valor real */
+                    color: black; 
+                    text-transform: capitalize;
+                    margin-bottom: 4px; /* Separación vertical entre el título y el valor */
+                    font-size: 1.2rem; 
+                }
+            }
+		</style>
+	</head>
+	<body>
+		<div class="content">
+			<!--encabezado-->
+			<header>
+				<!--encabezado-navegacion-->
+				<nav role="navigation" open>
+					<div id="menuToggle">
+						<input type="checkbox" />			
+						<span></span>
+						<span></span>
+						<span></span>
+						<ul id="menu">
+							<li class="active"><a href="Landing.html">▻ Inicio</a></li>
+							<li><a href="#Android">📱 Android</a></li>
+							<li><a href="#AppleiPhone"> iPhone</a></li>
+                            <li><a href="#Windows">💻 Windows</a></li>
+                            <li><a href="#mac"> Mac</a></li>
+                            <li><a href="#AppleRefurbished_webApple"> Mac - reacondicionados</a></li>
+                            <li><a href="#Portatiles14pulgadas">💻 Portátiles 14"</a></li>
+                            <li><a href="#tv-sonido">🔹 TV-sonido</a></li>
+                            <li><a href="#Televisores">📺 Televisores</a></li>
+                            <li><a href="#Sonido">🔊 Sonido</a></li>
+                            <li><a href="#Glosario">📝 Glosario</a></li>
+						</ul>
+					</div>
+					<div class="logoTitulo">
+						<span onclick="window.open('Landing.html', '_self');" style="cursor:pointer;">
+                            <img type="png" id="imglogo" src="img/eyewebsLogoFavicon.png" alt="EYE webs Logo"/>
+                        </span>
+						<h1 id="titulo">El recomendador</h1>
+					</div>
+				</nav>
+			</header>
+			<!--fin encabezado-->
+			<br/>
+			<!--contenido de pagina de pagina-->
+			<div class="contentb">
+                <!-- Selector de Dispositivos -->
+				<div id="dispositivos">
+					<table class="productos">
+						<!-- Eliminado tfoot: el texto ahora está integrado bajo la imagen -->
+						<tbody class="productos">
+							<tr>
+								<!-- Bloque Android -->
+								<th onclick="window.open('#Android', '_self');">
+									<img class="logo-seleccion" src="img/Logo-Android.png" alt="Android">
+									<span class="texto-seleccion">Android</span>
+								</th>
+								<!-- Bloque Apple -->
+								<th onclick="window.open('#AppleiPhone', '_self');">
+									<img class="logo-seleccion" src="img/Logo-Apple.png" alt="Apple iPhone">
+									<span class="texto-seleccion">Apple iPhone</span>
+								</th>
+								<!-- Bloque Ordenadores -->
+								<th onclick="window.open('#Windows', '_self');">
+									<img class="logo-seleccion" src="img/Logo-ordenador.png" alt="Ordenadores">
+									<span class="texto-seleccion">Ordenadores Windows</span>
+								</th>
+                                <th onclick="window.open('#mac', '_self');">
+									<img class="logo-seleccion" src="img/Logo-ordenador.png" alt="Ordenadores">
+									<span class="texto-seleccion">Ordenadores Apple Mac</span>
+								</th>
+								<!-- Bloque TV-sonido -->
+								<th onclick="window.open('#tv-sonido', '_self');">
+									<img class="logo-seleccion" src="img/Logo_TV-sonido00000.png" alt="TV-sonido">
+									<span class="texto-seleccion">TV y sonido</span>
+								</th>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<br/>
+				<div id="seccionProductos">
+					<!-- TABLA dinamica de teléfonos -->
+					<div id="tablaProductos">
+						<!-- SECCIÓN Apple iPhone -->
+						<img type="png" style="display: block; margin-left: auto; margin-right: auto; width: 20%;" src="img/Logo_Apple-iPhone.png" alt="Apple iPhone Logo">
+						<h4 id="AppleiPhone" style="text-align: center;"><span onclick="window.open('#AppleiPhone', '_self')">Apple  iPhone</span> <sup onclick="window.open('#*', '_self')">[ * ]</sup>&nbsp;&nbsp;<sup onclick="window.open('https://support.apple.com/es-es/docs/iphone', '_blank')">[ *** ]</sup></h4>
+						<table class="productos">
+							<thead>
+								<tr>
+									<th>Producto</th>
+									<th>Tiendas</th>
+								</tr>
+							</thead>
+							<!-- El contenedor vacío donde el script inyectará el HTML -->
+							<tbody class="contenedor-dinamico" data-categoria="iPhone"></tbody>
+						</table>
+						<br/>
+						<hr style="border: 1px dashed"/>
+						<!-- SECCIÓN GAMA ALTA -->
+						<img type="png" style="display: block; margin-left: auto; margin-right: auto; width: 20%;" src="img/Logo-Android_2.png" alt="Android Logo">
+						<h4 id="Android" style="text-align: center;"><span onclick="window.open('#android', '_self')">Android</span> <sup onclick="window.open('#**', '_self')">**</sup></h4>
+						<h5 id="android_gama-alta" style="text-align: center;" onclick="window.open('#android_gama-alta', '_self')">Teléfonos gama alta</h5>
+						<table class="productos">
+							<thead>
+								<tr>
+									<th>Producto</th>
+									<th>Tiendas</th>
+								</tr>
+							</thead>
+							<tbody class="contenedor-dinamico" data-categoria="android" data-gama="alta">
+								<!-- El JS inyectará aquí marcas y productos de gama alta -->
+							</tbody>
+						</table>
+						<br/>
+						<hr style="border: 1px dashed"/>
+						<!-- SECCIÓN GAMA MEDIA -->
+						<h5 id="android_gama-media" style="text-align: center;" onclick="window.open('#android_gama-media', '_self')">Teléfonos gama media</h5>
+						<table class="productos">
+							<thead>
+								<tr>
+									<th>Producto</th>
+									<th>Tiendas</th>
+								</tr>
+							</thead>
+							<tbody class="contenedor-dinamico" data-categoria="android" data-gama="media">
+								<!-- El JS inyectará aquí marcas y productos de gama media -->
+							</tbody>
+						</table>
+					</div>
+					<!-- TABLA dinamica de ORDENADORES -->
+					 <!-- TABLA dinámica WINDOWS -->
+					 <h3 id="Windows" style="text-align: center;"><a href="#Windows" style="color: black; text-decoration: unset;">Ordenadores Windows</a></h3>
+					 <img type="png" style="  display: block; margin-left: auto; margin-right: auto; width: 200px;" src="img/Logo_Windows-11_small.png" alt="Microsoft Windows 11 Logo"><br/>
+					 <table class="productos">
+						 <thead>
+							 <tr>
+								 <th>Producto</th>
+								 <th>Tiendas</th>
+							 </tr>
+						 </thead>
+						 <tbody class="contenedor-dinamico" data-categoria="Windows">
+							 <!-- El JS inyectará aquí los ordenadores Windows agrupados por marca-->
+						 </tbody>
+					 </table>
+					 <br/>
+					 <hr style="border: 2px dashed #ccc;"/>
+					 <br/>
+					 <!-- TABLA dinámica MAC -->
+					 <h3 id="mac" style="text-align: center;"><a href="#mac" style="color: black; text-decoration: unset;">Ordenadores Mac de Apple </a>&nbsp;&nbsp;<sup onclick="window.open('https://support.apple.com/es-es/102767', '_blank')">[ * ]</sup>&nbsp;&nbsp;<sup onclick="window.open('https://support.apple.com/es-es/docs/mac', '_blank')">[ ** ]</sup> </h3>
+					 <img type="png" style="  display: block; margin-left: auto; margin-right: auto; width: 200px;" src="img/Logo_Apple-macOS_small.png" alt="Apple macOS Logo"><br/>
+					 <table class="productos">
+						 <thead>
+							 <tr>
+								 <th>Producto</th>
+								 <th>Tiendas</th>
+							 </tr>
+						 </thead>
+						 <tbody class="contenedor-dinamico" data-categoria="mac" >
+							 <!-- El JS inyectará aquí los Mac agrupados por modelo-->
+						 </tbody>
+					 </table>
+				</div>
+				<div  id="AppleRefurbished_webApple" class="productos" >
+                    <h4 style="text-align: center;"><a href="#AppleRefurbished_webApple" style="color: black; text-decoration: unset;">Apple Mac - Reacondicionados</a></h4>
+                    <p >
+                        <span>¿Búscas un Mac más barato? Los reacondicionados de Apple son tu mejor opción.</span><br/>
+                        <span>- Los reacondicionados de Apple son productos revisados con piezas nuevas y originales.</span><br/>
+                        <span>- Se vuelven a embalar en una caja nueva (caja blanca) con todos los accesorios y cables.</span><br/><br/>
+                        <span><a href="https://www.apple.com/es/shop/refurbished/mac/1-tb-256-gb-512-gb-16-gb-18-gb-24-gb-32-gb-36-gb-64-gb" target="_blank" rel="noopener noreferrer" title="Apple Refurbished - Mac">Pulsa aquí para ir a la página de Mac reacondicionados de Apple</a></span>
+                    </p>
                 </div>
-                <div class="logoTitulo">
-                    <span onclick="location.reload(true);" style="cursor:pointer;" >
-                        <img class="logo-seleccion" src="img/Logo_TV-sonido00000.png" alt="TV-sonido">
-                        <img type="png" id="imglogo" src="img/Samsung_Orig_Wordmark_BLUE_RGB.png" alt="Samsung blue RGB logo"/>
-                    </span>
-                    <h1 style="text-align: center;">Catálogo de televisores y sonido <sup onclick="window.open('#*descargo-responsabilidad', '_self')">*</sup></h1>
+                <div  id="Portatiles14pulgadas" class="productos" >
+                    <h4 style="text-align: center;"><a href="#Portatiles14pulgadas" style="color: black; text-decoration: unset;">Portatiles de 14 pulgadas</a></h4>
+                    <p >
+                        <span>¿Búscas un portátil de 14 pulgadas? Puedes encontrar otros portátiles &nbsp; <br> que no se encuentran aquí en las siguientes tiendas:</span><br/>
+                        <span>- <a href="https://www.elcorteingles.es/electronica/ordenadores/portatiles/attr.screen_size::13.2-%3E15.3/?sorting=priceDesc" target="_blank" rel="noopener noreferrer" title="El Corte Inglés - Portátiles de 14 pulgadas">El Corte Inglés </a></span><br/>
+                        <span>- <a href="https://www.mediamarkt.es/es/category/port%C3%A1tiles-de-hasta-14-155.html?filter=marketplace:MediaMarkt&sort=currentprice+desc" target="_blank" rel="noopener noreferrer" title="Media Markt - Portátiles de 14 pulgadas"> Media Markt</a></span><br/>
+                    </p>
                 </div>
-            </nav>
-            <!--fin encabezado-->
-            <br/>
-            <!--contenido de pagina de pagina-->
-            <div class="contentb">
-                <p>Especificaciones técnicas detalladas.  Desliza hacia la derecha para ver más si estás en un dispositivo con pantalla grande.</p>
+				<br/>
+                <hr style="border: 1px dashed"/>
+                <br/>
+                 <!-- TABLA dinámica TV-sonido -->
+                <div>
+                    <div id="tv-sonido" class="logoTitulo">
+                        <span onclick="location.reload(true);" style="cursor:pointer;" >
+                            <img class="logo-seleccion" src="img/Logo_TV-sonido00000.png" alt="TV-sonido">
+                            <img type="png" id="imglogo" src="img/Samsung_Orig_Wordmark_BLUE_RGB.png" alt="Samsung blue RGB logo"/>
+                        </span>
+                        <h1 style="text-align: center;">Catálogo de televisores y sonido <sup onclick="window.open('#*descargo-responsabilidad', '_self')">*</sup></h1>
+                    </div>
+                    <p>Especificaciones técnicas detalladas.  Desliza hacia la derecha para ver más si estás en un dispositivo con pantalla grande.</p>
                     <p><a href="#Glosario">📝 Pulsa para ir al Glosario</a></p>
                     <div class="filtros-container">
                         <input type="text" id="buscador-texto" placeholder="🔍 Buscar modelo (ej. 65S95H), gama (ej. S95H) o referencia (ej. 114)...">
@@ -342,24 +501,45 @@
                             <tbody id="tabla-snd-body"></tbody>
                         </table>
                     </div>
-            </div>
-            <!--fin contenido de pagina de pagina-->
-            <!--pie de pagina-->
-            <footer>
-                <span style="text-align: left;">
+                </div>
+			</div>
+			<!--fin contenido de pagina de pagina-->
+			<!--pie de pagina-->
+			<footer>
+				<p style="text-align: left;">
                     <!-- iria aquí cualquier asterisco * --> 
-                     <!-- Sección de Glosario -->
+                    <hr style="border: none; border-top: 1px solid #bbb;">
+                    <!-- Sección de Glosario -->
                     <div id="indice">
                         <div class="summary">
                             <!-- para que esté siempre abierto, añade la etiqueta open <details open > -->
                             <details open >
                                 <summary>
-                                        <i id="Glosario">
-                                            <b><sup>*</sup>Glosario<sup>*</sup>:</b>
-                                        </i>
-                                    <br/>
+                                    <b id="Glosario">📝 Glosario:</b>
                                 </summary>
                                 <div class="detalle">
+                                    <p>
+                                        <span id="*"><i><sup>*</sup>Los iPhone son teléfonos de gama alta y gama alta premium (modelo pro max).</i></span><br/>
+                                        <span id="**"><i><sup>**</sup>Los Android tienen distintas gamas, desde la gama baja hasta la gama alta premium.</i></span>
+                                    </p>
+                                    <hr style="border: none; border-top: 1px dashed #bbb;">
+                                    <p>
+                                        <hr style="border: 1px line"/>
+                                        <span><i>Intel generaciones 10,11,12,13,14; series 100, 200, 300.</i></span><br/>
+                                        <span><i> &#10141; Intel i3 - gama baja; <br> &#10141; i5 - gama media; <br> &#10141; i7 - gama alta; <br> &#10141; i9 - gama premium</i></span><br/>
+                                        <span><i>Intel Core e Intel Core Ultra son de la 14ªGen y posteriores <a href="https://www.intel.la/content/www/xl/es/products/docs/processors/core-vs-ultra.html" target="_blank" rel="noopener noreferrer" title="Diferencias entre los procesadores Intel Core e Intel Core Ultra">+info aquí</a></i></span><br/>
+                                        <hr style="border: 1px dotted"/>
+                                        <span><i>AMD Ryzen series 3000, 4000, 5000, 6000, 7000, 8000, 9000, 200, AI 300, AI Max 300.</i></span><br/>
+                                        <span><i> &#10141; AMD Ryzen 3 - gama baja; <br> &#10141; Ryzen 5 - gama media; <br> &#10141; Ryzen 7 - gama alta; <br> &#10141; Ryzen 9 - gama premium</i></span><br/>
+                                        <span><i>AMD Ryzen para portátiles <a href="https://www.amd.com/es/products/processors/laptop/ryzen.html#specs" target="_blank" rel="noopener noreferrer" title="AMD Ryzen para portátiles de primer nivel">+info aquí</a></i></span><br/>
+                                        <hr style="border: 1px dotted"/>
+                                        <span><i>Apple Chip M1, M2, M3, M4, M5.</i></span><br/>
+                                        <span><i> &#10141; M1, M1 Pro, M1 Max, M1 Ulra; <br> &#10141; M2, M2 Pro, M2 Max, M2 Ulra; <br> &#10141; M3, M3 Pro, M3 Max, M3 Ultra; <br> &#10141; M4, M4 Pro, M4 Max; <br> &#10141; M5, M5 Pro, M5 Max, M5 Ultra; <br> &#10141; M6</i></span><br/>
+                                        <hr style="border: 1px dashed"/>
+                                        <span><i>Los procesadores intel series 100 y sucerores y los Ryzen 200 y sucesores son equivalentes</i></span>
+                                        <hr style="border: 1px line"/>
+                                    </p>
+                                    <hr style="border: none; border-top: 1px dashed #bbb;">
                                     <p>
                                         <span>
                                             <b> -- Gaming --</b> <br>
@@ -458,11 +638,10 @@
                             <!-- para que esté siempre abierto, añade la etiqueta open <details open > -->
                             <details open >
                                 <summary>
-                                    <i id="*descargo-responsabilidad">
-                                        <b><sup>*</sup>Descargo de responsabilidad:</b>
-                                    </i>
-                                <br/>
-                            </summary>
+                                        <i id="*descargo-responsabilidad">
+                                            <b><sup>*</sup>Descargo de responsabilidad:</b>
+                                        </i>
+                                    <br/>
                                 </summary>
                                 <div class="detalle">
                                     <p>
@@ -475,22 +654,27 @@
                             </details>
                         </div>
                     </div>
-                </span>
+                </p>
                 <!-- Botón Imprimir integrado en el pie -->
                 <p class="printPageButton">
                     <button hidden onclick="window.print();"> Imprimir 🖨️ página 📝 </button>
                     <button onclick="alert('⚠️ AVISO: &nbsp&nbsp No se recomienda imprimir. &nbsp&nbsp Web no adaptada para impresión ⚠️')"> Imprimir 🖨️ página 📝 </button>
-                    
                 </p>
-                <b style="text-decoration: underline; text-decoration-style: dotted;">Última actualización: 17-09-2026 00:15h</b>
+                <p>
+					<span><b style="text-decoration: underline; text-decoration-style: dotted;">Última actualización: 17-09-2026 00:15h</b></span><br/>
+					<span>
+						<i>La web se va actualizando lo antes posible.</i><br/>
+						<i>¡Disculpe las molestias!</i>
+					</span>
+				</p>
                 <p>© 2026 | diseñado por: E.Y.E.</p>
                 <!-- El botón de subir suele ir al final para que cargue lo último -->
                 <a href='#' class="stt" title="Subir arriba"></a>
-            </footer>
-            <!--fin pie de pagina-->
-        </div>
-        <!-- script de catalogo de gama marrón -->
-        <script>
+			</footer>
+			<!--fin pie de pagina-->
+		</div>
+         <!-- script de catalogo de gama marrón -->
+         <script>
             /* Última actualización: 23-06-2026 22:55h */
             /* script de catalogo de gama marrón */
             const MODO_DEBUG = false;
@@ -791,5 +975,5 @@
             });
         </script>
         <!-- fin script de catalogo de gama marrón -->
-    </body>
+	</body>
 </html>
