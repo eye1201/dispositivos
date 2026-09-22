@@ -317,9 +317,9 @@
                             <li><a href="#mac"> Mac</a></li>
                             <li><a href="#AppleRefurbished_webApple"> Mac - reacondicionados</a></li>
                             <li><a href="#Portatiles14pulgadas">💻 Portátiles 14"</a></li>
-                            <li><a href="#tv-sonido">⌲ 📺 TV y 🔊 sonido</a></li>
+                            <!--<li><a href="#tv-sonido">⌲ 📺 TV y 🔊 sonido</a></li>
                             <li><a href="#Televisores">📺 Televisores</a></li>
-                            <li><a href="#Sonido">🔊 Sonido</a></li>
+                            <li><a href="#Sonido">🔊 Sonido</a></li>-->
                             <li><a href="#Glosario">📝 Glosario</a></li>
 						</ul>
 					</div>
@@ -361,15 +361,17 @@
 									<span class="texto-seleccion">Ordenadores Apple Mac</span>
 								</th>
 								<!-- Bloque TV-sonido -->
+                                <!--
 								<th onclick="window.open('#tv-sonido', '_self');">
 									<img class="logo-seleccion" src="img/Logo_TV-sonido00000.png" alt="TV-sonido">
 									<span class="texto-seleccion">TV y sonido</span>
 								</th>
+                                -->
 							</tr>
 						</tbody>
 					</table>
 				</div>
-
+                <!-- TABLAS DINAMICAS PRODUCTO-->
 				<br/>
 				<div id="seccionProductos">
 					<!-- TABLA dinamica de teléfonos -->
@@ -421,37 +423,37 @@
 						</table>
 					</div>
 					<!-- TABLA dinamica de ORDENADORES -->
-					 <!-- TABLA dinámica WINDOWS -->
-					 <h3 id="Windows" style="text-align: center;"><a href="#Windows" style="color: black; text-decoration: unset;">Ordenadores Windows</a></h3>
-					 <img type="png" style="  display: block; margin-left: auto; margin-right: auto; width: 200px;" src="img/Logo_Windows-11_small.png" alt="Microsoft Windows 11 Logo"><br/>
-					 <table class="productos">
-						 <thead>
-							 <tr>
-								 <th>Producto</th>
-								 <th>Tiendas</th>
-							 </tr>
-						 </thead>
-						 <tbody class="contenedor-dinamico" data-categoria="Windows">
-							 <!-- El JS inyectará aquí los ordenadores Windows agrupados por marca-->
-						 </tbody>
-					 </table>
-					 <br/>
-					 <hr style="border: 2px dashed #ccc;"/>
-					 <br/>
-					 <!-- TABLA dinámica MAC -->
-					 <h3 id="mac" style="text-align: center;"><a href="#mac" style="color: black; text-decoration: unset;">Ordenadores Mac de Apple </a>&nbsp;&nbsp;<sup onclick="window.open('https://support.apple.com/es-es/102767', '_blank')">[ * ]</sup>&nbsp;&nbsp;<sup onclick="window.open('https://support.apple.com/es-es/docs/mac', '_blank')">[ ** ]</sup> </h3>
-					 <img type="png" style="  display: block; margin-left: auto; margin-right: auto; width: 200px;" src="img/Logo_Apple-macOS_small.png" alt="Apple macOS Logo"><br/>
-					 <table class="productos">
-						 <thead>
-							 <tr>
-								 <th>Producto</th>
-								 <th>Tiendas</th>
-							 </tr>
-						 </thead>
-						 <tbody class="contenedor-dinamico" data-categoria="mac" >
-							 <!-- El JS inyectará aquí los Mac agrupados por modelo-->
-						 </tbody>
-					 </table>
+                    <!-- TABLA dinámica WINDOWS -->
+                    <h3 id="Windows" style="text-align: center;"><a href="#Windows" style="color: black; text-decoration: unset;">Ordenadores Windows</a></h3>
+                    <img type="png" style="  display: block; margin-left: auto; margin-right: auto; width: 200px;" src="img/Logo_Windows-11_small.png" alt="Microsoft Windows 11 Logo"><br/>
+                    <table class="productos">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Tiendas</th>
+                            </tr>
+                        </thead>
+                        <tbody class="contenedor-dinamico" data-categoria="Windows">
+                            <!-- El JS inyectará aquí los ordenadores Windows agrupados por marca-->
+                        </tbody>
+                    </table>
+                    <br/>
+                    <hr style="border: 2px dashed #ccc;"/>
+                    <br/>
+                    <!-- TABLA dinámica MAC -->
+                    <h3 id="mac" style="text-align: center;"><a href="#mac" style="color: black; text-decoration: unset;">Ordenadores Mac de Apple </a>&nbsp;&nbsp;<sup onclick="window.open('https://support.apple.com/es-es/102767', '_blank')">[ * ]</sup>&nbsp;&nbsp;<sup onclick="window.open('https://support.apple.com/es-es/docs/mac', '_blank')">[ ** ]</sup> </h3>
+                    <img type="png" style="  display: block; margin-left: auto; margin-right: auto; width: 200px;" src="img/Logo_Apple-macOS_small.png" alt="Apple macOS Logo"><br/>
+                    <table class="productos">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Tiendas</th>
+                            </tr>
+                        </thead>
+                        <tbody class="contenedor-dinamico" data-categoria="mac" >
+                            <!-- El JS inyectará aquí los Mac agrupados por modelo-->
+                        </tbody>
+                    </table>
 				</div>
 				<div  id="AppleRefurbished_webApple" class="productos" >
                     <h4 style="text-align: center;"><a href="#AppleRefurbished_webApple" style="color: black; text-decoration: unset;">Apple Mac - Reacondicionados</a></h4>
@@ -465,15 +467,16 @@
                 <div  id="Portatiles14pulgadas" class="productos" >
                     <h4 style="text-align: center;"><a href="#Portatiles14pulgadas" style="color: black; text-decoration: unset;">Portatiles de 14 pulgadas</a></h4>
                     <p >
-                        <span>¿Búscas un portátil de 14 pulgadas? Puedes encontrar otros portátiles &nbsp; <br> que no se encuentran aquí en las siguientes tiendas:</span><br/>
-                        <span>- <a href="https://www.elcorteingles.es/electronica/ordenadores/portatiles/attr.screen_size::13.2-%3E15.3/?sorting=priceDesc" target="_blank" rel="noopener noreferrer" title="El Corte Inglés - Portátiles de 14 pulgadas">El Corte Inglés </a></span><br/>
+                        <span>¿Búscas un portátil de 14 pulgadas? Puedes encontrar otros portátiles &nbsp; <br> que no se encuentran aquí en las siguientes tiendas:</span><br/><br/>
+                        <span>- <a href="https://www.elcorteingles.es/electronica/ordenadores/portatiles/attr.screen_size::13.2-%3E15.3/?sorting=priceDesc" target="_blank" rel="noopener noreferrer" title="El Corte Inglés - Portátiles de 14 pulgadas">El Corte Inglés </a></span><br/><br/>
                         <span>- <a href="https://www.mediamarkt.es/es/category/port%C3%A1tiles-de-hasta-14-155.html?filter=marketplace:MediaMarkt&sort=currentprice+desc" target="_blank" rel="noopener noreferrer" title="Media Markt - Portátiles de 14 pulgadas"> Media Markt</a></span><br/>
                     </p>
                 </div>
 				<br/>
+                <!-- TABLA dinámica TV-sonido -->
+                <!--TV-sonido no será mostrado en el Landing general.
                 <hr style="border: 1px dashed"/>
                 <br/>
-                 <!-- TABLA dinámica TV-sonido -->
                 <div>
                     <div id="tv-sonido" class="logoTitulo">
                         <span onclick="window.location.hash = 'tv-sonido'; location.reload(true);" style="cursor:pointer;" >
@@ -502,13 +505,14 @@
                         </table>
                     </div>
                 </div>
+                -->
 			</div>
 			<!--fin contenido de pagina de pagina-->
 			<!--pie de pagina-->
 			<footer>
 				<p style="text-align: left;">
                     <!-- iria aquí cualquier asterisco * --> 
-                    <hr style="border: none; border-top: 1px solid #bbb;">
+                    <hr hidden style="border: none; border-top: 1px solid #bbb;">
                     <!-- Sección de Glosario -->
                     <div id="indice">
                         <div class="summary">
@@ -539,6 +543,7 @@
                                         <span><i>Los procesadores intel series 100 y sucerores y los Ryzen 200 y sucesores son equivalentes</i></span>
                                         <hr style="border: 1px line"/>
                                     </p>
+                                    <!--
                                     <hr style="border: none; border-top: 1px dashed #bbb;">
                                     <p>
                                         <span>
@@ -626,14 +631,14 @@
                                                 Instrucciones de uso y montaje del sistema Philips Hue: <br>
                                                 <a href="https://www.philips-hue.com/es-es/explore-hue/propositions/entertainment/sync-with-tv/sync-app" target="_blank" rel="noopener noreferrer">https://www.philips-hue.com/es-es/explore-hue/propositions/entertainment/sync-with-tv/sync-app</a> <br>
                                         </span>
-                                    </p>
+                                    </p> -->
                                 </div>
                             </details>
                         </div>
                     </div>
                     <hr style="border: none; border-top: 1px solid #bbb;">
                     <!-- Sección de descargo de responsabilidad -->
-                    <div id="indice">
+                    <div hidden id="indice">
                         <div class="summary">
                             <!-- para que esté siempre abierto, añade la etiqueta open <details open > -->
                             <details open >
@@ -657,11 +662,11 @@
                 </p>
                 <!-- Botón Imprimir integrado en el pie -->
                 <p class="printPageButton">
-                    <button hidden onclick="window.print();"> Imprimir 🖨️ página 📝 </button>
-                    <button onclick="alert('⚠️ AVISO: &nbsp&nbsp No se recomienda imprimir. &nbsp&nbsp Web no adaptada para impresión ⚠️')"> Imprimir 🖨️ página 📝 </button>
+                    <button onclick="window.print();"> Imprimir 🖨️ página 📝 </button>
+                    <button hidden onclick="alert('⚠️ AVISO: &nbsp&nbsp No se recomienda imprimir. &nbsp&nbsp Web no adaptada para impresión ⚠️')"> Imprimir 🖨️ página 📝 </button>
                 </p>
                 <p>
-					<span><b style="text-decoration: underline; text-decoration-style: dotted;">Última actualización: 17-09-2026 03:55h</b></span><br/>
+					<span><b style="text-decoration: underline; text-decoration-style: dotted;">Última actualización: 22-09-2026 23:55h</b></span><br/>
 					<span>
 						<i>La web se va actualizando lo antes posible.</i><br/>
 						<i>¡Disculpe las molestias!</i>
