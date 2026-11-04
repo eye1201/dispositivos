@@ -309,6 +309,12 @@
                         <li><a href="#Televisores">📺 Televisores</a></li>
                         <li><a href="#Sonido">🔊 Sonido</a></li>
                         <li><a href="#Glosario">📝 Glosario</a></li>
+                        <li><a href="#tv-restart">📝 Reinicio TV</a></li>
+                        <li><a href="#solar-cell-reset-pairing">📝 Mando Solar</a></li>
+                        <li><a href="#BT-pairing">📝 Bluetooth barras</a></li>
+                        <li><a href="#soundbar-reset">📝 Reset barras</a></li>
+                        <li><a href="#soundbar-conexion">📝 Re-conexión woofer</a></li>
+                        <li><a href="#contenido-caja-barras">📝 contenido caja</a></li>
                     </ul>
                 </div>
                 <div class="logoTitulo">
@@ -324,7 +330,13 @@
             <!--contenido de pagina de pagina-->
             <div class="contentb">
                 <p>Especificaciones técnicas detalladas.  Desliza hacia la derecha para ver más si estás en un dispositivo con pantalla grande.</p>
-                    <p><a href="#Glosario">📝 Pulsa para ir al Glosario</a></p>
+                    <p><a href="#Glosario">📝 Glosario</a></p>
+                    <p><a href="#tv-restart">📝 Reinicio forzoso de la TV</a></p>
+                    <p><a href="#solar-cell-reset-pairing">📝 Reseteo/Emparejamiento del mando solar (Solar Cell Reset/Pairing)</a></p>
+                    <p><a href="#BT-pairing">📝 Emparejamiento Bluetooth de barras de sonido y altavoces</a></p>
+                    <p><a href="#soundbar-reset">📝 ¿Cómo reiniciar la barra de sonido sin el control remoto?</a></p>
+                    <p><a href="#soundbar-conexion">📝 Conexión manual del subwoofer y los altavoces surround</a></p>
+                    <p><a href="#contenido-caja">📝 Contenido de las cajas de los televisores, barras de sonido y altavoces</a></p>
                     <div class="filtros-container">
                         <input type="text" id="buscador-texto" placeholder="🔍 Buscar modelo (ej. 65S95H), gama (ej. S95H) o referencia (ej. 114)...">
                     </div>
@@ -360,6 +372,12 @@
                                     <br/>
                                 </summary>
                                 <div class="detalle">
+                                    <!-- Botón para imprimir TODO el glosario -->
+                                    <p class="printPageButton">
+                                        <button onclick="imprimirSeccion('indice')" style="cursor: pointer;">
+                                            🖨️ Imprimir TODO el Glosario
+                                        </button>
+                                    </p>
                                     <p>
                                         <span>
                                             <b> -- Gaming --</b> <br>
@@ -447,6 +465,340 @@
                                                 <a href="https://www.philips-hue.com/es-es/explore-hue/propositions/entertainment/sync-with-tv/sync-app" target="_blank" rel="noopener noreferrer">https://www.philips-hue.com/es-es/explore-hue/propositions/entertainment/sync-with-tv/sync-app</a> <br>
                                         </span>
                                     </p>
+                                    <hr>
+                                    <p id="tv-restart">
+                                        <span id="tv-restart" style="text-align: center;"><b><a href="#tv-restart" style="color: black; text-decoration: unset;">Reinicio forzoso de la TV</a></b></span><br>
+                                        <span>Si el mando responde lentamente o la tv tarda mucho en abrir alguna aplicacion</span><br>
+                                        <span>Mantener pulsado el boton de encendido del mando hasta que la TV muestre el logo de Samsung, en ese momento dejar de pulsar el botón</span><br>
+                                    </p>
+                                    <hr>
+                                    <p id="solar-cell-reset-pairing">
+                                        <span id="solar-cell-reset-pairing" style="text-align: center;"><b><a href="#solar-cell-reset-pairing" style="color: black; text-decoration: unset;">Reseteo/Emparejamiento del mando solar (Solar Cell Reset/Pairing)</a></b></span><br>
+                                        <span>-- Emparejamiento de mando solar</span><br>
+                                        <span>1. Encender el televisor con el boton de encendido situado en el borde inferior de la TV</span><br>
+                                        <span>2. Mantener pulsado a la vez boton atras ↩️ y el de Play|Pausa ⏯ durante 2 a 5 segundos.</span><br>
+                                        <span>-- Reseteo de mando solar</span><br>
+                                        <span>Mantener pulsado a la vez boton atras ↩️ y el de OK 🆗 durante 15 a 20 segundos</span><br>
+                                    </p>
+                                    <hr>
+                                    <p id="BT-pairing">
+                                        <span id="BT-pairing" style="text-align: center;"><b><a href="#BT-pairing" style="color: black; text-decoration: unset;">Emparejamiento Bluetooth de barras de sonido y altavoces</a></b></span><br>
+                                        <span>-- Barra con botón de micrófono</span><br>
+                                        <span>1. Establecer la fuente en Bluetooth con el boton multifunción.</span><br>
+                                        <span>2. Mantener pulsado el boton de micrófono hasta que la barra se ponga en modo emparejamiento.</span><br>
+                                        <span>-- Barra sin botón de micrófono</span><br>
+                                        <span>1. Establecer la fuente en Bluetooth con el boton fuentes.</span><br>
+                                        <span>2. Mantener pulsado el boton de fuentes y el de bajar volumen hasta que la barra se ponga en modo emparejamiento.</span><br>
+                                    </p>
+                                    <hr>
+                                    <p id="soundbar-reset">
+                                        <span id="soundbar-reset" style="text-align: center;"><b><a href="#soundbar-reset" style="color: black; text-decoration: unset;">¿Cómo restablecer la barra de sonido sin el control remoto?</a></b></span><br>
+                                        <span>Con la barra de sonido encendida, presiona al tiempo los botones Volumen - y Volumen + en la barra de sonido; manténlos presionados sin soltarlos hasta que en la pantalla de la barra de sonido aparezca "INIT OK". (unos 5 segundos)</span><br>
+                                    </p>
+                                    <hr>
+                                    <p id="soundbar-conexion">
+                                        <span id="soundbar-conexion" style="text-align: center;"><b><a href="#soundbar-conexion" style="color: black; text-decoration: unset;">Conexión manual del subwoofer y los altavoces surround (mando necesario)</a></b></span><br>
+                                        <span>Antes de conectar manualmente las unidades de altavoces</span><br>
+                                        <span>• Asegúrese de que la soundbar, el subwoofer y los altavoces surround estén conectados a una toma de corriente.</span><br>
+                                        <span>• Asegúrese de que la soundbar esté apagada.</span><br>
+                                        <span>• Es posible que el altavoz surround no esté incluido en algunos modelos.</span><br>
+                                        <span>1. Mantenga presionado el botón ID SET en la parte posterior del subwoofer y los altavoces surround durante al menos 5 segundos. [ El indicador rojo de la parte trasera de cada altavoz se apagará y el indicador azul parpadeará rápidamente. ]</span><br>
+                                        <span>2. Mantenga presionado el botón Arriba del mando a distancia durante 5 segundos [El mensaje ID SET aparece brevemente en la pantalla de la soundbar y luego desaparece. Después del mensaje ID SET , la soundbar se encenderá automáticamente.]</span><br>
+                                        <span>3. Asegúrese de que el indicador LED LINK se vuelva azul (lo que indica una conexión exitosa) [Cuando la soundbar esté conectada correctamente al subwoofer y a los altavoces surround, el indicador LED LINK dejará de parpadear y se volverá azul fijo. ]</span><br>
+                                    </p>
+                                    <hr>
+                                    <p>
+                                        <table id="contenido-caja">
+                                            <tr style="text-align: center;">
+                                                <th colspan="2">
+                                                    <b><a href="#contenido-caja" style="color: black; text-decoration: unset;">Contenido de las cajas de los televisores, barras de sonido y altavoces</a></b>
+                                                    <!-- Botón para imprimir SOLO la parte de contenido cajas barras -->
+                                                    <button onclick="imprimirSeccion('contenido-caja')" style="cursor: pointer;">
+                                                        🖨️ Imprimir
+                                                    </button>
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th>Modelo</th>
+                                                <th>¿Qué hay en la caja?</th>
+                                            </tr>
+                                            <tr>
+                                                <th>8K(QN990H), Micro RGB(R95H/R85H), OLED</th>
+                                                <td>
+                                                    SolarCell Remote (Black), TM2660H, BN59-01519G <br> [mando solar con bateria extraible, *novedad 2026] <br>
+                                                    <img class="logo-seleccion" src="img/TM2660H_BN59-01519G.jpg" alt="SolarCell Remote (Black), TM2660H, BN59-01519G, mando solar con bateria extraible, *novedad 2026 ">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>The Frame Pro, The Frame</th>
+                                                <td>
+                                                    SolarCell Remote (White), TM2661H, BN59-01520F <br> [mando solar con bateria extraible, *novedad 2026] <br>
+                                                    <img class="logo-seleccion" src="img/TM2661H_BN59-01520F.jpg" alt="SolarCell Remote (White), TM2661H, BN59-01520F, mando solar con bateria extraible, *novedad 2026 ">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>The Movingstyle</th>
+                                                <td>
+                                                    SolarCell Remote (White), TM2561E, BN59-01482L <br> [mando solar] <br>
+                                                    <img class="logo-seleccion" src="img/TM2561E_BN59-01482L.jpg" alt="SolarCell Remote (White), TM2561E, BN59-01482L">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Neo QLED, M90H., M80H, U9500H, U9000H</th>
+                                                <td>
+                                                    SolarCell Remote (Black), TM2280A, BN59-01490L <br> [mando solar con botón de estrellitas] <br>
+                                                    <img class="logo-seleccion" src="img/TM2280A_BN59-01490L.jpg" alt="SolarCell Remote (Black), TM2280A, BN59-01490L">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>QN1EH, M70H, U8000H</th>
+                                                <td>
+                                                    IR Remote (Black), TM2240A, BN59-01484D <br> [mando de pilas sin micrófono] <br>
+                                                    <img class="logo-seleccion" src="img/TM2240A_BN59-01484D.jpg" alt="IR Remote (Black), TM2240A, BN59-01484D, mando infrarrojos sin micrófono a pilas">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>M60H, U7000H, M1EH, F6000F, H5000F</th>
+                                                <td>
+                                                    Standard Remote (Black), TM1240A, BN59-01483C <br> [mando clásico] <br>
+                                                    <img class="logo-seleccion" src="img/TM1240A_BN59-01483C.jpg" alt="Standard Remote (Black), TM1240A, BN59-01483C, mando clásico">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Barra Q990</th>
+                                                <td>
+                                                    <li>4 cables de corriente</li>
+                                                    <li>Cable HDMI</li>
+                                                    <li>Soundbar Remote Control (Mando a distancia)</li>
+                                                    <li>Guía de montaje en pared</li>
+                                                    <li>Soporte de montaje en pared x2</li>
+                                                    <li>Tornillo (M4 x L10) x2</li>
+                                                    <li>Tornillo de sujeción x2 </li>
+                                                    <li>Pata de goma x4 (para poner sobre peana de TV)</li>
+                                                    <li>
+                                                        <span>-- La pared utilizada para montar los altavoces surround <br>debe poder soportar al menos 8 kg.</span><br>
+                                                        <span>--- Tamaño del orificio: se adapta a tornillos UNC de 1/4 a 20</span><br>
+                                                        <span>---- Tornillo estándar: 6,35 mm de diámetro, 1,27 mm de paso</span><br>
+                                                        <span>---- Longitud: 18 mm</span><br>
+                                                        <span>---- Cantidad: Izquierdo 1 / Derecho 1</span>
+                                                    </li>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Barra Q930</th>
+                                                <td>
+                                                    <li>4 cables de corriente</li>
+                                                    <li>Cable HDMI</li>
+                                                    <li>Soundbar Remote Control (Mando a distancia)</li>
+                                                    <li>Guía de montaje en pared</li>
+                                                    <li>Soporte de montaje en pared x2</li>
+                                                    <li>*Tornillo para montaje en pared (M5 X L55) x2 *No incluido*</li>
+                                                    <li>*Taco para tornillo x2 *No incluido*</li>
+                                                    <li>Tornillo de sujeción x2 (asegura el encaje del soporte en la pared)</li>
+                                                    <li>Tornillo (M4 x L10) x2 (fijan la barra en el soporte)</li>
+                                                    <li>Pata de goma x4 (para poner sobre peana de TV)</li>
+                                                    <li>
+                                                        <span>-- La pared utilizada para montar los altavoces surround <br>debe poder soportar al menos 8 kg.</span><br>
+                                                        <span>--- Tamaño del orificio: se adapta a tornillos UNC de 1/4 a 20</span><br>
+                                                        <span>---- Tornillo estándar: 6,35 mm de diámetro, 1,27 mm de paso</span><br>
+                                                        <span>---- Longitud: 18 mm</span><br>
+                                                        <span>---- Cantidad: Izquierdo 1 / Derecho 1</span>
+                                                    </li>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Barra QS90</th>
+                                                <td>
+                                                    <li>1 cable de corriente</li>
+                                                    <li>Cable HDMI</li>
+                                                    <li>Soundbar Remote Control (Mando a distancia)</li>
+                                                    <li>Guía de montaje en pared</li>
+                                                    <li>Soporte de montaje en pared</li>
+                                                    <li>Tornillo para montaje en pared (M5 X L55) x2</li>
+                                                    <li>Taco para tornillo x2</li>
+                                                    <li>Tornillo de sujeción x1 (asegura el encaje de la barra en el soporte)</li>
+                                                    <li>Tornillo (M4 x L10) x2 (fijan la barra en el soporte)</li>
+                                                    <li>Pata de goma x4 (para poner sobre peana de TV)</li>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Barra Q800</th>
+                                                <td>
+                                                    <li>2 cables de corriente</li>
+                                                    <li>Cable HDMI</li>
+                                                    <li>Soundbar Remote Control (Mando a distancia)</li>
+                                                    <li>Guía de montaje en pared</li>
+                                                    <li>Soporte de montaje en pared</li>
+                                                    <li>*Tornillo para montaje en pared (M5 X L55) x2 *No incluido*</li>
+                                                    <li>*Taco para tornillo x2 *No incluido*</li>
+                                                    <li>Tornillo de sujeción x2 (asegura el encaje del soporte en la pared)</li>
+                                                    <li>Tornillo (M4 x L10) x2 (fijan la barra en el soporte)</li>
+                                                    <li>Pata de goma x4 (para poner sobre peana de TV)</li>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Barra Q600</th>
+                                                <td>
+                                                    <li>2 cables de corriente</li>
+                                                    <li>Cable HDMI</li>
+                                                    <li>Soundbar Remote Control (Mando a distancia)</li>
+                                                    <li>Guía de montaje en pared</li>
+                                                    <li>Soporte de montaje en pared</li>
+                                                    <li>*Tornillo para montaje en pared (M5 X L55) x2 *No incluido*</li>
+                                                    <li>*Taco para tornillo x2 *No incluido*</li>
+                                                    <li>Tornillo de sujeción x2 (asegura el encaje del soporte en la pared)</li>
+                                                    <li>Tornillo (M4 x L10) x2 (fijan la barra en el soporte)</li>
+                                                    <li>Pata de goma x4 (para poner sobre peana de TV)</li>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Music Studio 7 - LS70</th>
+                                                <td>
+                                                    <li>Cable de corriente</li>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Music Studio 5 - LS50</th>
+                                                <td>
+                                                    <li>Cable con adaptador de corriente</li>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Music Frame - LS60</th>
+                                                <td>
+                                                    <li>Cable con adaptador de corriente</li>
+                                                    <li>Marco de fotos</li>
+                                                    <li>Soporte modo atril</li>
+                                                    <li>Guía de montaje en pared</li>
+                                                    <li>Parte trasera del soporte-montaje en pared</li>
+                                                    <li>Tornillo de sujeción x1</li>
+                                                    <li>Tornillo barra (M5 X L55) x2</li>
+                                                    <li>Taco x2</li>
+                                                    <li>Espaciador x1</li>
+                                                    <li>Placa del soporte x1</li>
+                                                    <li>Guía del soporte x1</li>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Barra QS750</th>
+                                                <td>
+                                                    <li>2 cables de corriente</li>
+                                                    <li>Cable con adaptador de corriente para altavoces</li>
+                                                    <li>Cable de altavoz surround</li>
+                                                    <li>Cable HDMI</li>
+                                                    <li>Soundbar Remote Control (Mando a distancia)</li>
+                                                    <li>Guía de montaje en pared</li>
+                                                    <li>Soporte de montaje en pared</li>
+                                                    <li>Tornillo para montaje en pared (M5 X L55) x2</li>
+                                                    <li>Taco para tornillo x2</li>
+                                                    <li>Tornillo de sujeción x1 (asegura el encaje de la barra en el soporte)</li>
+                                                    <li>Tornillo (M4 x L10) x2 (fijan la barra en el soporte)</li>
+                                                    <li>Pata de goma x4 (para poner sobre peana de TV)</li>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Barra QS700</th>
+                                                <td>
+                                                    <li>2 cables de corriente</li>
+                                                    <li>Cable HDMI</li>
+                                                    <li>Soundbar Remote Control (Mando a distancia)</li>
+                                                    <li>Guía de montaje en pared</li>
+                                                    <li>Soporte de montaje en pared</li>
+                                                    <li>Tornillo para montaje en pared (M5 X L55) x2</li>
+                                                    <li>Taco para tornillo x2</li>
+                                                    <li>Tornillo de sujeción x1 (asegura el encaje de la barra en el soporte)</li>
+                                                    <li>Tornillo (M4 x L10) x2 (fijan la barra en el soporte)</li>
+                                                    <li>Pata de goma x4 (para poner sobre peana de TV)</li>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Barra S800 / S801</th>
+                                                <td>
+                                                    <li>Cable con adaptador de corriente</li>
+                                                    <li>Cable microHDMI-HDMI</li>
+                                                    <li>Soundbar Remote Control (Mando a distancia)</li>
+                                                    <li>Guía de montaje en pared</li>
+                                                    <li>Soporte de montaje en pared x2</li>
+                                                    <li>*Tornillo para montaje en pared M5 X L55 x4 *No incluido*</li>
+                                                    <li>*Taco de soporte x4 *No incluido*</li>
+                                                    <li>Soporte-tornillo (fija barra en el soporte) x2</li>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Barra S700 / S701</th>
+                                                <td>
+                                                    <li>Cable con adaptador de corriente</li>
+                                                    <li>Cable microHDMI-HDMI</li>
+                                                    <li>Soundbar Remote Control (Mando a distancia)</li>
+                                                    <li>Guía de montaje en pared</li>
+                                                    <li>Soporte de montaje en pared x2</li>
+                                                    <li>*Tornillo para montaje en pared M5 X L55 x4 *No incluido*</li>
+                                                    <li>*Taco de soporte x4 *No incluido*</li>
+                                                    <li>Soporte-tornillo (fija barra en el soporte) x2</li>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Barra S60 / S61</th>
+                                                <td>
+                                                    <li>Cable con adaptador de corriente</li>
+                                                    <li>Cable HDMI</li>
+                                                    <li>Guía de montaje en pared</li>
+                                                    <li>Soporte de montaje en pared x2 (tornillo pared no incluido)</li>
+                                                    <li>Soporte-tornillo (barra) x2</li>
+                                                    <li>Tornillo (M4 x L10) x2 (fijan la barra en el soporte)</li>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Barra B750</th>
+                                                <td>
+                                                    <li>2 cables de corriente</li>
+                                                    <li>Cable de audio óptico</li>
+                                                    <li>Soundbar Remote Control (Mando a distancia)</li>
+                                                    <li>Guía de montaje en pared</li>
+                                                    <li>Soporte de montaje en pared</li>
+                                                    <li>*Tornillo para montaje en pared (M5 X L55) x2 *No incluido*</li>
+                                                    <li>*Taco para tornillo x2 *No incluido*</li>
+                                                    <li>Soporte-Tornillo de sujeción x2 (asegura el encaje del soporte en la pared)</li>
+                                                    <li>Tornillo (M4 x L10) x2 (fijan la barra en el soporte)</li>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Barra B650</th>
+                                                <td>
+                                                    <li>2 cables de corriente</li>
+                                                    <li>Cable de audio óptico</li>
+                                                    <li>Soundbar Remote Control (Mando a distancia)</li>
+                                                    <li>Guía de montaje en pared</li>
+                                                    <li>Soporte de montaje en pared</li>
+                                                    <li>*Tornillo para montaje en pared (M5 X L55) x2 *No incluido*</li>
+                                                    <li>*Taco para tornillo x2 *No incluido*</li>
+                                                    <li>Soporte-Tornillo de sujeción x2 (asegura el encaje del soporte en la pared)</li>
+                                                    <li>Tornillo (M4 x L10) x2 (fijan la barra en el soporte)</li>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Barra B450</th>
+                                                <td>
+                                                    <li>2 cables de corriente</li>
+                                                    <li>Cable de audio óptico</li>
+                                                    <li>Soundbar Remote Control (Mando a distancia)</li>
+                                                    <li>Guía de montaje en pared</li>
+                                                    <li>Soporte de montaje en pared</li>
+                                                    <li>*Tornillo para montaje en pared (M5 X L55) x2 *No incluido*</li>
+                                                    <li>*Taco para tornillo x2 *No incluido*</li>
+                                                    <li>Soporte-Tornillo de sujeción x2 (asegura el encaje del soporte en la pared)</li>
+                                                    <li>Tornillo (M4 x L10) x2 (fijan la barra en el soporte)</li>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Barra B400</th>
+                                                <td>
+                                                    <li>cable de corriente</li>
+                                                    <li>Soundbar Remote Control (Mando a distancia)</li>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </p>
                                 </div>
                             </details>
                         </div>
@@ -477,12 +829,20 @@
                     </div>
                 </span>
                 <!-- Botón Imprimir integrado en el pie -->
+                <!--**-->
+                <!-- Botón para imprimir TODO el glosario -->
                 <p class="printPageButton">
+                    <button onclick="imprimirSeccion('indice')" style="cursor: pointer;">
+                        🖨️ Imprimir TODO el Glosario
+                    </button>
+                </p>
+                <!--NULL-->
+                <p hidden class="printPageButton">
                     <button hidden onclick="window.print();"> Imprimir 🖨️ página 📝 </button>
                     <button onclick="alert('⚠️ AVISO: &nbsp&nbsp No se recomienda imprimir. &nbsp&nbsp Web no adaptada para impresión ⚠️')"> Imprimir 🖨️ página 📝 </button>
                     
                 </p>
-                <b style="text-decoration: underline; text-decoration-style: dotted;">Última actualización: 22-09-2026 23:55h</b>
+                <b style="text-decoration: underline; text-decoration-style: dotted;">Última actualización: 04-11-2026 03:59h</b>
                 <p>© 2026 | diseñado por: E.Y.E.</p>
                 <!-- El botón de subir suele ir al final para que cargue lo último -->
                 <a href='#' class="stt" title="Subir arriba"></a>
@@ -491,7 +851,7 @@
         </div>
         <!-- script de catalogo de gama marrón -->
         <script>
-            /* Última actualización: 23-06-2026 22:55h */
+            /* Última actualización: 04-11-2026 03:59h */
             /* script de catalogo de gama marrón */
             const MODO_DEBUG = false;
             // 1. DEFINICIÓN DE PLANTILLAS
@@ -732,13 +1092,37 @@
                 datosReales.forEach(producto => {
                     let coincideTexto = true;
                     if (hayBusquedaActiva) {
+                        
+                        /*
                         const modelo = normalizar(producto.modelo);
-                        const gama = normalizar(producto.gama);
+                        // 🔥 EL ARREGLO: Miramos en todos los posibles nombres que le hayas dado a la gama
+                        const valorGama = producto.gama || producto['gama-pulgada'] || producto.gama_pulgada || '';
+                        const gama = normalizar(valorGama);
+                        // ya no vale porque sino falla en buscar el tipo de gama en tv const gama = normalizar(producto.gama);
                         const referencia = normalizar(producto.referencia);
+                        // Buscamos el EAN en mayúsculas o minúsculas por si acaso
+                        const valorEAN = producto.EAN || producto.ean || ''; 
+                        const ean = normalizar(valorEAN);
                         
                         coincideTexto = modelo.includes(textoBuscadoLimpio) || 
                                         gama.includes(textoBuscadoLimpio) || 
-                                        referencia.includes(textoBuscadoLimpio);
+                                        referencia.includes(textoBuscadoLimpio)
+                                        ean.includes(textoBuscadoLimpio);
+                        */
+
+                        // Aplanamos para que el buscador encuentre el EAN aunque esté anidado en el JSON
+                        const prodAplanado = aplanarObjeto(producto);
+
+                        const modelo = normalizar(encontrarValorSeguro(prodAplanado, 'modelo'));
+                        const valorGama = encontrarValorSeguro(prodAplanado, 'gama') || encontrarValorSeguro(prodAplanado, 'gama-pulgada') || '';
+                        const gama = normalizar(valorGama);
+                        const referencia = normalizar(encontrarValorSeguro(prodAplanado, 'referencia'));
+                        const ean = normalizar(encontrarValorSeguro(prodAplanado, 'EAN') || encontrarValorSeguro(prodAplanado, 'ean'));
+            
+                        coincideTexto = modelo.includes(textoBuscadoLimpio) || 
+                            gama.includes(textoBuscadoLimpio) || 
+                            referencia.includes(textoBuscadoLimpio) ||
+                            ean.includes(textoBuscadoLimpio); // Sin punto y coma intermedio
                     }
         
                     if (coincideTexto) {
@@ -791,5 +1175,24 @@
             });
         </script>
         <!-- fin script de catalogo de gama marrón -->
+        <!-- scrip impresion-->
+        <script>
+            function imprimirSeccion(idSeccion) {
+                // Busca el elemento exacto que le has pedido
+                const seccion = document.getElementById(idSeccion);
+                
+                if (seccion) {
+                    // 2. Reemplazamos TODO el HTML visible solo por el glosario
+                    document.body.innerHTML = seccion.outerHTML;
+                    // 3. Abrimos la ventana de impresión (saldrá perfecto, solo estará el glosario)
+                    window.print();
+                    // 4. Cuando el usuario termine de imprimir, recargamos la página al instante 
+                    // para que vuelva a aparecer el menú, el buscador y las tablas.
+                    window.location.reload();
+                } else {
+                    console.error("No se encontró la sección con ID: " + idSeccion);
+                }
+            }
+        </script>
     </body>
 </html>
