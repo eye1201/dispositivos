@@ -274,6 +274,39 @@
                 font-size: 1.2rem; 
             }
         }
+        /* =========================================================
+        ESTILOS ESPECÍFICOS PARA LA TABLA DE CONTENIDO DE CAJAS
+        ========================================================= */
+
+        /* 1. Permitir salto de línea tanto en encabezados (th) como en celdas (td) */
+        #contenido-caja th,
+        #contenido-caja td {
+            white-space: normal !important;   /* Permite que el texto fluya hacia abajo */
+            word-break: break-word !important; /* Rompe modelos o palabras largas si rozan el margen */
+            overflow-wrap: break-word !important;
+        }
+
+        /* 2. Ajuste para que las listas <ul> no se salgan del margen de la celda */
+        #contenido-caja td ul {
+            margin: 0;
+            padding-left: 18px;
+            white-space: normal !important;
+        }
+
+        /* 3. Evitar que las URLs largas (como las de AMD o Philips) rompan el ancho */
+        .detalle a, 
+        #contenido-caja a {
+            word-break: break-all;
+            overflow-wrap: anywhere;
+        }
+
+        /* 4. Evitar que las imágenes de los mandos desborden la celda */
+        #contenido-caja td img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-top: 8px;
+        }
     </style>
     <!--Color del navegador-->
     <meta name="theme-color" content="#ededed">
@@ -507,11 +540,11 @@
                                         <span>3. Asegúrese de que el indicador LED LINK se vuelva azul (lo que indica una conexión exitosa) [Cuando la soundbar esté conectada correctamente al subwoofer y a los altavoces surround, el indicador LED LINK dejará de parpadear y se volverá azul fijo. ]</span><br>
                                     </p>
                                     <hr>
-                                    <p>
-                                        <table id="contenido-caja">
+                                    <p class="table-container">
+                                        <table class="productos" id="contenido-caja">
                                             <tr style="text-align: center;">
                                                 <th colspan="2">
-                                                    <b><a href="#contenido-caja" style="color: black; text-decoration: unset;">Contenido de las cajas de los televisores, barras de sonido y altavoces</a></b>
+                                                    <b><a href="#contenido-caja" style="color: black; text-decoration: unset;">Contenido de las cajas de los televisores, barras de sonido y altavoces</a></b><br>
                                                     <!-- Botón para imprimir SOLO la parte de contenido cajas barras -->
                                                     <button onclick="imprimirSeccion('contenido-caja')" style="cursor: pointer;">
                                                         🖨️ Imprimir
@@ -842,7 +875,7 @@
                     <button onclick="alert('⚠️ AVISO: &nbsp&nbsp No se recomienda imprimir. &nbsp&nbsp Web no adaptada para impresión ⚠️')"> Imprimir 🖨️ página 📝 </button>
                     
                 </p>
-                <b style="text-decoration: underline; text-decoration-style: dotted;">Última actualización: 04-11-2026 03:59h</b>
+                <b style="text-decoration: underline; text-decoration-style: dotted;">Última actualización: 04-11-2026 15:11h</b>
                 <p>© 2026 | diseñado por: E.Y.E.</p>
                 <!-- El botón de subir suele ir al final para que cargue lo último -->
                 <a href='#' class="stt" title="Subir arriba"></a>
